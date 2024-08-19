@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelSp2d extends Model
 {
+    public $timestamps = false;
     protected $table = "sp2d";
     protected $primaryKey = "idhalaman";
     protected $fillable = [

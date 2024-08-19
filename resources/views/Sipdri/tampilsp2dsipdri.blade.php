@@ -1576,7 +1576,7 @@
                                       <?php $i=1;
                                             $pagination = 40 ; 
 
-                                            function rupiah($angka){
+                                            function rupiahh($angka){
                                                 $hasil_rupiah = "" . number_format($angka,0,',','.');
                                                 return $hasil_rupiah;
                                             }
@@ -1590,7 +1590,7 @@
                                         <td class="table-td">{{ $row['nomor_sp_2_d'] }}</td>
                                         <td class="table-td">{{ $row['tanggal_sp_2_d'] }}</td>
                                         <td class="table-td">{{ $row['keterangan_sp_2_d'] }}</td>
-                                        <td class="table-td">{{ rupiah($row['nilai_sp_2_d']) }}</td>
+                                        <td class="table-td">{{ rupiahh($row['nilai_sp_2_d']) }}</td>
                                         
                                                   <td class="table-td ">
                                                     <div class="flex space-x-3 rtl:space-x-reverse">
