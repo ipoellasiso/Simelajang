@@ -80,7 +80,7 @@ class Simpansp2dsipdriController extends Controller
 
             
                 DB::beginTransaction();
-                    $cek = ModelSp2d::where('idhalaman', $request->idhalaman)->count();
+                    $cek = ModelSp2d::where('idhalaman', $request->nomordoc)->count();
                     if($cek > 0)
                     {
                         return redirect()->back()->with('error', 'Data Sudah Ada');
