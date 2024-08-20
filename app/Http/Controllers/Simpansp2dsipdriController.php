@@ -7,6 +7,7 @@ use App\Models\ModelBelanja1;
 use App\Models\ModelPotonngan2;
 use App\Models\ModelSp2d;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Simpansp2dsipdriController extends Controller
 {
@@ -43,7 +44,7 @@ class Simpansp2dsipdriController extends Controller
         return view('Sipdri.tampilsp2dsipdri', compact('dt'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
             $page = $_GET['id'];
             $nomordok = $_GET['id'];
@@ -77,58 +78,68 @@ class Simpansp2dsipdriController extends Controller
             $detail_belanja = $dt["ls"]["detail_belanja"];
             $pajak_potongan = $dt["ls"]["pajak_potongan"];
 
-            $datasp2d = new ModelSp2d;
-            $datasp2d->idhalaman = $nomordok;
-            $datasp2d->jenis = $dt["jenis"];
-            $datasp2d->tahun = $dt["ls"]["header"]["tahun"];
-            $datasp2d->nomor_rekening = $dt["ls"]["header"]["nomor_rekening"];
-            $datasp2d->nama_bank = $dt["ls"]["header"]["nama_bank"];
-            $datasp2d->nomor_sp2d = $dt["ls"]["header"]["nomor_sp_2_d"];
-            $datasp2d->tanggal_sp2d = Carbon::Parse($dt["ls"]["header"]["tanggal_sp_2_d"])->format('Y-m-d');
-            $datasp2d->nama_skpd = $dt["ls"]["header"]["nama_skpd"];
-            $datasp2d->nama_sub_skpd = $dt["ls"]["header"]["nama_sub_skpd"];
-            $datasp2d->nama_pihak_ketiga = $dt["ls"]["header"]["nama_pihak_ketiga"];
-            $datasp2d->no_rek_pihak_ketiga = $dt["ls"]["header"]["no_rek_pihak_ketiga"];
-            $datasp2d->nama_rek_pihak_ketiga = $dt["ls"]["header"]["nama_rek_pihak_ketiga"];
-            $datasp2d->bank_pihak_ketiga = $dt["ls"]["header"]["bank_pihak_ketiga"];
-            $datasp2d->npwp_pihak_ketiga = $dt["ls"]["header"]["npwp_pihak_ketiga"];
-            $datasp2d->keterangan_sp2d = $dt["ls"]["header"]["keterangan_sp2d"];
-            $datasp2d->nilai_sp2d = $dt["ls"]["header"]["nilai_sp2d"];
-            $datasp2d->nomor_spm =  $dt["ls"]["header"]["nomor_spm"];
-            $datasp2d->tanggal_spm = Carbon::Parse( $dt["ls"]["header"]["tanggal_spm"])->format('Y-m-d');
-            $datasp2d->nama_ibu_kota = $dt["ls"]["header"]["nama_ibu_kota"];
-            $datasp2d->nama_bud_kbud = $dt["ls"]["header"]["nama_bud_kbud"];
-            $datasp2d->jabatan_bud_kbud = $dt["ls"]["header"]["jabatan_bud_kbud"];
-            $datasp2d->nip_bud_kbud = $dt["ls"]["header"]["nip_bud_kbud"];
-           
-
-            // foreach($detail_belanja as $row)
-            // {
-            //     $belanja1 = new ModelBelanja1;
-            //     $belanja1->norekening = $row["kode_rekening"];
-            //     $belanja1->uraian = $row["uraian"];
-            //     $belanja1->nilai = $row["jumlah"];
-            //     $belanja1->id_sp2d = $nomordok;
-            // }
-            // $belanja1->save();
-
             
-            // foreach($pajak_potongan as $row1)
-            // {
-            //     $pot1 = new ModelPotonngan2();
-            //     $pot1->jenis_pajak = $row1["nama_pajak_potongan"];
-            //     $pot1->ebilling = $row1["id_billing"];
-            //     $pot1->nilai_pajak = $row1["nilai_sp2d_pajak_potongan"];
-            //     $pot1->id_potongan = $nomordok;
-            //     $pot1->status1 = '0';
-            // }    
+                DB::beginTransaction();
+                    $cek = ModelSp2d::where('idhalaman', $request->idhalaman)->count();
+                    if($cek > 0)
+                    {
+                        return redirect()->back()->with('error', 'Data Sudah Ada');
+                    }else
+                    {
+                        $datasp2d = new ModelSp2d;
+                        $datasp2d->idhalaman = $nomordok;
+                        $datasp2d->jenis = $dt["jenis"];
+                        $datasp2d->tahun = $dt["ls"]["header"]["tahun"];
+                        $datasp2d->nomor_rekening = $dt["ls"]["header"]["nomor_rekening"];
+                        $datasp2d->nama_bank = $dt["ls"]["header"]["nama_bank"];
+                        $datasp2d->nomor_sp2d = $dt["ls"]["header"]["nomor_sp_2_d"];
+                        $datasp2d->tanggal_sp2d = Carbon::Parse($dt["ls"]["header"]["tanggal_sp_2_d"])->format('Y-m-d');
+                        $datasp2d->nama_skpd = $dt["ls"]["header"]["nama_skpd"];
+                        $datasp2d->nama_sub_skpd = $dt["ls"]["header"]["nama_sub_skpd"];
+                        $datasp2d->nama_pihak_ketiga = $dt["ls"]["header"]["nama_pihak_ketiga"];
+                        $datasp2d->no_rek_pihak_ketiga = $dt["ls"]["header"]["no_rek_pihak_ketiga"];
+                        $datasp2d->nama_rek_pihak_ketiga = $dt["ls"]["header"]["nama_rek_pihak_ketiga"];
+                        $datasp2d->bank_pihak_ketiga = $dt["ls"]["header"]["bank_pihak_ketiga"];
+                        $datasp2d->npwp_pihak_ketiga = $dt["ls"]["header"]["npwp_pihak_ketiga"];
+                        $datasp2d->keterangan_sp2d = $dt["ls"]["header"]["keterangan_sp2d"];
+                        $datasp2d->nilai_sp2d = $dt["ls"]["header"]["nilai_sp2d"];
+                        $datasp2d->nomor_spm =  $dt["ls"]["header"]["nomor_spm"];
+                        $datasp2d->tanggal_spm = Carbon::Parse( $dt["ls"]["header"]["tanggal_spm"])->format('Y-m-d');
+                        $datasp2d->nama_ibu_kota = $dt["ls"]["header"]["nama_ibu_kota"];
+                        $datasp2d->nama_bud_kbud = $dt["ls"]["header"]["nama_bud_kbud"];
+                        $datasp2d->jabatan_bud_kbud = $dt["ls"]["header"]["jabatan_bud_kbud"];
+                        $datasp2d->nip_bud_kbud = $dt["ls"]["header"]["nip_bud_kbud"];
+                        $datasp2d->save();
 
-            // dd($pot1);
-            $datasp2d->save();
-            // $belanja1->save();
-            // $pot1->save();
+                        foreach($detail_belanja as $row){
+                            $databelanja1 = [
+                                'norekening' => $row["kode_rekening"],
+                                'uraian' => $row["uraian"],
+                                'nilai' => $row["jumlah"],
+                                'id_sp2d' => $nomordok
+                            ];
+                            DB::table('belanja1')->insert($databelanja1);
+                        }
 
-        return redirect('tampilsp2dsipdri?id=4')->with('status','Data Berhasil disimpan');
+                        foreach($pajak_potongan as $row1){
+                            $datapotongan2 = [
+                            // $belanja1 = new ModelBelanja1;
+                            // $belanja1->norekening = $row["kode_rekening"];
+                            // $belanja1->uraian = $row["uraian"];
+                            // $belanja1->nilai = $row["jumlah"];
+                            // $belanja1->id_sp2d = $nomordok;
 
+                            'jenis_pajak' => $row1["nama_pajak_potongan"],
+                            'ebilling' => $row1["id_billing"],
+                            'nilai_pajak' => $row1["nilai_sp2d_pajak_potongan"],
+                            'id_potongan' => $nomordok,
+                            'status1' => '0'
+                            ];
+                            DB::table('potongan2')->insert($datapotongan2);
+                        }
+                    }
+                DB::commit();
+                return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
+        
     }
 }
