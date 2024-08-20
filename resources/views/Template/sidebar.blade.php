@@ -140,38 +140,14 @@
           <ul class="sidebar-submenu">
 
             @if (auth()->user()->role=="admin")
-                
-                  <li class="">
-                      <a href="javascript:void(0)" class="">
-                          <span class="items-center">
-                          <span>LS</span>
-                      </a>
-                      <ul class="sidebar-submenu">
-                          <li>
-                            <a href="signin-one.html">LS Belum Diinput</a>
-                          </li>
-                          <li>
-                            <a href="{{ route('tampilpajakls') }}">LS Sudah Diinput</a>
-                          </li>
-                      </ul>
-                  </li>
-                
+                <li>
+                  <a href="{{ route('tampilpajakls') }}">LS</a>
+                </li>
             @else
             @if (auth()->user()->role=="verifikasi")
-            <li class="">
-                <a href="javascript:void(0)" class="">
-                    <span class="items-center">
-                    <span>LS</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                      <a href="signin-one.html">LS Belum Diinput</a>
-                    </li>
-                    <li>
-                      <a href="{{ route('tampilpajakls') }}">LS Sudah Diinput</a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                  <a href="{{ route('tampilpajakls') }}">LS</a>
+                </li>
             @endif
             @endif
 
