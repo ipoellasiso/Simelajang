@@ -1564,7 +1564,7 @@
                                           POTONGAN PAJAK
                                         </th> --}}
                                         <th scope="col" class=" table-th ">
-                                          JENIS PAJAK
+                                          JENIS, AKUN DAN NILAI PAJAK
                                         </th>
                                         <th scope="col" class=" table-th ">
                                           NPWP
@@ -1603,7 +1603,7 @@
                                                   <b>Nilai SP2D : </b> {{ rupiah($item->nilai_sp2d) }} <br>
                                               </td>
       
-                                              <td class="table-td">{{ $item->no_rek_pihak_ketiga }}</td>
+                                              <td class="table-td">{{ $item->rek_belanja }}</td>
       
                                               <td class="table-td">
                                                   <b>Kode Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
@@ -1612,8 +1612,8 @@
                                               </td>
       
                                               <td class="table-td">
-                                                  <b>Nama NPWP : </b><br>
-                                                  <b>Nomor NPWP : </b> {{ $item->npwp_pihak_ketiga }} <br> 
+                                                  <b>Nama NPWP : </b>{{ $item->nama_npwp }}<br>
+                                                  <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
                                               </td>
       
                                               <td class="table-td">{{ $item->ebilling }}</td>

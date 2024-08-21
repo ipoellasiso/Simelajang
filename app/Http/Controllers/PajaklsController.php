@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelSp2d;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pajakkpp;
@@ -73,12 +74,18 @@ class PajaklsController extends Controller
             Pajakpot::where('id',$request->get('id'))
                         ->update([
                             'status1' => '1',
+                            'ebilling' => $request->get('ebilling'),
+                            'jenis_pajak' => $request->get('jenis_pajak'),
                         ]);
-        
+            
             $dataPajakkpp= new Pajakkpp;
                 $dataPajakkpp->akun_pajak = $request->get('akun_pajak');
                 $dataPajakkpp->ebilling = $request->get('ebilling');
                 $dataPajakkpp->ntpn = $request->get('ntpn');
+                $dataPajakkpp->nama_npwp = $request->get('nama_npwp');
+                $dataPajakkpp->nomor_npwp = $request->get('nomor_npwp');
+                $dataPajakkpp->jenis_pajak = $request->get('jenis_pajak');
+                $dataPajakkpp->rek_belanja = $request->get('rek_belanja');
                 $dataPajakkpp->save();
 
             return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');

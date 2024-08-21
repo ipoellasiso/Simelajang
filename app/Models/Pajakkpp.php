@@ -17,6 +17,9 @@ class Pajakkpp extends Model
         'akun_pajak',
         'jenis_pajak',
         'nilai_pajak',
+        'rek_belanja',
+        'nama_npwp',
+        'nomor_npwp',
         'created_at',
         'updated_at',
     ];

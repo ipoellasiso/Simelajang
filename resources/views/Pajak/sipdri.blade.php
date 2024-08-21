@@ -1634,6 +1634,7 @@
                                                     data-id = "{{ $item->id }}"
                                                     data-ebilling = "{{ $item->ebilling }}"
                                                     data-jenis_pajak = "{{ $item->jenis_pajak }}"
+                                                    data-npwp_pihak_ketiga = "{{ $item->npwp_pihak_ketiga }}"
                                                     >
                                                    <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                 </button>
@@ -1708,13 +1709,13 @@
                       <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label class="form-label">E-Billing</label>
-                                <input name="ebilling" type="text" class="form-control" id="edit-ebilling" readonly>
+                                <input name="ebilling" type="text" class="form-control" id="edit-ebilling">
                             </div>
 
                       <div class="card-text h-full space-y-4">
                               <div class="input-area">
                                   <label class="form-label">Jenis Pajak</label>
-                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak" readonly>
+                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak">
                               </div>
                       
 
@@ -1730,6 +1731,27 @@
                                 <label class="form-label">NTPN</label>
                                 <input name="ntpn" type="text" class="form-control" id="edit-ntpn">
                             </div>
+                      </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">REKENING BELANJA</label>
+                            <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja">
+                        </div>
+                      </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">NAMA NPWP</label>
+                            <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp">
+                        </div>
+                      </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">NOMOR NPWP</label>
+                            <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp">
+                        </div>
                       </div>
                       </div>
                       </div>
@@ -1813,12 +1835,18 @@
         let akun_pajak = $(this).data('akun_pajak');
         let ntpn = $(this).data('ntpn');
         let jenis_pajak = $(this).data('jenis_pajak');
+        let rek_belanja = $(this).data('rek_belanja');
+        let nama_npwp = $(this).data('nama_npwp');
+        let npwp_pihak_ketiga = $(this).data('npwp_pihak_ketiga');
   
         $('#edit-id').val(id);
         $('#edit-ebilling').val(ebilling);
         $('#edit-akun_pajak').val(akun_pajak);
         $('#edit-ntpn').val(ntpn);
         $('#edit-jenis_pajak').val(jenis_pajak);
+        $('#edit-rek_belanja').val(rek_belanja);
+        $('#edit-nama_npwp').val(nama_npwp);
+        $('#edit-nomor_npwp').val(nomor_npwp);
   
     });
   </script>
