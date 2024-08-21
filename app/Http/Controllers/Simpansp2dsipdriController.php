@@ -14,13 +14,19 @@ class Simpansp2dsipdriController extends Controller
 
     public function index()
     {
+        
+
         $page = $_GET['id'];
             // $nomordok = $_GET['id'];
-            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQyNDA5NjgsImlhdCI6MTcyNDAyNDk2OCwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.Fok87TmB32NAyt9j2UGBwg9GvEQYIirI0DlvPdmnLO8';
-            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=LS&page=$page&limit=10";
+            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQ0MjM2MDUsImlhdCI6MTcyNDIwNzYwNSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.aGn6enm5iLLckLjDMpVmIeP3l4xRRVgPf-_RcLrwA1E';
+            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=$page&limit=10";
+            // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?status=ditransfer&page=1&limit=10
+            // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=draft&page=1&limit=10
             // $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
             // $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
             $pagination = 40 ;
+
+            // $datasp2d = DB::table('sp2d')->select('status1')->get();
 
             $hitung = $pagination;
             $curl = curl_init();
@@ -30,6 +36,7 @@ class Simpansp2dsipdriController extends Controller
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
+            // CURLOPT_POSTFIELDS => $datasp2d,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
@@ -40,23 +47,27 @@ class Simpansp2dsipdriController extends Controller
             $response = curl_exec($curl);
             curl_close($curl);
             $dt = json_decode($response, true);
+            
 
         return view('Sipdri.tampilsp2dsipdri', compact('dt'));
+
+        
+        // return view('Sipdri.tampilsp2dsipdri', compact('datasp2d'));
     }
 
     public function store(Request $request)
     {
             $page = $_GET['id'];
             $nomordok = $_GET['id'];
-            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQyNDA5NjgsImlhdCI6MTcyNDAyNDk2OCwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.Fok87TmB32NAyt9j2UGBwg9GvEQYIirI0DlvPdmnLO8';
-            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=LS&page=$page&limit=10";
-            $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
+            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQ0MjM2MDUsImlhdCI6MTcyNDIwNzYwNSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.aGn6enm5iLLckLjDMpVmIeP3l4xRRVgPf-_RcLrwA1E';
+            // $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=LS&page=$page&limit=10";
+            // $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
             $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
-            $pagination = 40 ;
+            // $pagination = 40 ;
             // batasan tambahan
 
             $curl = curl_init();
-            $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
+            // $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
 
             curl_setopt_array($curl, array(
             CURLOPT_URL => $urldok,
@@ -80,12 +91,7 @@ class Simpansp2dsipdriController extends Controller
 
             
                 DB::beginTransaction();
-                    $cek = ModelSp2d::where('idhalaman', $request->nomordoc)->count();
-                    if($cek > 0)
-                    {
-                        return redirect()->back()->with('error', 'Data Sudah Ada');
-                    }else
-                    {
+                    
                         $datasp2d = new ModelSp2d;
                         $datasp2d->idhalaman = $nomordok;
                         $datasp2d->jenis = $dt["jenis"];
@@ -121,25 +127,29 @@ class Simpansp2dsipdriController extends Controller
                             DB::table('belanja1')->insert($databelanja1);
                         }
 
-                        foreach($pajak_potongan as $row1){
-                            $datapotongan2 = [
-                            // $belanja1 = new ModelBelanja1;
-                            // $belanja1->norekening = $row["kode_rekening"];
-                            // $belanja1->uraian = $row["uraian"];
-                            // $belanja1->nilai = $row["jumlah"];
-                            // $belanja1->id_sp2d = $nomordok;
+                        if ($pajak_potongan == null){
+                            echo "<h3>SP2D ini tidak memiliki Potongan</h3>";
+                        }else{
+                            foreach($pajak_potongan as $row1){
+                                $datapotongan2 = [
+                                // $belanja1 = new ModelBelanja1;
+                                // $belanja1->norekening = $row["kode_rekening"];
+                                // $belanja1->uraian = $row["uraian"];
+                                // $belanja1->nilai = $row["jumlah"];
+                                // $belanja1->id_sp2d = $nomordok;
 
-                            'jenis_pajak' => $row1["nama_pajak_potongan"],
-                            'ebilling' => $row1["id_billing"],
-                            'nilai_pajak' => $row1["nilai_sp2d_pajak_potongan"],
-                            'id_potongan' => $nomordok,
-                            'status1' => '0'
-                            ];
-                            DB::table('potongan2')->insert($datapotongan2);
+                                'jenis_pajak' => $row1["nama_pajak_potongan"],
+                                'ebilling' => $row1["id_billing"],
+                                'nilai_pajak' => $row1["nilai_sp2d_pajak_potongan"],
+                                'id_potongan' => $nomordok,
+                                'status1' => '0'
+                                ];
+                                DB::table('potongan2')->insert($datapotongan2);
+                            }
                         }
-                    }
+                    
                 DB::commit();
-                return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
+                // return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
         
     }
 }

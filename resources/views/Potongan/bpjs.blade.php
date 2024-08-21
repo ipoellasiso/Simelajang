@@ -1519,11 +1519,11 @@
                         </a>
                       </li>
                       <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        SP2D
+                        Penatausahaan
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                       </li>
                       <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        LS</li>
+                        Pajak SIPD RI</li>
                     </ul>
                   </div>
                   <!-- END: BreadCrumb -->
@@ -1532,11 +1532,15 @@
                   <div class=" space-y-5">
                     <div class="card">
                       <header class=" card-header noborder">
-                        <h4 class="card-title">Data SP2D SIPD RI
+                        <h4 class="card-title">Data Pajak SIPD RI
                         </h4>
                         {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <a href="" data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
-                          <a href="{{ route('simpansp2dsipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Simpan Data</a>
+                          <a href="{{ route('tampilpajakls') }}" class="btn inline-flex justify-center btn-light btn-sm">
+                            <span class="flex items-center">
+                              <iconify-icon icon="icon-park:back"></iconify-icon>
+                                <span>Kembali</span>
+                            </span>
+                          </a>
                       </header>
 
                       <div class="card-body px-6 pb-6">
@@ -1546,88 +1550,103 @@
                           <div class="inline-block min-w-full align-middle">
                             <div class="overflow-hidden ">
                               
-                                <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+                                <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
                                     <thead class="bg-slate-200 dark:bg-slate-700">
                                       <tr>
                                         <th scope="col" class=" table-th ">
                                           NO
                                         </th>
                                         <th scope="col" class=" table-th ">
-                                          NAMA OPD
+                                          SPM
                                         </th>
-                                        <th scope="col" class=" table-th ">NOMOR SP2D</th>
-                                        <th scope="col" class=" table-th ">TANGGAL SP2D</th>
-                                        <th scope="col" class=" table-th ">KETERANGAN</th>
-                                        <th scope="col" class=" table-th ">NILAI SP2D</th>
-                                        <th scope="col" class=" table-th ">Action</th>
-                                        {{-- <th scope="col" class=" table-th ">Status</th> --}}
+                                        <th scope="col" class=" table-th ">
+                                          SP2D
+                                        </th>
+                                        <th scope="col" class=" table-th ">
+                                          REKENING BELANJA
+                                        </th>
+                                        {{-- <th scope="col" class=" table-th ">
+                                          POTONGAN PAJAK
+                                        </th> --}}
+                                        <th scope="col" class=" table-th ">
+                                          JENIS POTONGAN
+                                        </th>
+                                        <th scope="col" class=" table-th ">
+                                          NPWP
+                                        </th>
+                                        <th scope="col" class=" table-th ">
+                                          NILAI PAJAK
+                                        </th>
+                                        <th scope="col" class=" table-th ">
+                                          BILLING
+                                        </th>
+                                        {{-- <th scope="col" class=" table-th ">
+                                          NTPN
+                                        </th> --}}
+                                        <th scope="col" class=" table-th ">
+                                          Action
+                                        </th>
                                       </tr>
                                     </thead>
       
-                                    <body>
-                                      <?php $i=1;
-                                            $pagination = 160 ; 
-
-                                            function rupiahh($angka){
-                                                $hasil_rupiaha = "" . number_format($angka,0,',','.');
-                                                return $hasil_rupiaha;
-                                            }
-
-                                            $hitung = $pagination;
-                                      ?>
-
-                                      @foreach ($dt as $row) 
-                                        <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
-                                          <td class="table-td"> {{ $i++ }}</td>
-                                          <td class="table-td">{{ $row['nama_sub_skpd'] }}</td>
-                                          <td class="table-td">{{ $row['nomor_sp_2_d'] }}</td>
-                                          <td class="table-td">{{ $row['tanggal_sp_2_d'] }}</td>
-                                          <td class="table-td">{{ $row['keterangan_sp_2_d'] }}</td>
-                                          <td class="table-td">{{ rupiahh($row['nilai_sp_2_d']) }}</td>
-                                                                                
-                                                    <td class="table-td ">
-                                                      <div class="flex space-x-3 rtl:space-x-reverse">
-                                                          {{-- <a href="" class="action-btn" type="button">
-                                                            <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                                          </a> --}}
-        
-                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn" type="button">
-                                                            <iconify-icon icon="heroicons:pencil-square"></  iconify-icon>
-                                                          </a>
-                                                        </div>
-                                                      </td>
-                                          </tr>
-                                        @endforeach
-                                      
-                                    </body>
-                                  </table>
+                                    <body>                                
+                                      <?php $i=1; function rupiah($angka){
+          
+                                              $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                              return $hasil_rupiah;
+                                            } ?>
+                                        @foreach ($potonganbpjs as $item)
+                                          <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                              <td class="table-td"> {{ $i++ }}</td>
       
-                                  <div>
-                                    <nav aria-label="Page navigation example">
-                                      <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                          </a>
-                                        </li>
-                                        <?php
-                                          for($a=1;$a<$hitung;$a++)
-                                          {
-                                            ?>
-                                            <li class="page-item"><a class="page-link" href="tampilsp2dsipdri?id=<?=$a;?>"><?=$a;?></a></li>
-                                          <?php 
-                                            }
-                                          ?>
-                                        <li class="page-item">
-                                          <a class="page-link" href="tampilsp2dsipdri?id=<?=$a;?>" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                          </a>
-                                        </li>
-                                      </ul>
-                                    </nav>
-                                </div>
+                                              <td class="table-td">    
+                                                  <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                                  <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                                  <b>Nilai SPM : </b> {{ rupiah($item->nilai_sp2d) }} <br>
+                                               </td>
+      
+                                              <td class="table-td">
+                                                  <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                                  <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                                  <b>Nilai SP2D : </b> {{ rupiah($item->nilai_sp2d) }} <br>
+                                              </td>
+      
+                                              <td class="table-td">{{ $item->no_rek_pihak_ketiga }}</td>
+      
+                                              <td class="table-td">
+                                                  {{-- <b>Kode Akun Pajak : </b>{{ $item->akun_pajak }}<br>  --}}
+                                                  </b> {{ $item->jenis_pajak }} <br>
+                                              </td>
+      
+                                              <td class="table-td">
+                                                  <b>Nama NPWP : </b><br>
+                                                  <b>Nomor NPWP : </b> {{ $item->npwp_pihak_ketiga }} <br> 
+                                              </td>
+                                              
+                                              <td class="table-td">{{ rupiah($item->nilai_pajak) }}</td>
+                                              <td class="table-td">{{ $item->ebilling }}</td>
+                                              
+
+                                          <td class="table-td ">
+                                            <div class="flex space-x-3 rtl:space-x-reverse">
+                                              <button type="button" class="action-btn" id="btn-edit-pajakls"
+                                                    data-bs-toggle="modal" data-bs-target="#edit_modal"
+                                                    data-id = "{{ $item->id }}"
+                                                    data-ebilling = "{{ $item->ebilling }}"
+                                                    data-jenis_pajak = "{{ $item->jenis_pajak }}"
+                                                    >
+                                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                </button>
+                                                
+                                              </div>
+                                            </td>
+                                  </tr>
+                                @endforeach
+                                <body>
+
+                                </body>
+  
+                              </table>
                             </div>
                           </div>
                         </div>
@@ -1640,6 +1659,94 @@
             </div>
           </div>
       </div>
+
+{{-- #################################################################################################################### --}}
+{{-- modal tambah --}}
+  
+
+<!-- Batas tambah Modal -->
+{{-- ################################################################################################################### --}}
+        </div>
+    </div>
+</div>
+
+{{-- #################################################################################################################### --}}
+  {{-- modal tambah --}}
+  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="edit_modal" tabindex="-1" aria-labelledby="default_modal" aria-hidden="true">
+    <div class="modal-dialog relative w-auto pointer-events-none">
+      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+      rounded-md outline-none text-current">
+        <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-secondary-500">
+            <h3 class="text-xl font-medium text-white dark:text-white capitalize">
+              Edit Data Akun Pajak
+            </h3>
+            <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                  dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
+              <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
+                          11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+                <form method="post"a action="{{ route('editpajakls', $item->id) }}">
+                  @method('get')
+                  @csrf
+                <div class="card">
+                  <div class="card-body flex flex-col p-6">
+
+                    <div class="card-text h-full space-y-4">
+
+                      <div class="input-area">
+                          <label class="form-label">id</label>
+                          <input name="id" type="text" class="form-control" id="edit-id" readonly>
+                      </div>
+
+                      <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">E-Billing</label>
+                                <input name="ebilling" type="text" class="form-control" id="edit-ebilling" readonly>
+                            </div>
+
+                      <div class="card-text h-full space-y-4">
+                              <div class="input-area">
+                                  <label class="form-label">Jenis Pajak</label>
+                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak" readonly>
+                              </div>
+                      
+
+                      <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">Akun Pajak</label>
+                                <input name="akun_pajak" type="text" class="form-control" id="edit-akun_pajak">
+                            </div>
+                      
+
+                      <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">NTPN</label>
+                                <input name="ntpn" type="text" class="form-control" id="edit-ntpn">
+                            </div>
+                      </div>
+                      </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Simpan</button>
+            </div>
+          </form>
+
+        </div>
+    </div>
+</div>
 
 </div>
 </div>
@@ -1700,12 +1807,18 @@
   <!--END : scripts -->
 
   <script>
-    $(document).on('click', '#btn-edit-akunpajak', function(){
+    $(document).on('click', '#btn-edit-pajakls', function(){
         let id = $(this).data('id');
+        let ebilling = $(this).data('ebilling');
         let akun_pajak = $(this).data('akun_pajak');
+        let ntpn = $(this).data('ntpn');
+        let jenis_pajak = $(this).data('jenis_pajak');
   
         $('#edit-id').val(id);
+        $('#edit-ebilling').val(ebilling);
         $('#edit-akun_pajak').val(akun_pajak);
+        $('#edit-ntpn').val(ntpn);
+        $('#edit-jenis_pajak').val(jenis_pajak);
   
     });
   </script>

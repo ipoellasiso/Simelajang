@@ -54,7 +54,31 @@
               <a href="{{ route('tampiljenispajak') }}">Jenis Pajak</a>
             </li>
             <li>
-              <a href="{{ route('tampilpls') }}">Pajak ls</a>
+                @if (auth()->user()->role=="admin")
+                <li class="">
+                  <a href="javascript:void(0)" class="navItem">
+                    <span class="flex items-center">
+                  {{-- <iconify-icon class=" nav-icon" icon="material-symbols:file-save-rounded"></iconify-icon> --}}
+                  <span>SP2D</span>
+                    </span>
+                    {{-- <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon> --}}
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li>
+                      <a href="signin-one.html">UP</a>
+                    </li>
+                    <li>
+                      <a href="{{ route('tampilsp2dsipdri') }}?id=1">LS</a>
+                    </li>
+                    <li>
+                      <a href="signin-two.html">GU</a>
+                    </li>
+                    <li>
+                      <a href="signin-two.html">TU</a>
+                    </li>
+                  </ul>
+                </li>
+                @endif
             </li>
           </ul>
         </li>
@@ -102,31 +126,7 @@
         <!-- Pages Area -->
         <li class="sidebar-menu-title">PENATAUSAHAAN</li>
         <!-- Authentication -->
-        @if (auth()->user()->role=="admin")
-        <li class="">
-          <a href="javascript:void(0)" class="navItem">
-            <span class="flex items-center">
-          <iconify-icon class=" nav-icon" icon="material-symbols:file-save-rounded"></iconify-icon>
-          <span>SP2D</span>
-            </span>
-            <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
-          </a>
-          <ul class="sidebar-submenu">
-            <li>
-              <a href="signin-one.html">UP</a>
-            </li>
-            <li>
-              <a href="{{ route('tampilsp2dsipdri') }}?id=1">LS</a>
-            </li>
-            <li>
-              <a href="signin-two.html">GU</a>
-            </li>
-            <li>
-              <a href="signin-two.html">TU</a>
-            </li>
-          </ul>
-        </li>
-        @endif
+        
 
         <!-- Utility -->
         <li class="">
@@ -178,10 +178,13 @@
           </a>
           <ul class="sidebar-submenu">
             <li>
-              <a href="blog.html">BPJS</a>
+              <a href="{{ route('tampilpotonganbpjs') }}">BPJS</a>
             </li>
             <li>
               <a href="blank-page.html">TASPEN</a>
+            </li>
+            <li>
+              <a href="blank-page.html">Lainnya</a>
             </li>
           </ul>
           @else

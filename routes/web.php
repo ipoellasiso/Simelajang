@@ -10,6 +10,7 @@ use App\Http\Controllers\JenispajakController;
 use App\Http\Controllers\plsController;
 use App\Http\Controllers\PajaklsController;
 use App\Http\Controllers\PajakkppController;
+use App\Http\Controllers\PotonganbpjsController;
 use App\Http\Controllers\Simpansp2dsipdriController;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\RouteGroup;
@@ -79,6 +80,8 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function(){
 
     route::get('/simpansp2dsipdri',[Simpansp2dsipdriController::class,'store'])->name('simpansp2dsipdri');
     route::get('/tampilsp2dsipdri',[Simpansp2dsipdriController::class,'index'])->name('tampilsp2dsipdri');
+
+    Route::get('/tampilpotonganbpjs',[PotonganbpjsController::class,'index'])->name('tampilpotonganbpjs');
 });
 
 Route::group(['middleware' => ['auth','CekLevel:admin,user,verifikasi']], function(){
