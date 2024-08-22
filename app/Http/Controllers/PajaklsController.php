@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pajakkpp;
 use App\Models\Pajakpot;
+use App\Models\Akunpajak;
 
 class PajaklsController extends Controller
 {
@@ -19,7 +20,15 @@ class PajaklsController extends Controller
         ->where('potongan2.status1',['0'])
         ->get();
 
-        return view('Pajak.sipdri', compact('pajakls'));
+        $akunpajak1 = DB::table('tb_akun_pajak')
+        ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
+        ->get();
+
+        $jenispajak1 = DB::table('tb_jenis_pajak')
+        ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
+        ->get();
+
+        return view('Pajak.sipdri', compact('pajakls', 'akunpajak1', 'jenispajak1'));
     }
 
     /**
@@ -27,7 +36,7 @@ class PajaklsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -57,7 +66,7 @@ class PajaklsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // 
     }
 
     /**
@@ -65,6 +74,12 @@ class PajaklsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'ntpn' => 'required',
+        ],[
+            'ntpn.required' => 'NTPN Name Wajib Diisi',
+        ]);
+
         $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
         if($cek > 0)
         {

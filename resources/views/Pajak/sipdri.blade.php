@@ -1712,45 +1712,64 @@
                                 <input name="ebilling" type="text" class="form-control" id="edit-ebilling">
                             </div>
 
-                      <div class="card-text h-full space-y-4">
+                      <!-- <div class="card-text h-full space-y-4">
                               <div class="input-area">
                                   <label class="form-label">Jenis Pajak</label>
                                   <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak">
-                              </div>
+                              </div> -->
+
+                      <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">Jenis Pajak</label>
+                                <select name="akun_pajak" class="form-control">
+                                <option value="">-pilih-</option>
+                                  @foreach($jenispajak1 as $row2)
+                                    <option value="{{ $row2->id }}" {{ old('id') == $row2->id ? 'selected' : null }}>{{ $row2->jenis_pajak }}</option>
+                                  @endforeach
+                                </select>
+                            </div>
                       
 
                       <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label class="form-label">Akun Pajak</label>
-                                <input name="akun_pajak" type="text" class="form-control" id="edit-akun_pajak">
+                                <select name="akun_pajak" class="form-control">
+                                <option value="">-pilih-</option>
+                                  @foreach($akunpajak1 as $row1)
+                                    <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
+                                  @endforeach
+                                </select>
                             </div>
                       
 
                       <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label class="form-label">NTPN</label>
-                                <input name="ntpn" type="text" class="form-control" id="edit-ntpn">
+                                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn" required>
+                                @error('ntpn')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                                @enderror
                             </div>
                       </div>
 
                       <div class="card-text h-full space-y-4">
                         <div class="input-area">
                             <label class="form-label">REKENING BELANJA</label>
-                            <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja">
+                            <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja" required>
                         </div>
                       </div>
 
                       <div class="card-text h-full space-y-4">
                         <div class="input-area">
                             <label class="form-label">NAMA NPWP</label>
-                            <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp">
+                            <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp" required>
                         </div>
                       </div>
 
                       <div class="card-text h-full space-y-4">
                         <div class="input-area">
                             <label class="form-label">NOMOR NPWP</label>
-                            <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp">
+                            <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp" required>
                         </div>
                       </div>
                       </div>
