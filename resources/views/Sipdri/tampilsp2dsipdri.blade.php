@@ -1528,6 +1528,21 @@
                   </div>
                   <!-- END: BreadCrumb -->
   
+                  <?php
+                      $servername = "localhost";
+                      $username = "root";
+                      $password = "";
+                      $database = "simelajang2025";
+                      // Create connection
+                      $conn = new mysqli($servername, $username, $password,$database);
+
+                      // // Check connection
+                      // if ($conn->connect_error) {
+                      //   die("Connection failed: " . $conn->connect_error);
+                      // }
+                      // echo "Connected successfully";
+                  ?>
+
                   <!-- Tabel -->
                   <div class=" space-y-5">
                     <div class="card">
@@ -1535,8 +1550,8 @@
                         <h4 class="card-title">Data SP2D SIPD RI
                         </h4>
                         {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <a href="" data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
-                          <a href="{{ route('simpansp2dsipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Simpan Data</a>
+                          <!-- <a href="" data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a> -->
+                          <!-- <a href="{{ route('simpansp2dsipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Simpan Data</a> -->
                       </header>
 
                       <div class="card-body px-6 pb-6">
@@ -1549,12 +1564,8 @@
                                 <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
                                     <thead class="bg-slate-200 dark:bg-slate-700">
                                       <tr>
-                                        <th scope="col" class=" table-th ">
-                                          NO
-                                        </th>
-                                        <th scope="col" class=" table-th ">
-                                          NAMA OPD
-                                        </th>
+                                        <th scope="col" class=" table-th ">NO</th>
+                                        <th scope="col" class=" table-th ">NAMA OPD</th>
                                         <th scope="col" class=" table-th ">NOMOR SP2D</th>
                                         <th scope="col" class=" table-th ">TANGGAL SP2D</th>
                                         <th scope="col" class=" table-th ">KETERANGAN</th>
@@ -1566,7 +1577,7 @@
       
                                     <body>
                                       <?php $i=1;
-                                            $pagination = 160 ; 
+                                            $pagination = 6 ; 
 
                                             function rupiahh($angka){
                                                 $hasil_rupiaha = "" . number_format($angka,0,',','.');
@@ -1587,13 +1598,25 @@
                                                                                 
                                                     <td class="table-td ">
                                                       <div class="flex space-x-3 rtl:space-x-reverse">
-                                                          {{-- <a href="" class="action-btn" type="button">
-                                                            <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                                          </a> --}}
-        
-                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn" type="button">
-                                                            <iconify-icon icon="heroicons:pencil-square"></  iconify-icon>
+                                                      <?php 
+                                                        $sp2did = $row['id_sp_2_d'];
+                                                        $data = mysqli_query($conn, "SELECT * FROM sp2d where idhalaman=$sp2did")or die(mysqli_error($conn));
+                                                        $sp2d = mysqli_num_rows($data);
+                                                          if ($sp2d != null){
+                                                      ?>
+                                                          <!-- // Kosong -->
+                                                      <?php        
+                                                            }else{
+                                                      ?>
+                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn" type="button"><iconify-icon icon="solar:download-broken"></iconify-icon>
                                                           </a>
+                                                      <?php  
+                                                            }
+                                                      ?>
+                                                          <!-- <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn" type="button">
+                                                            Save <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                          </a> -->
+
                                                         </div>
                                                       </td>
                                           </tr>
