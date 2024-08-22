@@ -1606,7 +1606,7 @@
                                               <td class="table-td">{{ $item->rek_belanja }}</td>
       
                                               <td class="table-td">
-                                                  <b>Kode Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
+                                                  <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
                                                   <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br> 
                                                   <b>Nilai Pajak : </b> {{ rupiah($item->nilai_pajak) }} <br> 
                                               </td>
