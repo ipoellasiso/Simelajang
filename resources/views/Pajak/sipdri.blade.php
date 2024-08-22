@@ -1712,13 +1712,13 @@
                                 <input name="ebilling" type="text" class="form-control" id="edit-ebilling">
                             </div>
 
-                      <!-- <div class="card-text h-full space-y-4">
+                      <div class="card-text h-full space-y-4">
                               <div class="input-area">
                                   <label class="form-label">Jenis Pajak</label>
-                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak">
-                              </div> -->
+                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak" readonly>
+                              </div>
 
-                      <div class="card-text h-full space-y-4">
+                      <!-- <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label class="form-label">Jenis Pajak</label>
                                 <select name="akun_pajak" class="form-control">
@@ -1727,7 +1727,7 @@
                                     <option value="{{ $row2->id }}" {{ old('id') == $row2->id ? 'selected' : null }}>{{ $row2->jenis_pajak }}</option>
                                   @endforeach
                                 </select>
-                            </div>
+                            </div> -->
                       
 
                       <div class="card-text h-full space-y-4">
