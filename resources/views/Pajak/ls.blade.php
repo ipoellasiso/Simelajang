@@ -1534,8 +1534,8 @@
                       <header class=" card-header noborder">
                         <h4 class="card-title">Data Pajak LS
                         </h4>
-                        {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
+                        <button  data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button >
+                          {{-- <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a> --}}
                       </header>
 
                       <div class="card-body px-6 pb-6">
@@ -1709,6 +1709,9 @@
                                     JENIS PAJAK
                                   </th>
                                   <th scope="col" class=" table-th ">
+                                    NILAI PAJAK
+                                  </th>
+                                  <th scope="col" class=" table-th ">
                                     BILLING
                                   </th>
                                   <th scope="col" class=" table-th ">
@@ -1716,6 +1719,57 @@
                                   </th>
                                 </tr>
                               </thead>
+
+                              <body>                                
+                                <?php $i=1; function rupiah1($angka){
+    
+                                        $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                        return $hasil_rupiah;
+                                      } ?>
+                                  @foreach ($pajakls as $item)
+                                    <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                        <td class="table-td"> {{ $i++ }}</td>
+
+                                        <td class="table-td">    
+                                            <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                            <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                            <b>Nilai SPM : </b> {{ rupiah1($item->nilai_sp2d) }} <br>
+                                         </td>
+
+                                        <td class="table-td">
+                                            <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                            <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                            <b>Nilai SP2D : </b> {{ rupiah1($item->nilai_sp2d) }} <br>
+                                        </td>
+
+                                        <td class="table-td">
+                                            {{-- <b>Kode Akun Pajak : </b>{{ $item->akun_pajak }}<br>  --}}
+                                            <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                        </td>
+                                        
+                                        <td class="table-td">{{ rupiah1($item->nilai_pajak) }}</td>
+                                        <td class="table-td">{{ $item->ebilling }}</td>
+                                        
+
+                                    <td class="table-td ">
+                                      <div class="flex space-x-3 rtl:space-x-reverse">
+                                        <button type="button" class="action-btn" id="btn-edit-pajakls"
+                                              data-bs-toggle="modal" data-bs-target="#edit_modal"
+                                              data-id = "{{ $item->id }}"
+                                              data-ebilling = "{{ $item->ebilling }}"
+                                              data-jenis_pajak = "{{ $item->jenis_pajak }}"
+                                              data-npwp_pihak_ketiga = "{{ $item->npwp_pihak_ketiga }}"
+                                              >
+                                             <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                          </button>
+                                          
+                                        </div>
+                                      </td>
+                            </tr>
+                          @endforeach
+                          <body>
+
+                          </body>
 
                                  
                         </table>
@@ -1762,8 +1816,8 @@
             </button>
           </div>
 
-                <form method="post"a action="">
-                  @method('post')
+                <form method="post"a action="{{ route('editpajakls', $item->id) }}">
+                  @method('get')
                   @csrf
                 <div class="card">
                   <div class="card-body flex flex-col p-6">
@@ -1776,13 +1830,74 @@
                       </div>
 
                       <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">E-Billing</label>
+                                <input name="ebilling" type="text" class="form-control" id="edit-ebilling">
+                            </div>
 
+                      <div class="card-text h-full space-y-4">
+                              <div class="input-area">
+                                  <label class="form-label">Jenis Pajak</label>
+                                  <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak">
+                              </div>
+
+                      <!-- <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">Jenis Pajak</label>
+                                <select name="akun_pajak" class="form-control">
+                                <option value="">-pilih-</option>
+                                  @foreach($jenispajak1 as $row2)
+                                    <option value="{{ $row2->id }}" {{ old('id') == $row2->id ? 'selected' : null }}>{{ $row2->jenis_pajak }}</option>
+                                  @endforeach
+                                </select>
+                            </div> -->
+                      
+
+                      <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label class="form-label">Akun Pajak</label>
-                                <input name="akun_pajak" type="text" class="form-control" id="edit-akun_pajak">
+                                <select name="akun_pajak" class="form-control">
+                                <option value="">-pilih-</option>
+                                  @foreach($akunpajak1 as $row1)
+                                    <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                      
+
+                      <div class="card-text h-full space-y-4">
+                            <div class="input-area">
+                                <label class="form-label">NTPN</label>
+                                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn" required>
+                                @error('ntpn')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                                @enderror
                             </div>
                       </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">REKENING BELANJA</label>
+                            <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja" required>
+                        </div>
                       </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">NAMA NPWP</label>
+                            <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp" required>
+                        </div>
+                      </div>
+
+                      <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">NOMOR NPWP</label>
+                            <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp" required>
+                        </div>
+                      </div>
+                      </div>
+                      </div>
+                    </div>
 
                   </div>
                 </div>
@@ -1856,12 +1971,24 @@
   <!--END : scripts -->
 
   <script>
-    $(document).on('click', '#btn-edit-akunpajak', function(){
+    $(document).on('click', '#btn-edit-pajakls', function(){
         let id = $(this).data('id');
+        let ebilling = $(this).data('ebilling');
         let akun_pajak = $(this).data('akun_pajak');
+        let ntpn = $(this).data('ntpn');
+        let jenis_pajak = $(this).data('jenis_pajak');
+        let rek_belanja = $(this).data('rek_belanja');
+        let nama_npwp = $(this).data('nama_npwp');
+        let npwp_pihak_ketiga = $(this).data('npwp_pihak_ketiga');
   
         $('#edit-id').val(id);
+        $('#edit-ebilling').val(ebilling);
         $('#edit-akun_pajak').val(akun_pajak);
+        $('#edit-ntpn').val(ntpn);
+        $('#edit-jenis_pajak').val(jenis_pajak);
+        $('#edit-rek_belanja').val(rek_belanja);
+        $('#edit-nama_npwp').val(nama_npwp);
+        $('#edit-nomor_npwp').val(nomor_npwp);
   
     });
   </script>
