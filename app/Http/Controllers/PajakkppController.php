@@ -23,6 +23,13 @@ class PajakkppController extends Controller
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         // ->where('pajakkpp.status2',['1'])
         ->get();
+
+        $pajakls = DB::table('potongan2')
+        ->select('potongan2.ebilling', 'potongan2.id', 'potongan2.status1', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'sp2d.npwp_pihak_ketiga', 'sp2d.no_rek_pihak_ketiga', 'potongan2.jenis_pajak', 'potongan2.nilai_pajak')
+        ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+        ->whereIn('potongan2.jenis_pajak', ['Pajak Pertambahan Nilai','Pajak Penghasilan Ps 22','Pajak Penghasilan Ps 23','PPh 21','Pajak Penghasilan Ps 4 (2)'])
+        ->where('potongan2.status1',['0'])
+        ->get();
         
         $akunpajak1 = DB::table('tb_akun_pajak')
         ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
@@ -32,7 +39,7 @@ class PajakkppController extends Controller
         ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
         ->get();
 
-        return view('Pajak.ls', compact('pajakkpp', 'akunpajak1', 'jenispajak1'));
+        return view('Pajak.ls', compact('pajakkpp', 'akunpajak1', 'jenispajak1', 'pajakls'));
     }
 
 
@@ -85,6 +92,51 @@ class PajakkppController extends Controller
         //                 ]);
 
             return redirect('tampilpajakls')->with('edit','Data Berhasil Ditolak');
+    }
+
+    public function updateterima(Request $request, string $id)
+    {
+        Pajakpot::where('ebilling',$request->get('ebilling'))
+                        ->update([
+                            'status1' => '1',
+                        ]);
+        
+        // Pajakkpp::where('id',$request->get('id'))
+        //                 ->update([
+        //                     'status2' => '0',
+        //                     'ntpn' => '',
+        //                 ]);
+
+            return redirect('tampilpajakls')->with('edit','Data Berhasil Diterima');
+    }
+
+    public function updatepajakkpp3(Request $request, string $id)
+    {
+        // Pajakpot::where('ebilling',$request->get('ebilling'))
+        //                 ->update([
+        //                     'status1' => '1',
+        //                 ]);
+        
+        // Pajakkpp::where('id',$request->get('id'))
+        //                 ->update([
+        //                     'status2' => '0',
+        //                     'ntpn' => '',
+        //                 ]);
+
+        Pajakkpp::where('id',$request->get('id'))
+                        ->update([
+                            // 'status2' => '0',
+                            'ebilling' => $request->get('ebilling'),
+                            'ntpn' => $request->get('ntpn'),
+                            'jenis_pajak' => $request->get('jenis_pajak'),
+                            'akun_pajak' => $request->get('akun_pajak'),
+                            'rek_belanja' => $request->get('rek_belanja'),
+                            'nama_npwp' => $request->get('nama_npwp'),
+                            'nomor_npwp' => $request->get('nomor_npwp'),
+                            // 'nilai_pajak' => $request->get('nilai_pajak'),
+                        ]);
+
+            return redirect('tampilpajakls')->with('edit','Data Berhasil Diterima');
     }
 
     /**
