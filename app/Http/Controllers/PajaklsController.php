@@ -94,7 +94,7 @@ class PajaklsController extends Controller
                         ]);
             
             
-            Pajakkpp::where('id',$request->get('id'))
+            Pajakkpp::where('ebilling',$request->get('ebilling'))
                         ->update([
                             'status2' => '1',
                         ]);
@@ -112,6 +112,33 @@ class PajaklsController extends Controller
             return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');
         }
     }
+
+    public function updatetolak(Request $request, string $id)
+    {
+
+        $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
+        if($cek > 0)
+        {
+            return redirect()->back()->with('error', 'NTPN Sudah Ada');
+        }else
+        {
+            Pajakpot::where('id',$request->get('id'))
+                        ->update([
+                            'status1' => '1',
+                            'ebilling' => $request->get('ebilling'),
+                            'jenis_pajak' => $request->get('jenis_pajak'),
+                        ]);
+            
+            
+            Pajakkpp::where('ebilling',$request->get('ebilling'))
+                        ->update([
+                            'status2' => '1',
+                        ]);
+
+            return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.
