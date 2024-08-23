@@ -76,7 +76,7 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function(){
     // // Route::get('/tampilpls',[plsController::class,'index'])->name('tampilpls');
     Route::get('/tampilpajakls',[PajakkppController::class,'index'])->name('tampilpajakls');
     route::get('/hapus-pajakls/{id}',[PajakkppController::class,'destroy'])->name('hapus-pajakls');
-    route::post('/update-pajakls/{id}',[PajakkppController::class,'update'])->name('update-pajakls');
+    route::get('/update-pajakls/{id}',[PajakkppController::class,'update'])->name('update-pajakls');
     Route::get('/tampilpajaksipdri',[PajaklsController::class,'index'])->name('tampilpajaksipdri');
     route::get('/editpajakls/{id}',[PajaklsController::class,'update'])->name('editpajakls');
 

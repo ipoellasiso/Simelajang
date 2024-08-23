@@ -24,13 +24,6 @@ class PajakkppController extends Controller
         ->where('pajakkpp.status2',['1'])
         ->get();
         
-        $pajakls = DB::table('potongan2')
-        ->select('potongan2.ebilling', 'potongan2.id', 'potongan2.status1', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'sp2d.npwp_pihak_ketiga', 'sp2d.no_rek_pihak_ketiga', 'potongan2.jenis_pajak', 'potongan2.nilai_pajak',)
-        ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
-        ->whereIn('potongan2.jenis_pajak', ['Pajak Pertambahan Nilai','Pajak Penghasilan Ps 22','Pajak Penghasilan Ps 23','PPh 21','Pajak Penghasilan Ps 4 (2)'])
-        ->where('potongan2.status1',['0'])
-        ->get();
-
         $akunpajak1 = DB::table('tb_akun_pajak')
         ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
         ->get();
@@ -39,7 +32,7 @@ class PajakkppController extends Controller
         ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
         ->get();
 
-        return view('Pajak.ls', compact('pajakkpp', 'pajakls', 'akunpajak1', 'jenispajak1'));
+        return view('Pajak.ls', compact('pajakkpp', 'akunpajak1', 'jenispajak1'));
     }
 
 
@@ -80,7 +73,7 @@ class PajakkppController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Pajakpot::where('id',$request->get('id'))
+        Pajakpot::where('ebilling',$request->get('ebilling'))
                         ->update([
                             'status1' => '0',
                         ]);

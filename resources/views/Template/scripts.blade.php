@@ -238,15 +238,3 @@
 
 </script> --}}
 
-<script>
-    $(document).on('click', '#btn-edit-pajakkppls', function(){
-        let id1 = $(this).data('id');
-        let ebilling1 = $(this).data('ebilling');
-        let ntpn1 = $(this).data('ntpn');
-  
-        $('#edit-id').val(id1);
-        $('#edit-ebilling').val(ebilling1);
-        $('#edit-ntpn').val(ntpn1);
-  
-    });
-  </script>
