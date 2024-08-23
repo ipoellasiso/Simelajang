@@ -99,7 +99,7 @@
             var userid = $(this).attr("data-idopd");
                 Swal.fire({
                 title: "Anda Yakin?",
-                text: "Menghapus User ini",
+                text: "Menghapus Data ini",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -127,7 +127,7 @@
             var userid = $(this).attr("data-akunpajak");
                 Swal.fire({
                 title: "Anda Yakin?",
-                text: "Menghapus User ini",
+                text: "Menghapus Data ini",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -155,7 +155,7 @@
             var userid = $(this).attr("data-jenispajak");
                 Swal.fire({
                 title: "Anda Yakin?",
-                text: "Menghapus User ini",
+                text: "Menghapus Data ini",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -176,7 +176,36 @@
     
 </script>
 
-<script>
+{{-- <script>
+    $(function(){
+        $(document).on('click','#deletepajakls', function(e){
+            e.preventDefault();
+            var pajakid = $(this).attr("data-pajakls");
+                Swal.fire({
+                title: "Anda Yakin?",
+                text: "Menghapus Data ini",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "/hapus-pajakls/"+pajakid+""
+                    // window.location = "/update-pajakls/"+pajakid+""
+                    Swal.fire({
+                    title: "Terhapus!",
+                    text: "Data Telah Dihapus.",
+                    icon: "success"
+                    });
+                }
+                });
+        });
+    });
+    
+</script> --}}
+
+{{-- <script>
     $(document).ready(function(){
 
 
@@ -207,4 +236,17 @@
         });
     }
 
-</script>
+</script> --}}
+
+<script>
+    $(document).on('click', '#btn-edit-pajakkppls', function(){
+        let id1 = $(this).data('id');
+        let ebilling1 = $(this).data('ebilling');
+        let ntpn1 = $(this).data('ntpn');
+  
+        $('#edit-id').val(id1);
+        $('#edit-ebilling').val(ebilling1);
+        $('#edit-ntpn').val(ntpn1);
+  
+    });
+  </script>

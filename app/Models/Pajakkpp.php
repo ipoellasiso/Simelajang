@@ -20,6 +20,8 @@ class Pajakkpp extends Model
         'rek_belanja',
         'nama_npwp',
         'nomor_npwp',
+        'bukti_pemby',
+        'status2',
         'created_at',
         'updated_at',
     ];

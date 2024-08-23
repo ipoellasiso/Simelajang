@@ -17,10 +17,11 @@ class PajakkppController extends Controller
     public function index()
     {
         $pajakkpp = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'no_rek_pihak_ketiga', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'potongan2.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'no_rek_pihak_ketiga', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'potongan2.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
+        ->where('pajakkpp.status2',['1'])
         ->get();
         
         $pajakls = DB::table('potongan2')
@@ -79,15 +80,28 @@ class PajakkppController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Pajakpot::where('id',$request->get('id'))
+                        ->update([
+                            'status1' => '0',
+                        ]);
         
+        Pajakkpp::where('id',$request->get('id'))
+                        ->update([
+                            'status2' => '0',
+                        ]);
+
+            return redirect('tampilpajakls')->with('edit','Data Berhasil Ditolak');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id )
     {
-        //
+        
+        $data = Pajakkpp::where('id',$id);
+        $data->delete();
+
+        return redirect('tampilpajakls');
     }
 }

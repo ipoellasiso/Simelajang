@@ -144,7 +144,8 @@ class Simpansp2dsipdriController extends Controller
                         }
                     
                 DB::commit();
-                return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
+                return redirect()->back()->with('status', 'Data Berhasil diSimpan');
+                // return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
         
     }
 }

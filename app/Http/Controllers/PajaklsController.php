@@ -93,6 +93,12 @@ class PajaklsController extends Controller
                             'jenis_pajak' => $request->get('jenis_pajak'),
                         ]);
             
+            
+            Pajakkpp::where('id',$request->get('id'))
+                        ->update([
+                            'status2' => '1',
+                        ]);
+            
             $dataPajakkpp= new Pajakkpp;
                 $dataPajakkpp->akun_pajak = $request->get('akun_pajak');
                 $dataPajakkpp->ebilling = $request->get('ebilling');
