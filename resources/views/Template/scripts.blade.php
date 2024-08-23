@@ -176,11 +176,11 @@
     
 </script>
 
-{{-- <script>
+<script>
     $(function(){
-        $(document).on('click','#deletepajakls', function(e){
+        $(document).on('click','#deletepajakkpp', function(e){
             e.preventDefault();
-            var pajakid = $(this).attr("data-pajakls");
+            var pajakid = $(this).attr("data-pajakkpp");
                 Swal.fire({
                 title: "Anda Yakin?",
                 text: "Menghapus Data ini",
@@ -203,7 +203,7 @@
         });
     });
     
-</script> --}}
+</script>
 
 {{-- <script>
     $(document).ready(function(){

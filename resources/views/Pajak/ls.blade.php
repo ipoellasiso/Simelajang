@@ -1527,6 +1527,21 @@
                     </ul>
                   </div>
                   <!-- END: BreadCrumb -->
+
+                  <?php
+                      $servername = "localhost";
+                      $username = "root";
+                      $password = "";
+                      $database = "simelajang2025";
+                      // Create connection
+                      $conn = new mysqli($servername, $username, $password,$database);
+
+                      // // Check connection
+                      // if ($conn->connect_error) {
+                      //   die("Connection failed: " . $conn->connect_error);
+                      // }
+                      // echo "Connected successfully";
+                  ?>
   
                   <!-- Tabel -->
                   <div class=" space-y-5">
@@ -1624,15 +1639,28 @@
 
                                           <td class="table-td ">
                                             <div class="flex space-x-3 rtl:space-x-reverse">
-                                              <button type="button" class="action-btn" id="btn-edit-pajakls"
-                                                    data-bs-toggle="modal" data-bs-target="#edit_modal"
-                                                    data-id = "{{ $item->id }}"
-                                                    data-ebilling = "{{ $item->ebilling }}"
-                                                    data-ntpn = "{{ $item->ntpn }}"
-                                                    >
-                                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                                </button>
-                                                
+
+                                              {{--  --}}
+
+                                              @if ($item->status1 == '1')
+                                                  <button type="button" class="action-btn" id="btn-edit-pajakls"
+                                                      data-bs-toggle="modal" data-bs-target="#edit_modal"
+                                                      data-id = "{{ $item->id }}"
+                                                      data-ebilling = "{{ $item->ebilling }}"
+                                                      data-ntpn = "{{ $item->ntpn }}"
+                                                      >
+                                                      <iconify-icon icon="icomoon-free:cancel-circle"></iconify-icon>
+                                                  </button>
+                                              @else
+                                                  <a class="action-btn" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                      <button type="submit" class="action-btn">
+                                                          <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                      </button>
+                                                  </a>
+                                              @endif
+
+                                                  
+
                                               </div>
                                             </td>
                                   </tr>
@@ -1686,7 +1714,6 @@
               <span class="sr-only">Close modal</span>
             </button>
           </div>
-
                 <form method="post"a action="{{ route('update-pajakls', $item->id) }}">
                   @method('get')
                   @csrf
@@ -1723,6 +1750,7 @@
                 <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">YA</button>
             </div>
           </form>
+      
 
         </div>
     </div>

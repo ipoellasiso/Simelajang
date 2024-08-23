@@ -14,7 +14,7 @@ class PajaklsController extends Controller
     public function index()
     {
         $pajakls = DB::table('potongan2')
-        ->select('potongan2.ebilling', 'potongan2.id', 'potongan2.status1', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'sp2d.npwp_pihak_ketiga', 'sp2d.no_rek_pihak_ketiga', 'potongan2.jenis_pajak', 'potongan2.nilai_pajak',)
+        ->select('potongan2.ebilling', 'potongan2.id', 'potongan2.status1', 'sp2d.tanggal_sp2d', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'sp2d.npwp_pihak_ketiga', 'sp2d.no_rek_pihak_ketiga', 'potongan2.jenis_pajak', 'potongan2.nilai_pajak')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         ->whereIn('potongan2.jenis_pajak', ['Pajak Pertambahan Nilai','Pajak Penghasilan Ps 22','Pajak Penghasilan Ps 23','PPh 21','Pajak Penghasilan Ps 4 (2)'])
         ->where('potongan2.status1',['0'])
@@ -94,10 +94,10 @@ class PajaklsController extends Controller
                         ]);
             
             
-            Pajakkpp::where('ebilling',$request->get('ebilling'))
-                        ->update([
-                            'status2' => '1',
-                        ]);
+            // Pajakkpp::where('ebilling',$request->get('ebilling'))
+            //             ->update([
+            //                 'status2' => '1',
+            //             ]);
             
             $dataPajakkpp= new Pajakkpp;
                 $dataPajakkpp->akun_pajak = $request->get('akun_pajak');
@@ -108,32 +108,6 @@ class PajaklsController extends Controller
                 $dataPajakkpp->jenis_pajak = $request->get('jenis_pajak');
                 $dataPajakkpp->rek_belanja = $request->get('rek_belanja');
                 $dataPajakkpp->save();
-
-            return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');
-        }
-    }
-
-    public function updatetolak(Request $request, string $id)
-    {
-
-        $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
-        if($cek > 0)
-        {
-            return redirect()->back()->with('error', 'NTPN Sudah Ada');
-        }else
-        {
-            Pajakpot::where('id',$request->get('id'))
-                        ->update([
-                            'status1' => '1',
-                            'ebilling' => $request->get('ebilling'),
-                            'jenis_pajak' => $request->get('jenis_pajak'),
-                        ]);
-            
-            
-            Pajakkpp::where('ebilling',$request->get('ebilling'))
-                        ->update([
-                            'status2' => '1',
-                        ]);
 
             return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');
         }

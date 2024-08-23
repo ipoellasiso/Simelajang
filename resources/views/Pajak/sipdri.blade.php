@@ -1636,7 +1636,7 @@
                                                     data-jenis_pajak = "{{ $item->jenis_pajak }}"
                                                     data-npwp_pihak_ketiga = "{{ $item->npwp_pihak_ketiga }}"
                                                     >
-                                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                    <iconify-icon icon="solar:download-broken"></iconify-icon>
                                                 </button>
                                                 
                                               </div>
