@@ -39,7 +39,7 @@ class PajakkppController extends Controller
         ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
         ->get();
 
-        return view('Pajak.ls', compact('pajakkpp', 'akunpajak1', 'jenispajak1', 'pajakls'));
+        return view('Pajak.pajakkpp', compact('pajakkpp', 'akunpajak1', 'jenispajak1', 'pajakls'));
     }
 
 
