@@ -1523,7 +1523,7 @@
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                       </li>
                       <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Pajak SIPD RI</li>
+                        Pajak Ls SIPD RI</li>
                     </ul>
                   </div>
                   <!-- END: BreadCrumb -->
@@ -1532,13 +1532,13 @@
                   <div class=" space-y-5">
                     <div class="card">
                       <header class=" card-header noborder">
-                        <h4 class="card-title">Data Pajak SIPD RI
+                        <h4 class="card-title">Data Pajak Ls SIPD RI
                         </h4>
                         {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <a href="{{ route('tampilpajakls') }}" class="btn inline-flex justify-center btn-light btn-sm">
+                          <a href="{{ route('tampilpajakls') }}" class="btn inline-flex justify-center btn-light scale " data-tippy-content="Kembali" data-tippy-theme="secondary">
                             <span class="flex items-center">
                               <iconify-icon icon="icon-park:back"></iconify-icon>
-                                <span>Kembali</span>
+                                <span></span>
                             </span>
                           </a>
                       </header>
@@ -1629,7 +1629,7 @@
 
                                           <td class="table-td ">
                                             <div class="flex space-x-3 rtl:space-x-reverse">
-                                              <button type="button" class="action-btn" id="btn-edit-pajakls"
+                                              <button type="button" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Simpan" data-tippy-theme="dark" id="btn-edit-pajakls"
                                                     data-bs-toggle="modal" data-bs-target="#edit_modal"
                                                     data-id = "{{ $item->id }}"
                                                     data-ebilling = "{{ $item->ebilling }}"

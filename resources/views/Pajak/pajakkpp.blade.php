@@ -1565,7 +1565,7 @@
                                 {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                 </button> --}}
-                                  <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
+                                  <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
                               </header>
 
                               
