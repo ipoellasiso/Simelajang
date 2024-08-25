@@ -1526,7 +1526,7 @@
                         Pembuatan </li>
                     </ul>
                   </div>
-
+                  
                   <div class="card">
                     <div class="card-body flex flex-col p-6">
                       <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
@@ -1551,22 +1551,24 @@
                             </li>
                           </ul>
 
+
 {{-- ####################      PAJAK LS      ################### --}}
 
-                          <div class="tab-content" id="tabs-tabContent">
-                            <div class="tab-pane fade show active" id="tabs-home-withIcon" role="tabpanel" aria-labelledby="tabs-home-withIcon-tab">
+                      <div class="tab-content" id="tabs-tabContent">
+                        <div class="tab-pane fade show active" id="tabs-home-withIcon" role="tabpanel" aria-labelledby="tabs-home-withIcon-tab">
 
                           <div class=" space-y-5">
                             <div class="card">
                               <header class=" card-header noborder">
                                 <h4 class="card-title">Data Pajak LS
                                 </h4>
-                                <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
+                                {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                </button>
-                                  {{-- <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a> --}}
+                                </button> --}}
+                                  <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
                               </header>
 
+                              
                               <div class="card-body px-6 pb-6">
                                 <div class="overflow-x-auto -mx-6 dashcode-data-table">
                                   <span class=" col-span-8  hidden"></span>
@@ -1688,25 +1690,31 @@
                                                               <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
                                                           </button>
                                                       @endif
-        
-                                                          
-        
                                                       </div>
                                                     </td>
-                                          </tr>
-                                        @endforeach
-                                        <body>
-        
-                                        </body>
-          
-                                      </table>
+                                                </tr>
+                                              @endforeach
+                                        </table>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                            
                             </div>
                           </div>
-                              
+
+{{-- @if ($pajakkpp->isEmpty())
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    Anda tidak memiliki data
+                </div>
+            </div>
+        </div>
+@endif --}}
+{{-- Batas Tampil Data pajak LS --}}
+{{-- ########################## --}}
+                     
 @include('Pajak.Modal.tolakpajakls')                      
 @include('Pajak.Modal.terimapajakls')
 @include('Pajak.Modal.tampilpajaksipdls')
@@ -1714,6 +1722,7 @@
 @include('Pajak.Modal.editpajakls')
 {{-- #################### BATAS PAJAK LS ################### --}}
 {{-- ####################################################### --}}
+
 
 {{-- ####################    PAJAK GU    ################### --}}
 
@@ -1725,6 +1734,9 @@
                               </p>
                             </div>
                             
+
+
+
                           </div>
                         </div>
                       </div>
@@ -1791,79 +1803,7 @@
   @include('template.scripts')
   <!--END : scripts -->
 
-  <script>
-    $(document).on('click', '#btn-edit-pajakkpptolak', function(){
-        let id = $(this).data('id');
-        let ebilling = $(this).data('ebilling');
-        let ntpn = $(this).data('ntpn');
-  
-        $('#edit-id').val(id);
-        $('#edit-ebilling').val(ebilling);
-        $('#edit-ntpn').val(ntpn);
-  
-    });
-  </script>
-
-<script>
-  $(document).on('click', '#btn-edit-pajakkppterima', function(){
-      let id1 = $(this).data('id1');
-      let ebilling1 = $(this).data('ebilling1');
-      let ntpn1 = $(this).data('ntpn1');
-
-      $('#edit-id1').val(id1);
-      $('#edit-ebilling1').val(ebilling1);
-      $('#edit-ntpn1').val(ntpn1);
-
-  });
-</script>
-
-<script>
-  $(document).on('click', '#btn-edit-pajakls', function(){
-      let id2 = $(this).data('id2');
-      let ebilling2 = $(this).data('ebilling2');
-      let akun_pajak = $(this).data('akun_pajak');
-      let ntpn = $(this).data('ntpn');
-      let jenis_pajak2 = $(this).data('jenis_pajak2');
-      let rek_belanja = $(this).data('rek_belanja');
-      let nama_npwp = $(this).data('nama_npwp');
-      let npwp_pihak_ketiga2 = $(this).data('npwp_pihak_ketiga2');
-
-      $('#edit-id2').val(id2);
-      $('#edit-ebilling2').val(ebilling2);
-      $('#edit-akun_pajak').val(akun_pajak);
-      $('#edit-ntpn').val(ntpn);
-      $('#edit-jenis_pajak2').val(jenis_pajak2);
-      $('#edit-rek_belanja').val(rek_belanja);
-      $('#edit-nama_npwp').val(nama_npwp);
-      $('#edit-nomor_npwp').val(nomor_npwp);
-
-  });
-</script>
-
-<script>
-  $(document).on('click', '#btn-edit-pajakkpp3', function(){
-      let id11 = $(this).data('id11');
-      let ebilling11 = $(this).data('ebilling11');
-      let akun_pajak = $(this).data('akun_pajak');
-      let ntpn11 = $(this).data('ntpn11');
-      let jenis_pajak11 = $(this).data('jenis_pajak11');
-      let rek_belanja5 = $(this).data('rek_belanja5');
-      let nama_npwp5 = $(this).data('nama_npwp5');
-      let nomor_npwp5 = $(this).data('nomor_npwp5');
-
-      $('#edit-id11').val(id11);
-      $('#edit-ebilling11').val(ebilling11);
-      $('#edit-akun_pajak11').val(akun_pajak11);
-      $('#edit-ntpn11').val(ntpn11);
-      $('#edit-jenis_pajak11').val(jenis_pajak11);
-      $('#edit-rek_belanja5').val(rek_belanja5);
-      $('#edit-nama_npwp5').val(nama_npwp5);
-      $('#edit-nomor_npwp5').val(nomor_npwp5);
-
-  });
-</script>
-
-
+@include('Pajak.Modal.script')
   
 </body>
 </html>

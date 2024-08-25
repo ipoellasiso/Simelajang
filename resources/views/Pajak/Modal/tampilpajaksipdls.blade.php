@@ -84,39 +84,39 @@
                                       $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                                       return $hasil_rupiah;
                                     } ?>
-                                @foreach ($pajakls as $item)
+                                @foreach ($pajakls as $itemm)
                                   <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
                                       <td class="table-td"> {{ $i++ }}</td>
   
                                       <td class="table-td">    
-                                          <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
-                                          <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
-                                          <b>Nilai SPM : </b> {{ rupiahq($item->nilai_sp2d) }} <br>
+                                          <b>Tanggal SPM : </b> {{ $itemm->tanggal_spm }} <br>                                        
+                                          <b>Nomor SPM : </b> {{ $itemm->nomor_spm }} <br>
+                                          <b>Nilai SPM : </b> {{ rupiahq($itemm->nilai_sp2d) }} <br>
                                        </td>
   
                                       <td class="table-td">
-                                          <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
-                                          <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
-                                          <b>Nilai SP2D : </b> {{ rupiahq($item->nilai_sp2d) }} <br>
+                                          <b>Tanggal SP2D : </b> {{ $itemm->tanggal_sp2d }} <br>                                        
+                                          <b>Nomor SP2D : </b> {{ $itemm->nomor_sp2d }} <br>
+                                          <b>Nilai SP2D : </b> {{ rupiahq($itemm->nilai_sp2d) }} <br>
                                       </td>
   
                                       <td class="table-td">
                                           {{-- <b>Kode Akun Pajak : </b>{{ $item->akun_pajak }}<br>  --}}
-                                          <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                          <b>Jenis Pajak : </b> {{ $itemm->jenis_pajak }} <br>
                                       </td>
                                       
-                                      <td class="table-td">{{ rupiahq($item->nilai_pajak) }}</td>
-                                      <td class="table-td">{{ $item->ebilling }}</td>
+                                      <td class="table-td">{{ rupiahq($itemm->nilai_pajak) }}</td>
+                                      <td class="table-td">{{ $itemm->ebilling }}</td>
                                       
   
                                   <td class="table-td ">
                                     <div class="flex space-x-3 rtl:space-x-reverse scale" data-tippy-content="Simpan" data-tippy-theme="dark">
                                       <button type="button" class="action-btn" id="btn-edit-pajakls"
                                             data-bs-toggle="modal" data-bs-target="#editpajaksipdls_modal"
-                                            data-id2 = "{{ $item->id }}"
-                                            data-ebilling2 = "{{ $item->ebilling }}"
-                                            data-jenis_pajak2 = "{{ $item->jenis_pajak }}"
-                                            data-npwp_pihak_ketiga2 = "{{ $item->npwp_pihak_ketiga }}"
+                                            data-id2 = "{{ $itemm->id }}"
+                                            data-ebilling2 = "{{ $itemm->ebilling }}"
+                                            data-jenis_pajak2 = "{{ $itemm->jenis_pajak }}"
+                                            data-npwp_pihak_ketiga2 = "{{ $itemm->npwp_pihak_ketiga }}"
                                             >
                                             <iconify-icon icon="solar:download-broken"></iconify-icon>
                                         </button>

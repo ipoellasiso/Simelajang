@@ -2,6 +2,7 @@
 <!-- Template Name: DashCode - HTML, React, Vue, Tailwind Admin Dashboard Template Author: Codeshaper Website: https://codeshaper.net Contact: support@codeshaperbd.net Like: https://www.facebook.com/Codeshaperbd Purchase: https://themeforest.net/item/dashcode-admin-dashboard-template/42600453 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project. -->
 <html lang="zxx" dir="ltr" class="light">
 
+
 <head>
  @include('template.head')
 </head>
@@ -1503,12 +1504,13 @@
         <!-- END: Header -->
         <!-- END: Header -->
 
+
         <!-- Dasboard Tengah -->
         <div class="content-wrapper transition-all duration-150 ltr:ml-[248px] rtl:mr-[248px]" id="content_wrapper">
             <div class="page-content">
               <div class="transition-all duration-150 container-fluid" id="page_layout">
                 <div id="content_layout">
-  
+                  
                   <!-- BEGIN: Breadcrumb -->
                   <div class="mb-5">
                     <ul class="m-0 p-0 list-none">
@@ -1559,6 +1561,7 @@
                                       </th>
                                   </tr>
                                 </thead>
+                                {{-- @if ($dataakunpajak->IsNotEmpty()) --}}
                                 <?php $i=1; ?>
                                 @foreach ($dataakunpajak as $item)
                                     <td class="table-td"> {{ $i++ }}</td>
@@ -1588,6 +1591,7 @@
                                             </td>
                                             {{-- @include('users.modal.edit') --}}
                                   </tr>
+                                  
                                 @endforeach
                                 <body>
 
@@ -1629,20 +1633,9 @@
             </button>
           </div>
 
-                
-
                 <form method="post"a action="{{ route('simpanakunpajak') }}">
                 @csrf
 
-                @if ($errors->any())
-                  <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $item)
-                          <li>{{ $item }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-                @endif
                 <div class="card">
                   <div class="card-body flex flex-col p-6">
 
@@ -1674,6 +1667,7 @@
     </div>
 </div>
 
+
 {{-- #################################################################################################################### --}}
   {{-- modal tambah --}}
   <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="edit_modal" tabindex="-1" aria-labelledby="default_modal" aria-hidden="true">
@@ -1695,8 +1689,10 @@
               <span class="sr-only">Close modal</span>
             </button>
           </div>
-
-                <form method="post"a action="{{ route('editakunpajak', $item->id) }}">
+          @if ($dataakunpajak->Empty())
+                {{-- tidak ada data --}}
+          @else
+          <form method="post"a action="{{ route('editakunpajak', $item->id) }}">
                   @method('post')
                   @csrf
                 <div class="card">
@@ -1726,6 +1722,42 @@
                 <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Simpan</button>
             </div>
           </form>
+@endif
+
+@if ($dataakunpajak->IsNotEmpty())
+        <form method="post"a action="{{ route('editakunpajak', $item->id) }}">
+          @method('post')
+          @csrf
+        <div class="card">
+          <div class="card-body flex flex-col p-6">
+
+            <div class="card-text h-full space-y-4">
+
+              <div class="input-area">
+                  <label class="form-label">id</label>
+                  <input name="id" type="text" class="form-control" id="edit-id" readonly>
+              </div>
+
+              <div class="card-text h-full space-y-4">
+
+                    <div class="input-area">
+                        <label class="form-label">Akun Pajak</label>
+                        <input name="akun_pajak" type="text" class="form-control" id="edit-akun_pajak">
+                    </div>
+              </div>
+              </div>
+
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+        <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Simpan</button>
+        </div>
+        </form>
+@else
+         {{-- tidak ada data --}}
+@endif
 
         </div>
     </div>
@@ -1734,7 +1766,7 @@
 </div>
 </div>
 </div>
-
+{{-- @endif --}}
 <!-- Batas tambah Modal -->
 <!-- END: Dashboard Tengah -->
 
@@ -1800,8 +1832,9 @@
     });
   </script>
 
-  
+
 </body>
+
 </html>
 
 
