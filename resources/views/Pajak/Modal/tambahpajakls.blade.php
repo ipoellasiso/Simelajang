@@ -60,7 +60,7 @@
               <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja" required>
             </div>
 
-            <div class="input-relative">
+            {{-- <div class="input-relative">
               <label class="form-label">Akun Pajak</label>
               <select name="akun_pajak" class="form-control">
               <option value="">-pilih-</option>
@@ -68,7 +68,7 @@
                   <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
                 @endforeach
               </select>
-            </div>
+            </div> --}}
             
             <div class="input-area relative">
               <label class="form-label">NOMOR NPWP</label>

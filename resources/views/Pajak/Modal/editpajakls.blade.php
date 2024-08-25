@@ -45,9 +45,14 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-area relative">
+              <div class="input-relative">
                 <label class="form-label">Jenis Pajak</label>
-                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($jenispajak1 as $row)
+                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
+                  @endforeach
+                </select>
               </div>
               
               <div class="input-relative">
@@ -65,9 +70,9 @@
               <div class="input-relative">
                 <label class="form-label">Akun Pajak</label>
                 <select name="akun_pajak" class="form-control">
-                <option value="">-pilih-</option>
+                  <option value="">-pilih-</option>
                   @foreach($akunpajak1 as $row1)
-                    <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
                   @endforeach
                 </select>
               </div>
@@ -75,6 +80,11 @@
               <div class="input-area relative">
                 <label class="form-label">NOMOR NPWP</label>
                 <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -105,9 +115,14 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-area relative">
+              <div class="input-relative">
                 <label class="form-label">Jenis Pajak</label>
-                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($jenispajak1 as $row)
+                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
+                  @endforeach
+                </select>
               </div>
               
               <div class="input-relative">
@@ -125,9 +140,9 @@
               <div class="input-relative">
                 <label class="form-label">Akun Pajak</label>
                 <select name="akun_pajak" class="form-control">
-                <option value="">-pilih-</option>
+                  <option value="">-pilih-</option>
                   @foreach($akunpajak1 as $row1)
-                    <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
                   @endforeach
                 </select>
               </div>
@@ -135,6 +150,11 @@
               <div class="input-area relative">
                 <label class="form-label">NOMOR NPWP</label>
                 <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
               </div>
               
             </div>  

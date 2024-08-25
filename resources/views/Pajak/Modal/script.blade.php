@@ -57,6 +57,7 @@
           let rek_belanja5 = $(this).data('rek_belanja5');
           let nama_npwp5 = $(this).data('nama_npwp5');
           let nomor_npwp5 = $(this).data('nomor_npwp5');
+          let nilai_pajak = $(this).data('nilai_pajak');
     
           $('#edit-id5').val(id5);
           $('#edit-ebilling5').val(ebilling5);
@@ -66,6 +67,7 @@
           $('#edit-rek_belanja5').val(rek_belanja5);
           $('#edit-nama_npwp5').val(nama_npwp5);
           $('#edit-nomor_npwp5').val(nomor_npwp5);
+          $('#edit-nilai_pajak').val(nilai_pajak);
     
       });
     </script>
