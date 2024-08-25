@@ -1654,11 +1654,11 @@
         
                                                           <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
                                                               data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
-                                                              data-id11 = "{{ $item->id }}"
-                                                              data-ebilling11 = "{{ $item->ebilling }}"
-                                                              data-ntpn11 = "{{ $item->ntpn }}"
-                                                              data-jenis_pajak11 = "{{ $item->jenis_pajak }}"
-                                                              data-akun_pajak11 = "{{ $item->akun_pajak }}"
+                                                              data-id5 = "{{ $item->id }}"
+                                                              data-ebilling5 = "{{ $item->ebilling }}"
+                                                              data-ntpn5 = "{{ $item->ntpn }}"
+                                                              data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
+                                                              data-akun_pajak5 = "{{ $item->akun_pajak }}"
                                                               data-rek_belanja5 = "{{ $item->rek_belanja }}"
                                                               data-nama_npwp5 = "{{ $item->nama_npwp }}"
                                                               data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
@@ -1717,8 +1717,8 @@
                      
 @include('Pajak.Modal.tolakpajakls')                      
 @include('Pajak.Modal.terimapajakls')
-@include('Pajak.Modal.tampilpajaksipdls')
-@include('Pajak.Modal.tambahpajakls')
+{{-- @include('Pajak.Modal.tampilpajaksipdls')
+@include('Pajak.Modal.tambahpajakls') --}}
 @include('Pajak.Modal.editpajakls')
 {{-- #################### BATAS PAJAK LS ################### --}}
 {{-- ####################################################### --}}

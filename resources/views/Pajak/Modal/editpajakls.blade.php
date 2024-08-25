@@ -33,11 +33,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               <div class="input-area relative">
                 <label class="form-label">id</label>
-                <input name="id" type="text" class="form-control" id="edit-id11" readonly>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
               </div>
               <div class="input-area relative">
                 <label class="form-label">E-Billing</label>
-                <input name="ebilling" type="text" class="form-control" id="edit-ebilling11">
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
               </div>
 
               <div class="input-area relative">
@@ -47,12 +47,12 @@
 
               <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak11">
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
                 <label class="form-label">NTPN</label>
-                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn11" required>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
                 @error('ntpn')
                 <div class="invalid-feedback">{{ $message}}</div>
                 @enderror
@@ -93,11 +93,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               <div class="input-area relative">
                 <label class="form-label">id</label>
-                <input name="id" type="text" class="form-control" id="edit-id11" readonly>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
               </div>
               <div class="input-area relative">
                 <label class="form-label">E-Billing</label>
-                <input name="ebilling" type="text" class="form-control" id="edit-ebilling11">
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
               </div>
 
               <div class="input-area relative">
@@ -107,12 +107,12 @@
 
               <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak11">
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
                 <label class="form-label">NTPN</label>
-                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn11" required>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
                 @error('ntpn')
                 <div class="invalid-feedback">{{ $message}}</div>
                 @enderror

@@ -24,7 +24,7 @@
       });
     </script>
     
-    <script>
+    {{-- <script>
       $(document).on('click', '#btn-edit-pajakls', function(){
           let id2 = $(this).data('id2');
           let ebilling2 = $(this).data('ebilling2');
@@ -45,24 +45,24 @@
           $('#edit-nomor_npwp').val(nomor_npwp);
     
       });
-    </script>
+    </script> --}}
     
     <script>
       $(document).on('click', '#btn-edit-pajakkpp3', function(){
-          let id11 = $(this).data('id11');
-          let ebilling11 = $(this).data('ebilling11');
-          let akun_pajak = $(this).data('akun_pajak');
-          let ntpn11 = $(this).data('ntpn11');
-          let jenis_pajak11 = $(this).data('jenis_pajak11');
+          let id5 = $(this).data('id5');
+          let ebilling5 = $(this).data('ebilling5');
+          let akun_pajak5 = $(this).data('akun_pajak5');
+          let ntpn5 = $(this).data('ntpn5');
+          let jenis_pajak5 = $(this).data('jenis_pajak5');
           let rek_belanja5 = $(this).data('rek_belanja5');
           let nama_npwp5 = $(this).data('nama_npwp5');
           let nomor_npwp5 = $(this).data('nomor_npwp5');
     
-          $('#edit-id11').val(id11);
-          $('#edit-ebilling11').val(ebilling11);
-          $('#edit-akun_pajak11').val(akun_pajak11);
-          $('#edit-ntpn11').val(ntpn11);
-          $('#edit-jenis_pajak11').val(jenis_pajak11);
+          $('#edit-id5').val(id5);
+          $('#edit-ebilling5').val(ebilling5);
+          $('#edit-akun_pajak5').val(akun_pajak5);
+          $('#edit-ntpn5').val(ntpn5);
+          $('#edit-jenis_pajak5').val(jenis_pajak5);
           $('#edit-rek_belanja5').val(rek_belanja5);
           $('#edit-nama_npwp5').val(nama_npwp5);
           $('#edit-nomor_npwp5').val(nomor_npwp5);
