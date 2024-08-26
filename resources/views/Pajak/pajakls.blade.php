@@ -1509,249 +1509,686 @@
               <div class="transition-all duration-150 container-fluid" id="page_layout">
                 <div id="content_layout">
   
-                  <!-- BEGIN: Breadcrumb -->
-                  <div class="mb-5">
-                    <ul class="m-0 p-0 list-none">
-                      <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                        <a href="index.html">
-                          <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                          <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
-                        </a>
-                      </li>
-                      <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        Pajak
-                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
-                      </li>
-                      <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Pembuatan </li>
-                    </ul>
-                  </div>
+                      <!-- BEGIN: Breadcrumb -->
+                                  <div class="mb-5">
+                                      <ul class="m-0 p-0 list-none">
+                                        <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
+                                          <a href="index.html">
+                                            <iconify-icon icon="heroicons-outline:home"></iconify-icon>
+                                            <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+                                          </a>
+                                        </li>
+                                        <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+                                          Pajak
+                                          <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
+                                        </li>
+                                        <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
+                                          Pembuatan </li>
+                                      </ul>
+                                  </div>
                   
                   <div class="card">
                     <div class="card-body flex flex-col p-6">
                       <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                         <div class="flex-1">
-                          <div class="card-title text-slate-900 dark:text-white">DATA PAJAK</div>
+                          <div class="card-title text-slate-900 dark:text-white">Data Pajak LS</div>
                         </div>
                       </header>
                       <div class="card-text h-full">
                         <div>
-                          <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
-                            
-                            <li class="nav-item" role="presentation">
-                              <a href="#tabs-home-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent active dark:text-slate-300 scale mr-3" data-tippy-content="Pajak LS" data-tippy-theme="dark" id="tabs-home-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-home-withIcon" role="tab" aria-controls="tabs-home-withIcon" aria-selected="true">
-                                <iconify-icon class="mr-1" icon="solar:document-add-bold"></iconify-icon>
-                                LS</a>
-                            </li>
 
+                          <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <a href="#tabs-profile-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent dark:text-slate-300 scale mr-3" data-tippy-content="Pajak GU" data-tippy-theme="dark" id="tabs-profile-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile-withIcon" role="tab" aria-controls="tabs-profile-withIcon" aria-selected="false">
-                                <iconify-icon class="mr-1" icon="solar:document-add-bold"></iconify-icon>
-                                GU</a>
+                              <a href="#tabs-home-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent active dark:text-slate-300" id="tabs-home-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-home-withIcon" role="tab" aria-controls="tabs-home-withIcon" aria-selected="true">
+                              <iconify-icon icon="material-symbols:right-click-rounded"></iconify-icon>
+                                Triwulan I</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a href="#tabs-profile-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent dark:text-slate-300" id="tabs-profile-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile-withIcon" role="tab" aria-controls="tabs-profile-withIcon" aria-selected="false">
+                              <iconify-icon icon="material-symbols:right-click-rounded"></iconify-icon>
+                                Triwulan II</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a href="#tabs-messages-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent dark:text-slate-300" id="tabs-messages-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages-withIcon" role="tab" aria-controls="tabs-messages-withIcon" aria-selected="false">
+                              <iconify-icon icon="material-symbols:right-click-rounded"></iconify-icon>
+                                Triwulan III</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a href="#tabs-settings-withIcon" class="nav-link w-full flex items-center font-medium text-sm font-Inter leading-tight capitalize border-x-0 border-t-0 border-b border-transparent px-4 pb-2 my-2 hover:border-transparent focus:border-transparent dark:text-slate-300" id="tabs-settings-withIcon-tab" data-bs-toggle="pill" data-bs-target="#tabs-settings-withIcon" role="tab" aria-controls="tabs-settings-withIcon" aria-selected="false">
+                              <iconify-icon icon="material-symbols:right-click-rounded"></iconify-icon>
+                                Triwulan IV</a>
                             </li>
                           </ul>
 
 
-{{-- ####################      PAJAK LS      ################### --}}
+                          <div class="tab-content" id="tabs-tabContent">
+                            <div class="tab-pane fade show active" id="tabs-home-withIcon" role="tabpanel" aria-labelledby="tabs-home-withIcon-tab">
+                            
+                            <!-- tw I -->
+                            <div class=" space-y-5">
+                                        <div class="card">
+                                          <header class=" card-header noborder">
+                                            <h4 class="card-title">
+                                            </h4>
+                                            {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
+                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                            </button> --}}
+                                              <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
+                                          </header>
 
-                      <div class="tab-content" id="tabs-tabContent">
-                        <div class="tab-pane fade show active" id="tabs-home-withIcon" role="tabpanel" aria-labelledby="tabs-home-withIcon-tab">
-
-                          <div class=" space-y-5">
-                            <div class="card">
-                              <header class=" card-header noborder">
-                                <h4 class="card-title">Data Pajak LS
-                                </h4>
-                                {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
-                                  <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                </button> --}}
-                                  <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
-                              </header>
-
+                                          
+                                          <div class="card-body px-6 pb-6">
+                                            <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                              <span class=" col-span-8  hidden"></span>
+                                              <span class="  col-span-4 hidden"></span>
+                                              <div class="inline-block min-w-full align-middle">
+                                                <div class="overflow-hidden ">
+                                                  
+                                                    <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
+                                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                                          <tr>
+                                                            <th scope="col" class=" table-th ">
+                                                              NO
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SPM
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SP2D
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              JENIS PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NPWP
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NILAI PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              BILLING
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NTPN
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              Action
+                                                            </th>
+                                                          </tr>
+                                                        </thead>
+                          
+                                                        <body>                                
+                                                          <?php $i=1; function rupiah($angka){
                               
-                              <div class="card-body px-6 pb-6">
-                                <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                                  <span class=" col-span-8  hidden"></span>
-                                  <span class="  col-span-4 hidden"></span>
-                                  <div class="inline-block min-w-full align-middle">
-                                    <div class="overflow-hidden ">
-                                      
-                                        <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
-                                            <thead class="bg-slate-200 dark:bg-slate-700">
-                                              <tr>
-                                                <th scope="col" class=" table-th ">
-                                                  NO
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  SPM
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  SP2D
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  JENIS PAJAK
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  NPWP
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  NILAI PAJAK
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  BILLING
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  NTPN
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                  Action
-                                                </th>
-                                              </tr>
-                                            </thead>
-              
-                                            <body>                                
-                                              <?php $i=1; function rupiah($angka){
-                  
-                                                      $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
-                                                      return $hasil_rupiah;
-                                                    } ?>
-                                                @foreach ($pajakkpp as $item)
-                                                  <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
-                                                      <td class="table-td"> {{ $i++ }}</td>
-              
-                                                      <td class="table-td">    
-                                                          <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
-                                                          <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
-                                                          <b>Nilai SPM : </b> {{ rupiah($item->nilai_sp2d) }} <br>
-                                                       </td>
-              
-                                                      <td class="table-td">
-                                                          <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
-                                                          <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
-                                                          <b>Nilai SP2D : </b> {{ rupiah($item->nilai_sp2d) }} <br>
-                                                          <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
-                                                      </td>
-              
-                                                      <td class="table-td">
-                                                          <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
-                                                          <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
-                                                      </td>
-              
-                                                      <td class="table-td">
-                                                          <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
-                                                          <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
-                                                      </td>
-                                                      
-                                                      <td class="table-td">{{ rupiah($item->nilai_pajak) }}</td>
-                                                      <td class="table-td">{{ $item->ebilling }}</td>
-                                                      <td class="table-td">{{ $item->ntpn }}</td>
-                                                      
-        
-                                                  <td class="table-td ">
-                                                    <div class="flex space-x-3 rtl:space-x-reverse">
-        
-                                                      @if ($item->status1 == '1')
-        
-                                                          <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
-                                                              data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
-                                                              data-id5 = "{{ $item->id }}"
-                                                              data-ebilling5 = "{{ $item->ebilling }}"
-                                                              data-ntpn5 = "{{ $item->ntpn }}"
-                                                              data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
-                                                              data-akun_pajak5 = "{{ $item->akun_pajak }}"
-                                                              data-rek_belanja5 = "{{ $item->rek_belanja }}"
-                                                              data-nama_npwp5 = "{{ $item->nama_npwp }}"
-                                                              data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
-                                                              data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
-                                                              >
-                                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                                          </button>
-        
-                                                          <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
-                                                              data-bs-toggle="modal" data-bs-target="#edittolak_modal"
-                                                              data-id = "{{ $item->id }}"
-                                                              data-ebilling = "{{ $item->ebilling }}"
-                                                              data-ntpn = "{{ $item->ntpn }}"
-                                                              >
-                                                              <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
-                                                          </button>
-        
-                                                      @else
-                                                          <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
-                                                              <button type="submit" class="action-btn">
-                                                                  <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                                              </button>
-                                                          </a>
-                                                          <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
-                                                              data-bs-toggle="modal" data-bs-target="#editterima_modal"
-                                                              data-id1 = "{{ $item->id }}"
-                                                              data-ebilling1 = "{{ $item->ebilling }}"
-                                                              data-ntpn1 = "{{ $item->ntpn }}"
-                                                              >
-                                                              <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
-                                                          </button>
-                                                      @endif
-                                                      </div>
-                                                    </td>
-                                                </tr>
-                                              @endforeach
-                                        </table>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            
-                            </div>
+                                                                  $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                                                  return $hasil_rupiah;
+                                                                } ?>
+                                                            @foreach ($pajakkpp as $item)
+                                                              <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                                                  <td class="table-td"> {{ $i++ }}</td>
+                          
+                                                                  <td class="table-td">    
+                                                                      <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                                                      <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                                                      <b>Nilai SPM : </b> {{ rupiah($item->nilai_sp2d) }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                                                      <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                                                      <b>Nilai SP2D : </b> {{ rupiah($item->nilai_sp2d) }} <br>
+                                                                      <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
+                                                                      <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
+                                                                      <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
+                                                                  </td>
+                                                                  
+                                                                  <td class="table-td">{{ rupiah($item->nilai_pajak) }}</td>
+                                                                  <td class="table-td">{{ $item->ebilling }}</td>
+                                                                  <td class="table-td">{{ $item->ntpn }}</td>
+                                                                  
+                    
+                                                              <td class="table-td ">
+                                                                <div class="flex space-x-3 rtl:space-x-reverse">
+                    
+                                                                  @if ($item->status1 == '1')
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
+                                                                          data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
+                                                                          data-id5 = "{{ $item->id }}"
+                                                                          data-ebilling5 = "{{ $item->ebilling }}"
+                                                                          data-ntpn5 = "{{ $item->ntpn }}"
+                                                                          data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
+                                                                          data-akun_pajak5 = "{{ $item->akun_pajak }}"
+                                                                          data-rek_belanja5 = "{{ $item->rek_belanja }}"
+                                                                          data-nama_npwp5 = "{{ $item->nama_npwp }}"
+                                                                          data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
+                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
+                                                                          >
+                                                                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                                      </button>
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
+                                                                          data-bs-toggle="modal" data-bs-target="#edittolak_modal"
+                                                                          data-id = "{{ $item->id }}"
+                                                                          data-ebilling = "{{ $item->ebilling }}"
+                                                                          data-ntpn = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
+                                                                      </button>
+                    
+                                                                  @else
+                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                          <button type="submit" class="action-btn">
+                                                                              <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                          </button>
+                                                                      </a>
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
+                                                                          data-bs-toggle="modal" data-bs-target="#editterima_modal"
+                                                                          data-id1 = "{{ $item->id }}"
+                                                                          data-ebilling1 = "{{ $item->ebilling }}"
+                                                                          data-ntpn1 = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
+                                                                      </button>
+                                                                  @endif
+                                                                  </div>
+                                                                </td>
+                                                            </tr>
+                                                          @endforeach
+                                                    </table>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        
+                                        </div>
+                                      </div>
+                                <!-- batas tw I -->
+
                           </div>
-
-{{-- @if ($pajakkpp->isEmpty())
-        <div class="card">
-            <div class="card-body">
-                <div class="alert alert-warning">
-                    Anda tidak memiliki data
-                </div>
-            </div>
-        </div>
-@endif --}}
-{{-- Batas Tampil Data pajak LS --}}
-{{-- ########################## --}}
-                     
-@include('Pajak.Modal.tolakpajakls')                      
-@include('Pajak.Modal.terimapajakls')
-{{-- @include('Pajak.Modal.tampilpajaksipdls')
-@include('Pajak.Modal.tambahpajakls') --}}
-@include('Pajak.Modal.editpajakls')
-{{-- #################### BATAS PAJAK LS ################### --}}
-{{-- ####################################################### --}}
-
-
-{{-- ####################    PAJAK GU    ################### --}}
-
                             <div class="tab-pane fade" id="tabs-profile-withIcon" role="tabpanel" aria-labelledby="tabs-profile-withIcon-tab">
-                              <p class="text-sm text-gray-500 dark:text-gray-200">
-                                This is some placeholder content the
-                                <strong>Profile</strong>
-                                tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. consectetur adipisicing elit. Ab ipsa!
-                              </p>
+                              <!-- tw II -->
+                            <div class=" space-y-5">
+                                        <div class="card">
+                                          <header class=" card-header noborder">
+                                            <h4 class="card-title">
+                                            </h4>
+                                            {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
+                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                            </button> --}}
+                                              <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
+                                          </header>
+
+                                          
+                                          <div class="card-body px-6 pb-6">
+                                            <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                              <span class=" col-span-8  hidden"></span>
+                                              <span class="  col-span-4 hidden"></span>
+                                              <div class="inline-block min-w-full align-middle">
+                                                <div class="overflow-hidden ">
+                                                  
+                                                    <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
+                                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                                          <tr>
+                                                            <th scope="col" class=" table-th ">
+                                                              NO
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SPM
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SP2D
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              JENIS PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NPWP
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NILAI PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              BILLING
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NTPN
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              Action
+                                                            </th>
+                                                          </tr>
+                                                        </thead>
+                          
+                                                        <body>                                
+                                                          <?php $i=1; function rupiaha($angka){
+                              
+                                                                  $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                                                  return $hasil_rupiah;
+                                                                } ?>
+                                                            @foreach ($pajakkpp2 as $item)
+                                                              <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                                                  <td class="table-td"> {{ $i++ }}</td>
+                          
+                                                                  <td class="table-td">    
+                                                                      <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                                                      <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                                                      <b>Nilai SPM : </b> {{ rupiaha($item->nilai_sp2d) }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                                                      <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                                                      <b>Nilai SP2D : </b> {{ rupiaha($item->nilai_sp2d) }} <br>
+                                                                      <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
+                                                                      <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
+                                                                      <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
+                                                                  </td>
+                                                                  
+                                                                  <td class="table-td">{{ rupiaha($item->nilai_pajak) }}</td>
+                                                                  <td class="table-td">{{ $item->ebilling }}</td>
+                                                                  <td class="table-td">{{ $item->ntpn }}</td>
+                                                                  
+                    
+                                                              <td class="table-td ">
+                                                                <div class="flex space-x-3 rtl:space-x-reverse">
+                    
+                                                                  @if ($item->status1 == '1')
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
+                                                                          data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
+                                                                          data-id5 = "{{ $item->id }}"
+                                                                          data-ebilling5 = "{{ $item->ebilling }}"
+                                                                          data-ntpn5 = "{{ $item->ntpn }}"
+                                                                          data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
+                                                                          data-akun_pajak5 = "{{ $item->akun_pajak }}"
+                                                                          data-rek_belanja5 = "{{ $item->rek_belanja }}"
+                                                                          data-nama_npwp5 = "{{ $item->nama_npwp }}"
+                                                                          data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
+                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
+                                                                          >
+                                                                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                                      </button>
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
+                                                                          data-bs-toggle="modal" data-bs-target="#edittolak_modal"
+                                                                          data-id = "{{ $item->id }}"
+                                                                          data-ebilling = "{{ $item->ebilling }}"
+                                                                          data-ntpn = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
+                                                                      </button>
+                    
+                                                                  @else
+                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                          <button type="submit" class="action-btn">
+                                                                              <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                          </button>
+                                                                      </a>
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
+                                                                          data-bs-toggle="modal" data-bs-target="#editterima_modal"
+                                                                          data-id1 = "{{ $item->id }}"
+                                                                          data-ebilling1 = "{{ $item->ebilling }}"
+                                                                          data-ntpn1 = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
+                                                                      </button>
+                                                                  @endif
+                                                                  </div>
+                                                                </td>
+                                                            </tr>
+                                                          @endforeach
+                                                    </table>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        
+                                        </div>
+                                      </div>
+                                <!-- batas tw II -->
                             </div>
-                            
 
+                            <div class="tab-pane fade" id="tabs-messages-withIcon" role="tabpanel" aria-labelledby="tabs-messages-withIcon-tab">
+                              <!-- tw III -->
+                            <div class=" space-y-5">
+                                        <div class="card">
+                                          <header class=" card-header noborder">
+                                            <h4 class="card-title">
+                                            </h4>
+                                            {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
+                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                            </button> --}}
+                                              <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
+                                          </header>
 
+                                          
+                                          <div class="card-body px-6 pb-6">
+                                            <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                              <span class=" col-span-8  hidden"></span>
+                                              <span class="  col-span-4 hidden"></span>
+                                              <div class="inline-block min-w-full align-middle">
+                                                <div class="overflow-hidden ">
+                                                  
+                                                    <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
+                                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                                          <tr>
+                                                            <th scope="col" class=" table-th ">
+                                                              NO
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SPM
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SP2D
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              JENIS PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NPWP
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NILAI PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              BILLING
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NTPN
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              Action
+                                                            </th>
+                                                          </tr>
+                                                        </thead>
+                          
+                                                        <body>                                
+                                                          <?php $i=1; function rupiahaa($angka){
+                              
+                                                                  $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                                                  return $hasil_rupiah;
+                                                                } ?>
+                                                            @foreach ($pajakkpp3 as $item)
+                                                              <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                                                  <td class="table-td"> {{ $i++ }}</td>
+                          
+                                                                  <td class="table-td">    
+                                                                      <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                                                      <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                                                      <b>Nilai SPM : </b> {{ rupiahaa($item->nilai_sp2d) }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                                                      <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                                                      <b>Nilai SP2D : </b> {{ rupiahaa($item->nilai_sp2d) }} <br>
+                                                                      <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
+                                                                      <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
+                                                                      <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
+                                                                  </td>
+                                                                  
+                                                                  <td class="table-td">{{ rupiahaa($item->nilai_pajak) }}</td>
+                                                                  <td class="table-td">{{ $item->ebilling }}</td>
+                                                                  <td class="table-td">{{ $item->ntpn }}</td>
+                                                                  
+                    
+                                                              <td class="table-td ">
+                                                                <div class="flex space-x-3 rtl:space-x-reverse">
+                    
+                                                                  @if ($item->status1 == '1')
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
+                                                                          data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
+                                                                          data-id5 = "{{ $item->id }}"
+                                                                          data-ebilling5 = "{{ $item->ebilling }}"
+                                                                          data-ntpn5 = "{{ $item->ntpn }}"
+                                                                          data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
+                                                                          data-akun_pajak5 = "{{ $item->akun_pajak }}"
+                                                                          data-rek_belanja5 = "{{ $item->rek_belanja }}"
+                                                                          data-nama_npwp5 = "{{ $item->nama_npwp }}"
+                                                                          data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
+                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
+                                                                          >
+                                                                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                                      </button>
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
+                                                                          data-bs-toggle="modal" data-bs-target="#edittolak_modal"
+                                                                          data-id = "{{ $item->id }}"
+                                                                          data-ebilling = "{{ $item->ebilling }}"
+                                                                          data-ntpn = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
+                                                                      </button>
+                    
+                                                                  @else
+                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                          <button type="submit" class="action-btn">
+                                                                              <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                          </button>
+                                                                      </a>
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
+                                                                          data-bs-toggle="modal" data-bs-target="#editterima_modal"
+                                                                          data-id1 = "{{ $item->id }}"
+                                                                          data-ebilling1 = "{{ $item->ebilling }}"
+                                                                          data-ntpn1 = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
+                                                                      </button>
+                                                                  @endif
+                                                                  </div>
+                                                                </td>
+                                                            </tr>
+                                                          @endforeach
+                                                    </table>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        
+                                        </div>
+                                      </div>
+                                <!-- batas tw III -->
+                            </div>
 
+                            <div class="tab-pane fade" id="tabs-settings-withIcon" role="tabpanel" aria-labelledby="tabs-settings-withIcon-tab">
+                              <!-- tw IV -->
+                            <div class=" space-y-5">
+                                        <div class="card">
+                                          <header class=" card-header noborder">
+                                            <h4 class="card-title">
+                                            </h4>
+                                            {{-- <button  data-bs-toggle="modal" data-bs-target="#tambahpajaksipdls_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Tambah Data" data-tippy-theme="secondary">
+                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                            </button> --}}
+                                              <a href="{{ route('tampilpajaksipdri') }}" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Click" data-tippy-theme="secondary">Tambah Data</a>
+                                          </header>
+
+                                          
+                                          <div class="card-body px-6 pb-6">
+                                            <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                              <span class=" col-span-8  hidden"></span>
+                                              <span class="  col-span-4 hidden"></span>
+                                              <div class="inline-block min-w-full align-middle">
+                                                <div class="overflow-hidden ">
+                                                  
+                                                    <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table" >
+                                                        <thead class="bg-slate-200 dark:bg-slate-700">
+                                                          <tr>
+                                                            <th scope="col" class=" table-th ">
+                                                              NO
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SPM
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              SP2D
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              JENIS PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NPWP
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NILAI PAJAK
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              BILLING
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              NTPN
+                                                            </th>
+                                                            <th scope="col" class=" table-th ">
+                                                              Action
+                                                            </th>
+                                                          </tr>
+                                                        </thead>
+                          
+                                                        <body>                                
+                                                          <?php $i=1; function rupiahaaa($angka){
+                              
+                                                                  $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                                                                  return $hasil_rupiah;
+                                                                } ?>
+                                                            @foreach ($pajakkpp4 as $item)
+                                                              <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
+                                                                  <td class="table-td"> {{ $i++ }}</td>
+                          
+                                                                  <td class="table-td">    
+                                                                      <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
+                                                                      <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
+                                                                      <b>Nilai SPM : </b> {{ rupiahaaa($item->nilai_sp2d) }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
+                                                                      <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
+                                                                      <b>Nilai SP2D : </b> {{ rupiahaaa($item->nilai_sp2d) }} <br>
+                                                                      <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
+                                                                      <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                                                  </td>
+                          
+                                                                  <td class="table-td">
+                                                                      <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
+                                                                      <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
+                                                                  </td>
+                                                                  
+                                                                  <td class="table-td">{{ rupiahaaa($item->nilai_pajak) }}</td>
+                                                                  <td class="table-td">{{ $item->ebilling }}</td>
+                                                                  <td class="table-td">{{ $item->ntpn }}</td>
+                                                                  
+                    
+                                                              <td class="table-td ">
+                                                                <div class="flex space-x-3 rtl:space-x-reverse">
+                    
+                                                                  @if ($item->status1 == '1')
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
+                                                                          data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
+                                                                          data-id5 = "{{ $item->id }}"
+                                                                          data-ebilling5 = "{{ $item->ebilling }}"
+                                                                          data-ntpn5 = "{{ $item->ntpn }}"
+                                                                          data-jenis_pajak5 = "{{ $item->jenis_pajak }}"
+                                                                          data-akun_pajak5 = "{{ $item->akun_pajak }}"
+                                                                          data-rek_belanja5 = "{{ $item->rek_belanja }}"
+                                                                          data-nama_npwp5 = "{{ $item->nama_npwp }}"
+                                                                          data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
+                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
+                                                                          >
+                                                                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                                      </button>
+                    
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
+                                                                          data-bs-toggle="modal" data-bs-target="#edittolak_modal"
+                                                                          data-id = "{{ $item->id }}"
+                                                                          data-ebilling = "{{ $item->ebilling }}"
+                                                                          data-ntpn = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
+                                                                      </button>
+                    
+                                                                  @else
+                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                          <button type="submit" class="action-btn">
+                                                                              <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                          </button>
+                                                                      </a>
+                                                                      <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
+                                                                          data-bs-toggle="modal" data-bs-target="#editterima_modal"
+                                                                          data-id1 = "{{ $item->id }}"
+                                                                          data-ebilling1 = "{{ $item->ebilling }}"
+                                                                          data-ntpn1 = "{{ $item->ntpn }}"
+                                                                          >
+                                                                          <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
+                                                                      </button>
+                                                                  @endif
+                                                                  </div>
+                                                                </td>
+                                                            </tr>
+                                                          @endforeach
+                                                    </table>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        
+                                        </div>
+                                      </div>
+                                <!-- batas tw IV -->
+                            </div>
                           </div>
+
+
                         </div>
                       </div>
                     </div>
                   </div>
-  
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-{{-- #################    BATAS GU   ################ --}}
-{{-- ################################################ --}}
 
+
+                        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+@include('Pajak.Modal.tolakpajakls')                      
+@include('Pajak.Modal.terimapajakls')
+@include('Pajak.Modal.tampilpajaksipdls')
+@include('Pajak.Modal.tambahpajakls')
+@include('Pajak.Modal.editpajakls')
 
 <!-- END: Dashboard Tengah -->
       <!-- BEGIN: Footer For Desktop and tab -->
@@ -1801,7 +2238,7 @@
   </main>
 
   <!-- scripts -->
-  @include('template.scripts')
+@include('template.scripts')
   <!--END : scripts -->
 
 @include('Pajak.Modal.script')

@@ -28,26 +28,25 @@
               <div class="card-body flex flex-col p-6">
 
                 <div class="card-text h-full space-y-4">
-
                   <div class="input-area">
                       <label class="form-label">id</label>
                       <input name="id" type="text" class="form-control" id="edit-id1" readonly>
                   </div>
 
-                  <div class="card-text h-full space-y-4">
+                <div class="card-text h-full space-y-4">
                         <div class="input-area">
                             <label class="form-label">E-Billing</label>
                             <input name="ebilling" type="text" class="form-control" id="edit-ebilling1" readonly>
                         </div>
 
-                  <div class="card-text h-full space-y-4">
+                <div class="card-text h-full space-y-4">
                           <div class="input-area">
                               <label class="form-label">NTPN</label>
                               <input name="ntpn" type="text" class="form-control" id="edit-ntpn1" readonly>
                           </div>
                   </div>
                   </div>
-                </div>
+                  </div>
 
               </div>
             </div>
@@ -86,14 +85,14 @@
                             </div>
                     </div>
                     </div>
-                  </div>
+                    </div>
 
                 </div>
               </div>
 
               <!-- Modal footer -->
               <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-              <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">YA</button>
+                  <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">YA</button>
               </div>
           </form>
     @else
