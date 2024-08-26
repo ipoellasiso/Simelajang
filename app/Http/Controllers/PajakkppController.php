@@ -17,36 +17,36 @@ class PajakkppController extends Controller
     public function index()
     {
         $pajakkpp = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'tb_jenis_pajak.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
-        ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
+        // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         ->whereBetween('pajakkpp.created_at', ['2024-01-01', '2024-03-31'])
         ->get();
 
         $pajakkpp2 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'tb_jenis_pajak.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
-        ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
+        // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         ->whereBetween('pajakkpp.created_at', ['2024-04-01', '2024-06-30'])
         ->get();
 
         $pajakkpp3 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'tb_jenis_pajak.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
-        ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
+        // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         ->whereBetween('pajakkpp.created_at', ['2024-07-01', '2024-09-30'])
         ->get();
 
         $pajakkpp4 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'tb_jenis_pajak.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
-        ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
+        // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         ->whereBetween('pajakkpp.created_at', ['2024-10-01', '2024-12-31'])
@@ -63,11 +63,9 @@ class PajakkppController extends Controller
         ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
         ->get();
 
-        $jenispajak1 = DB::table('tb_jenis_pajak')
-        ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
-        ->get();
+        
 
-        return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'jenispajak1', 'pajakls'));
+        return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'pajakls'));
     }
 
 

@@ -24,11 +24,11 @@ class PajaklsController extends Controller
         ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
         ->get();
 
-        $jenispajak1 = DB::table('tb_jenis_pajak')
-        ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
-        ->get();
+        // $jenispajak1 = DB::table('tb_jenis_pajak')
+        // ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
+        // ->get();
 
-        return view('Pajak.sipdri', compact('pajakls', 'akunpajak1', 'jenispajak1'));
+        return view('Pajak.sipdri', compact('pajakls', 'akunpajak1'));
     }
 
     /**

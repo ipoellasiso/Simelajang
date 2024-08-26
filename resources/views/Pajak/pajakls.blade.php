@@ -2014,7 +2014,10 @@
                                         </div>
                                       </div>
                                 <!-- batas tw III -->
+                                 
                             </div>
+
+                            
 
                             <div class="tab-pane fade" id="tabs-settings-withIcon" role="tabpanel" aria-labelledby="tabs-settings-withIcon-tab">
                               <!-- tw IV -->
@@ -2183,12 +2186,14 @@
 </div>
 
 
-
+<!-- tw I -->
 @include('Pajak.Modal.tolakpajakls')                      
 @include('Pajak.Modal.terimapajakls')
 @include('Pajak.Modal.tampilpajaksipdls')
 @include('Pajak.Modal.tambahpajakls')
 @include('Pajak.Modal.editpajakls')
+
+
 
 <!-- END: Dashboard Tengah -->
       <!-- BEGIN: Footer For Desktop and tab -->
@@ -2242,7 +2247,9 @@
   <!--END : scripts -->
 
 @include('Pajak.Modal.script')
-  
+
+
+
 </body>
 </html>
 

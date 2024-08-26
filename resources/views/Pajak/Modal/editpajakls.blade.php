@@ -119,9 +119,455 @@
                 <label class="form-label">Jenis Pajak</label>
                 <select name="jenis_pajak" class="form-control">
                   <option value="">-pilih-</option>
+                  <option value="">Pajak Pertambahan Nilai</option>
+                  <option value="">PPH 21</option>
+                  <option value="">Pajak Penghasilan Ps 22</option>
+                  <option value="">Pajak Penghasilan Ps 23</option>
+                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+        </form>
+  @else
+
+  @endif
+
+  <!-- tw II -->
+  @if ($pajakkpp2->Empty())
+    
+  @else
+        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
                   @foreach($jenispajak1 as $row)
                     <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
                   @endforeach
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+      </form>
+  @endif
+
+  @if ($pajakkpp2->IsNotEmpty())
+          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  <option value="">Pajak Pertambahan Nilai</option>
+                  <option value="">PPH 21</option>
+                  <option value="">Pajak Penghasilan Ps 22</option>
+                  <option value="">Pajak Penghasilan Ps 23</option>
+                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+        </form>
+  @else
+
+  @endif
+
+  <!-- tw III -->
+  @if ($pajakkpp3->Empty())
+    
+  @else
+        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($jenispajak1 as $row)
+                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+      </form>
+  @endif
+
+  
+
+  <!-- tw III -->
+  @if ($pajakkpp3->IsNotEmpty())
+          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  <option value="">Pajak Pertambahan Nilai</option>
+                  <option value="">PPH 21</option>
+                  <option value="">Pajak Penghasilan Ps 22</option>
+                  <option value="">Pajak Penghasilan Ps 23</option>
+                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+        </form>
+  @else
+
+  @endif
+
+  <!-- tw IV -->
+  @if ($pajakkpp4->Empty())
+    
+  @else
+        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($jenispajak1 as $row)
+                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-relative">
+                <label class="form-label">NTPN</label>
+                <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror"  id="edit-ntpn5" required>
+                @error('ntpn')
+                <div class="invalid-feedback">{{ $message}}</div>
+                @enderror
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">REKENING BELANJA</label>
+                <input name="rek_belanja" type="text" class="form-control" id="edit-rek_belanja5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Akun Pajak</label>
+                <select name="akun_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  @foreach($akunpajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                  @endforeach
+                </select>
+              </div>
+              
+              <div class="input-area relative">
+                <label class="form-label">NOMOR NPWP</label>
+                <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NILAI PAJAK</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+              </div>
+              
+            </div>  
+            
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+            </div>
+      </form>
+  @endif
+
+  @if ($pajakkpp4->IsNotEmpty())
+          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+            @method('get')
+                  @csrf
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div class="input-area relative">
+                <label class="form-label">id</label>
+                <input name="id" type="text" class="form-control" id="edit-id5" readonly>
+              </div>
+              <div class="input-area relative">
+                <label class="form-label">E-Billing</label>
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">NAMA NPWP</label>
+                <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
+              </div>
+
+              <div class="input-relative">
+                <label class="form-label">Jenis Pajak</label>
+                <select name="jenis_pajak" class="form-control">
+                  <option value="">-pilih-</option>
+                  <option value="">Pajak Pertambahan Nilai</option>
+                  <option value="">PPH 21</option>
+                  <option value="">Pajak Penghasilan Ps 22</option>
+                  <option value="">Pajak Penghasilan Ps 23</option>
+                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
                 </select>
               </div>
               
