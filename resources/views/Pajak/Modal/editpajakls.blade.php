@@ -84,7 +84,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -154,7 +154,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -229,7 +229,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -299,7 +299,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -379,7 +379,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -455,9 +455,14 @@
                 <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp5" required>
               </div>
 
-              <div class="input-area relative">
+              {{-- <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control" id="rupiah" required>
+              </div> --}}
+
+              <div class="input-area relative">
+                <label for="rupiah" class="form-label">Nilai Pajak</label>
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control rupiah" placeholder="nilai pajak">
               </div>
               
             </div>  
@@ -532,7 +537,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  
@@ -602,7 +607,7 @@
 
               <div class="input-area relative">
                 <label class="form-label">NILAI PAJAK</label>
-                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" required>
+                <input name="nilai_pajak" type="text" class="form-control rupiah" id="edit-nilai_pajak" required>
               </div>
               
             </div>  

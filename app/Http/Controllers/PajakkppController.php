@@ -142,10 +142,11 @@ class PajakkppController extends Controller
 
     public function updatepajakkpp3(Request $request, string $id)
     {
-        // Pajakpot::where('ebilling',$request->get('ebilling'))
-        //                 ->update([
-        //                     'status1' => '1',
-        //                 ]);
+        Pajakpot::where('ebilling',$request->get('ebilling'))
+                        ->update([
+                            // 'status1' => '1',
+                            'jenis_pajak' => $request->get('jenis_pajak'),
+                        ]);
         
         // Pajakkpp::where('id',$request->get('id'))
         //                 ->update([

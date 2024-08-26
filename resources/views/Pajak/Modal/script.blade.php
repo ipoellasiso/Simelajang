@@ -71,3 +71,19 @@
     
       });
     </script>
+
+<script>
+  $(document).ready(function(){
+      $('.rupiah').mask("#.##0,00", {
+        reverse: true
+      });
+  });
+</script>
+
+{{-- <script>
+  $(function () {
+      new AutoNumeric('#nilaipajak', { 
+        currencySymbol: '' 
+      });
+  });
+</script> --}}
