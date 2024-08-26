@@ -45,14 +45,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  @foreach($jenispajak1 as $row)
-                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
-                  @endforeach
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
@@ -115,16 +110,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  <option value="">Pajak Pertambahan Nilai</option>
-                  <option value="">PPH 21</option>
-                  <option value="">Pajak Penghasilan Ps 22</option>
-                  <option value="">Pajak Penghasilan Ps 23</option>
-                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
@@ -192,14 +180,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  @foreach($jenispajak1 as $row)
-                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
-                  @endforeach
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
@@ -262,16 +245,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  <option value="">Pajak Pertambahan Nilai</option>
-                  <option value="">PPH 21</option>
-                  <option value="">Pajak Penghasilan Ps 22</option>
-                  <option value="">Pajak Penghasilan Ps 23</option>
-                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
@@ -339,12 +315,17 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
+              <!-- <div class="input-area relative">
+                <label class="form-label">Jenis Pajak</label>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
+              </div> -->
+
               <div class="input-relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
+                <select name="akun_pajak" class="form-control">
                   <option value="">-pilih-</option>
-                  @foreach($jenispajak1 as $row)
-                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
+                  @foreach($jenispajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row1->jenis_pajak }}</option>
                   @endforeach
                 </select>
               </div>
@@ -412,15 +393,18 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
+              <!-- <div class="input-area relative">
+                <label class="form-label">Jenis Pajak</label>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
+              </div> -->
+
               <div class="input-relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
+                <select name="akun_pajak" class="form-control">
                   <option value="">-pilih-</option>
-                  <option value="">Pajak Pertambahan Nilai</option>
-                  <option value="">PPH 21</option>
-                  <option value="">Pajak Penghasilan Ps 22</option>
-                  <option value="">Pajak Penghasilan Ps 23</option>
-                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
+                  @foreach($jenispajak1 as $row1)
+                    <option value="{{ $row1->id }}" {{ $row1->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row1->jenis_pajak }}</option>
+                  @endforeach
                 </select>
               </div>
               
@@ -489,14 +473,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  @foreach($jenispajak1 as $row)
-                    <option value="{{ $row->id }}" {{ $row->id == $item->jenis_pajak ? 'selected' : '' }}>{{ $row->jenis_pajak }}</option>
-                  @endforeach
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">
@@ -559,16 +538,9 @@
                 <input name="nama_npwp" type="text" class="form-control" id="edit-nama_npwp5" required>
               </div>
 
-              <div class="input-relative">
+              <div class="input-area relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
-                  <option value="">-pilih-</option>
-                  <option value="">Pajak Pertambahan Nilai</option>
-                  <option value="">PPH 21</option>
-                  <option value="">Pajak Penghasilan Ps 22</option>
-                  <option value="">Pajak Penghasilan Ps 23</option>
-                  <option value="">Pajak Penghasilan Ps 4 (2)</option>
-                </select>
+                <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
               </div>
               
               <div class="input-relative">

@@ -63,9 +63,13 @@ class PajakkppController extends Controller
         ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
         ->get();
 
+        $jenispajak1 = DB::table('tb_jenis_pajak')
+        ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
+        ->get();
+
         
 
-        return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'pajakls'));
+        return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'jenispajak1', 'pajakls'));
     }
 
 
@@ -163,7 +167,7 @@ class PajakkppController extends Controller
                         ]);
                         
 
-            return redirect('tampilpajakls')->with('edit','Data Berhasil Diterima');
+            return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
     }
 
     /**
