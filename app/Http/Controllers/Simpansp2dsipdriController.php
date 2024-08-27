@@ -16,11 +16,11 @@ class Simpansp2dsipdriController extends Controller
 
     public function index()
     {
-                
-
+            $ambildata = DB::table('token')->where('id',['1'])->count();    
+            return $ambildata;
             // $model = new tokensipd();
-            // $idToken = "1";
-            // $token = $model->getToken($idToken);
+            $idToken = "1";
+            $token = $ambildata($idToken);
             
             // dd($token);
             
@@ -51,7 +51,7 @@ class Simpansp2dsipdriController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Bearer  $token"
+                "Authorization: Bearer  $ambildata"
             ),
             ));
             $response = curl_exec($curl);
