@@ -9,15 +9,26 @@ use App\Models\ModelSp2d;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth\mysql_num_rows;
+use App\Models\tokensipd;
 
 class Simpansp2dsipdriController extends Controller
 {
 
     public function index()
     {
-        $page = $_GET['id'];
+                
+
+            // $model = new tokensipd();
+            // $idToken = "1";
+            // $token = $model->getToken($idToken);
+            
+            // dd($token);
+            
+            // exit();
+
+             $page = $_GET['id'];
             // $nomordok = $_GET['id'];
-            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQ0MjM2MDUsImlhdCI6MTcyNDIwNzYwNSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.aGn6enm5iLLckLjDMpVmIeP3l4xRRVgPf-_RcLrwA1E';
+            // $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjEzNDQ0Ni4zNDIiLCJleHAiOjE3MjQ5MzUwNTEsImlhdCI6MTcyNDcxOTA1MSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjEzNDQ0NiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjExLCJpZF9wZWdhd2FpIjoxMjYyNDgsInN1Yl9kb21haW5fZGFlcmFoIjoicGFsdSJ9.Me3AhPFItFsr_MHfwEkz2SehWynAjmBrAm81CAWgufY';
             $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=$page&limit=10";
             // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?status=ditransfer&page=1&limit=10
             // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=draft&page=1&limit=10
