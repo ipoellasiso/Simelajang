@@ -156,7 +156,7 @@
 
             @if (auth()->user()->role=="admin")
                 <li>
-                  <a href="{{ route('tampilpls') }}">GU</a>
+                  <a href="{{ route('tampilsp2dsipdrigu') }}?id=1">GU</a>
                 </li>
             @else
             @if (auth()->user()->role=="user")
