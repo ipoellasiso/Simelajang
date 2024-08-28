@@ -71,7 +71,7 @@
                       <a href="{{ route('tampilsp2dsipdri') }}?id=1">LS</a>
                     </li>
                     <li>
-                      <a href="signin-two.html">GU</a>
+                      <a href="{{ route('tampilsp2dsipdrigu') }}?id=1">GU</a>
                     </li>
                     <li>
                       <a href="signin-two.html">TU</a>
@@ -161,7 +161,7 @@
             @else
             @if (auth()->user()->role=="user")
                 <li>
-                  <a href="{{ route('tampilpls') }}">GU</a>
+                  <a href="{{ route('tampilsp2dsipdrigu') }}?id=1">GU</a>
                 </li>
             @endif
             @endif

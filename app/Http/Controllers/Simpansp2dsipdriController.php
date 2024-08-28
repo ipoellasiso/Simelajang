@@ -53,6 +53,47 @@ class Simpansp2dsipdriController extends Controller
         return view('Sipdri.tampilsp2dsipdri', compact('dt'));
     }
 
+    public function indexgu()
+    {
+            
+            $datatoken = DB::table('users')
+            ->select ('remember_token')
+            ->where('id_opd', auth()->user()->id_opd)
+            ->get();
+            
+
+            foreach ($datatoken as $row1){
+                $nilaitoken = $row1->remember_token;
+            }
+
+            
+            
+            $page = $_GET['id'];
+            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/index/0?is_panjar=0&jenis=UP&page=$page&limit=50&status=aktif";
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                    CURLOPT_URL => $urlls,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    // CURLOPT_POSTFIELDS => $datasp2d,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'GET',
+                    CURLOPT_HTTPHEADER => array(
+                        "Authorization: Bearer  $nilaitoken"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $dt1 = json_decode($response, true);
+
+        return view('Sipdri.gu.tampilsp2dsipdrigu', compact('dt1'));
+    }
+
     public function store(Request $request)
     {
             $page = $_GET['id'];
