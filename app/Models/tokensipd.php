@@ -11,20 +11,8 @@ class tokensipd extends Model
     public $timestamps = false;
     protected $table = "token";
     protected $primaryKey = "id";
-    // protected $fillable = [
-    //     'token_sipd',
-    //     'id'    
-    // ];
-    protected $allowedFields = [
-        'id',
-        'token_sipd'
+    protected $fillable = [
+        'token_sipd',
+        'id'    
     ];
-
-    // function getToken($id)
-    // {
-    //     $builder = DB::table('token')->where('id', $id);
-    //     // $data = $builder->where('id', $id);
-    //     return $builder;
-    // }
-
 }

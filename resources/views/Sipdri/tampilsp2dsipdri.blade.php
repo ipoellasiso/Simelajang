@@ -1608,7 +1608,7 @@
                                                       <?php        
                                                             }else{
                                                       ?>
-                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn" type="button"><iconify-icon icon="solar:download-broken"></iconify-icon>
+                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row['id_sp_2_d']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan Data" data-tippy-theme="secondary" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
                                                           </a>
                                                       <?php  
                                                             }

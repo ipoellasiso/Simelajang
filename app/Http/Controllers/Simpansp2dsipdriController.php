@@ -16,27 +16,16 @@ class Simpansp2dsipdriController extends Controller
 
     public function index()
     {
-            $ambildata = DB::table('token')->where('id',['1'])->first();    
-            return $ambildata;
-
-            foreach ($ambildata as $data1)
-            $token = $data1['token_sipd'];
-            // $model = new tokensipd();
-            // $idToken = "1";
-            // $token = $ambildata($idToken);
             
-            // dd($token);
+            $datatoken = DB::table('token')->SELECT ('token_sipd')->GET();
             
-            // exit();
-
+            foreach ($datatoken as $row2){
+                $nilaitoken= $row2->token_sipd;
+            }
+            
+            
              $page = $_GET['id'];
-            // $nomordok = $_GET['id'];
-            // $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjEzNDQ0Ni4zNDIiLCJleHAiOjE3MjQ5MzUwNTEsImlhdCI6MTcyNDcxOTA1MSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjEzNDQ0NiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjExLCJpZF9wZWdhd2FpIjoxMjYyNDgsInN1Yl9kb21haW5fZGFlcmFoIjoicGFsdSJ9.Me3AhPFItFsr_MHfwEkz2SehWynAjmBrAm81CAWgufY';
             $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=$page&limit=10";
-            // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?status=ditransfer&page=1&limit=10
-            // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=draft&page=1&limit=10
-            // $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
-            // $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
             $pagination = 10 ;
 
             // $datasp2d = DB::table('sp2d')->select('status1')->get();
@@ -54,7 +43,7 @@ class Simpansp2dsipdriController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Bearer  $token"
+                "Authorization: Bearer  $nilaitoken"
             ),
             ));
             $response = curl_exec($curl);
@@ -68,7 +57,7 @@ class Simpansp2dsipdriController extends Controller
     {
             $page = $_GET['id'];
             $nomordok = $_GET['id'];
-            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjMyMi4zNDIiLCJleHAiOjE3MjQ0MjM2MDUsImlhdCI6MTcyNDIwNzYwNSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjMyMiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjksImlkX3BlZ2F3YWkiOjMyMiwic3ViX2RvbWFpbl9kYWVyYWgiOiJwYWx1In0.aGn6enm5iLLckLjDMpVmIeP3l4xRRVgPf-_RcLrwA1E';
+            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjEzNDQ0Ni4zNDIiLCJleHAiOjE3MjQ5MzUwNTEsImlhdCI6MTcyNDcxOTA1MSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjEzNDQ0NiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjExLCJpZF9wZWdhd2FpIjoxMjYyNDgsInN1Yl9kb21haW5fZGFlcmFoIjoicGFsdSJ9.Me3AhPFItFsr_MHfwEkz2SehWynAjmBrAm81CAWgufY';
             // $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=LS&page=$page&limit=10";
             // $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
             $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
