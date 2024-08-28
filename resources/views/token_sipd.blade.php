@@ -1533,24 +1533,23 @@
                   <div class=" space-y-5">
                     <div class="card">
                     <header class=" card-header noborder">
-                                            <h4 class="card-title">
-                                            </h4>
-                                            <button  data-bs-toggle="modal" data-bs-target="#tambahtoken_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Update Token" data-tippy-theme="dark" id="btn-edit-token_pajak"
-                                            data-id = "{{ $data->id }}"
-                                            data-token_sipd = "{{ $data->token_sipd }}"
-                                            >
-                                              <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                            </button>
-                                          </header>
-                                          
-                    
+                        <h4 class="card-title">
+                        </h4>
+                        <button  data-bs-toggle="modal" data-bs-target="#tambahtoken_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Update Token" data-tippy-theme="dark" id="btn-edit-token_pajak"
+                        data-id = "{{ $data->id }}"
+                        data-token_sipd = "{{ $data->token_sipd }}"
+                        >
+                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                        </button>
+                      </header>
+                               
                         <form>
                                 <div class="card">
                                 <div class="card-body flex flex-col p-6">
                                     <div class="card-text h-full space-y-4">
                                             <div class="input-area">
-                                                <label class="form-label">Input Token SIPD</label>
-                                                <input value="{{ $data->token_sipd }}" class="form-control">
+                                                <label for="textarea" class="form-label">Token SIPD</label>
+                                                <textarea class="form-control" readonly>{{ $data->token_sipd }}</textarea>
                                             </div>
                                     </div>
                                 </div>
