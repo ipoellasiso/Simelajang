@@ -79,9 +79,30 @@
                   </ul>
                 </li>
                 @endif
+                
               <li>
                 <a href="{{ route('tampiltoken') }}">Input Token</a>
               </li>
+
+            </li>
+          </ul>
+        </li>
+        @endif
+
+        @if (auth()->user()->role=="user")
+        <li class="">
+          <a href="javascript:void(0)" class="navItem">
+            <span class="flex items-center">
+          <iconify-icon class=" nav-icon" icon="solar:settings-minimalistic-bold"></iconify-icon>
+          <span>Master Data</span>
+            </span>
+            <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
+          </a>
+          <ul class="sidebar-submenu">
+              <li>
+                <a href="{{ route('tampiltokengu') }}">Input Token GU</a>
+              </li>
+
             </li>
           </ul>
         </li>

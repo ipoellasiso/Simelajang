@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth\mysql_num_rows;
 use App\Models\tokensipd;
 use App\Models\ModelLpj;
+use App\Models\ModelTbp;
 
 class Simpansp2dsipdriController extends Controller
 {
@@ -24,26 +25,26 @@ class Simpansp2dsipdriController extends Controller
                 $nilaitoken= $row2->token_sipd;
             }
 
-            $tokenPark =  explode(".", $nilaitoken);
-            $payload = $tokenPark['1'];
-            $decode = base64_decode($payload);
-            $json = json_decode($decode, true);
-            $exp = $json['exp'];
-            $waktuSekarang = time();
-            if($exp <= $waktuSekarang){
-                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
-                $form_params = [
-                    'nip_user' => '197402271999031004',
-                    'password' => 'p4lu8ud24'
-                ];
-                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
-                $response = json_decode($response, true);
-                $token1 = $response['access_token'];
-                $dataToken1 = [
-                    'token_sipd' => $token1
-                ];
-                $dataToken1 = save();
-            }
+            // $tokenPark =  explode(".", $nilaitoken);
+            // $payload = $tokenPark['1'];
+            // $decode = base64_decode($payload);
+            // $json = json_decode($decode, true);
+            // $exp = $json['exp'];
+            // $waktuSekarang = time();
+            // if($exp <= $waktuSekarang){
+            //     $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
+            //     $form_params = [
+            //         'nip_user' => '197402271999031004',
+            //         'password' => 'p4lu8ud24'
+            //     ];
+            //     $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+            //     $response = json_decode($response, true);
+            //     $token1 = $response['access_token'];
+            //     $dataToken1 = [
+            //         'token_sipd' => $token1
+            //     ];
+            //     $dataToken1 = save();
+            // }
             // Batas Permintaan Token
             // return ($exp."--".$waktuSekarang);
             
@@ -80,26 +81,13 @@ class Simpansp2dsipdriController extends Controller
     {
             
             $datatoken = DB::table('users')
-            ->select ('remember_token')
+            ->select ('token_sipd')
             ->where('id_opd', auth()->user()->id_opd)
             ->get();
 
             foreach ($datatoken as $row1){
-                $nilaitoken = $row1->remember_token;
+                $nilaitoken = $row1->token_sipd;
             }
-            // $tokenPark =  explode(".", $nilaitoken);
-            // $payload = $tokenPark['1'];
-            // $decode = base64_decode($payload);
-            // $json = json_decode($decode, true);
-            // $exp = $json['exp'];
-            // $waktuSekarang = time();
-            // if($exp <= $waktuSekarang){
-            //     $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/index/0?is_panjar=0&jenis=UP&page=$page&limit=50&status=aktif";
-            //     $form_params = [
-            //         'nip_user' => ''
-            //     ]
-            // }
-            // return ($exp."--".$waktuSekarang);
             
             $page = $_GET['id'];
             $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/index/0?is_panjar=0&jenis=UP&page=$page&limit=50&status=aktif";
@@ -233,12 +221,12 @@ class Simpansp2dsipdriController extends Controller
     {
 
             $datatoken = DB::table('users')
-            ->select ('remember_token')
+            ->select ('token_sipd')
             ->where('id_opd', auth()->user()->id_opd)
             ->get();
 
             foreach ($datatoken as $row1){
-                $nilaitoken = $row1->remember_token;
+                $nilaitoken = $row1->token_sipd;
             }
 
             $page = $_GET['id'];
@@ -313,6 +301,60 @@ class Simpansp2dsipdriController extends Controller
                                 DB::table('tb_potongangu')->insert($datapotongan3);
                             }
                         }
+                    
+                DB::commit();
+                return redirect()->back()->with('status', 'Data Berhasil diSimpan');
+                // return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
+        
+    }
+
+    public function storetbp(Request $request)
+    {
+
+            $datatoken = DB::table('users')
+            ->select ('token_sipd')
+            ->where('id_opd', auth()->user()->id_opd)
+            ->get();
+
+            foreach ($datatoken as $row1){
+                $nilaitoken = $row1->token_sipd;
+            }
+
+            $page = $_GET['id'];
+            $nomordok = $_GET['id'];
+            $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/index/0?is_panjar=0&jenis=UP&page=1&limit=10&status=aktif";
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => $urldok,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer $nilaitoken"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $dt = json_decode($response, true);
+            
+
+                DB::beginTransaction();
+                    
+                        $dataltbp = new ModelTbp();
+                        $dataltbp->id_tbp = $nomordok;
+                        $dataltbp->id_sp2d = $dt["0"]["id_sp2d"];
+                        $dataltbp->nomor_tbp = $dt["0"]["nomor_tbp"];
+                        $dataltbp->nilai_tbp = $dt["0"]["nilai_tbp"];
+                        $dataltbp->keterangan_tbp = $dt["0"]["keterangan_tbp"];
+                        $dataltbp->save();
+                        // dd($dataltbp);
                     
                 DB::commit();
                 return redirect()->back()->with('status', 'Data Berhasil diSimpan');

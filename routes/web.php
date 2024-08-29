@@ -102,9 +102,14 @@ Route::group(['middleware' => ['auth','CekLevel:admin,user,verifikasi']], functi
     Route::get('/tampilpls',[plsController::class,'index'])->name('tampilpls');
     Route::get('/controlpenggunauser', [PenggunaController::class,'indexuser'])->name('controlpenggunauser');
     Route::get('/controlpengguna', [PenggunaController::class,'index'])->name('controlpengguna');
+
     route::get('/tampilsp2dsipdrigu',[Simpansp2dsipdriController::class,'indexgu'])->name('tampilsp2dsipdrigu');
+    
+    route::get('/simpantokengu/{id}',[TokensipdsController::class,'storegu'])->name('simpantokengu');
+    route::get('/tampiltokengu',[TokensipdsController::class,'tokengu'])->name('tampiltokengu');
 
     route::get('/simpanlpj',[Simpansp2dsipdriController::class,'storelpj'])->name('simpanlpj');
+    route::get('/simpantbp',[Simpansp2dsipdriController::class,'storetbp'])->name('simpantbp');
 });
 
 

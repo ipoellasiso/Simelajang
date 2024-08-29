@@ -1519,144 +1519,43 @@
                         </a>
                       </li>
                       <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        SP2D
+                        Master data
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                       </li>
                       <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        GU</li>
+                        Input Token</li>
                     </ul>
                   </div>
                   <!-- END: BreadCrumb -->
-  
-                  <?php
-                      $servername = "localhost";
-                      $username = "root";
-                      $password = "";
-                      $database = "simelajang2025";
-                      // Create connection
-                      $conn = new mysqli($servername, $username, $password,$database);
-
-                      // // Check connection
-                      // if ($conn->connect_error) {
-                      //   die("Connection failed: " . $conn->connect_error);
-                      // }
-                      // echo "Connected successfully";
-                  ?>
-
+                    @foreach ($token2 as $data1)
+                    @endforeach
                   <!-- Tabel -->
                   <div class=" space-y-5">
                     <div class="card">
-                      <header class=" card-header noborder">
-                        <h4 class="card-title">Data SP2D SIPD RI
+                    <header class=" card-header noborder">
+                        <h4 class="card-title">
                         </h4>
-                        {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <!-- <a href="" data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a> -->
-                          <!-- <a href="{{ route('simpansp2dsipdri') }}" class="btn inline-flex justify-center btn-light btn-sm">Simpan Data</a> -->
+                        <button  data-bs-toggle="modal" data-bs-target="#tambahtoken_modal" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Update Token" data-tippy-theme="dark" id="btn-edit-token_pajak"
+                        data-id = "{{ $data1->id }}"
+                        data-token_sipd = "{{ $data1->token_sipd }}"
+                        >
+                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                        </button>
                       </header>
-
-                      <div class="card-body px-6 pb-6">
-                        <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                          <span class=" col-span-8  hidden"></span>
-                          <span class="  col-span-4 hidden"></span>
-                          <div class="inline-block min-w-full align-middle">
-                            <div class="overflow-hidden ">
-                              
-                                <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
-                                    <thead class="bg-slate-200 dark:bg-slate-700">
-                                      <tr>
-                                        <th scope="col" class=" table-th ">NO</th>
-                                        <th scope="col" class=" table-th ">NAMA OPD</th>
-                                        <th scope="col" class=" table-th ">NOMOR TBP</th>
-                                        <th scope="col" class=" table-th ">TANGGAL TBP</th>
-                                        <th scope="col" class=" table-th ">KETERANGAN</th>
-                                        <th scope="col" class=" table-th ">NILAI TBP</th>
-                                        <th scope="col" class=" table-th ">Action</th>
-                                        {{-- <th scope="col" class=" table-th ">Status</th> --}}
-                                      </tr>
-                                    </thead>
-      
-                                    <body>
-                                      <?php $i=1;
-                                            $pagination = 40 ; 
-
-                                            function rupiahh($angka){
-                                                $hasil_rupiaha = "" . number_format($angka,0,',','.');
-                                                return $hasil_rupiaha;
-                                            }
-
-                                            $hitung = $pagination;
-                                      ?>
-
-                                      @foreach ($dt1 as $row1) 
-                                        <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
-                                          <td class="table-td"> {{ $i++ }}</td>
-                                          <td class="table-td">{{ $row1['nama_sub_skpd'] }}</td>
-                                          <td class="table-td">{{ $row1['nomor_tbp'] }}</td>
-                                          <td class="table-td">{{ $row1['tanggal_tbp'] }}</td>
-                                          <td class="table-td">{{ $row1['keterangan_tbp'] }}</td>
-                                          <td class="table-td">{{ rupiahh($row1['nilai_tbp']) }}</td>
-                                                                                
-                                                    <td class="table-td ">
-                                                      <div class="flex space-x-3 rtl:space-x-reverse">
-                                                      <?php                                                   
-                                                        $lpjid = $row1['id_tbp'];
-                                                        $data1 = mysqli_query($conn, "SELECT * FROM tb_lpj where id_tbp=$lpjid")or die(mysqli_error($conn));
-                                                        $lpj = mysqli_num_rows($data1);
-                                                          if ($lpj != null){
-                                                      ?>
-                                                          
-                                                      <?php        
-                                                            }else{
-                                                      ?>
-                                                          <a href="{{ route('simpanlpj') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan TBP" data-tippy-theme="dark" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
-                                                          </a>
-                                                          
-                                                      <?php  
-                                                            }
-                                                      ?>
-
-                                                          <a href="{{ route('simpantbp') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan LPJ" data-tippy-theme="primary" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
-                                                          </a>
-                                                          
-
-                                                        </div>
-                                                      </td>
-                                          </tr>
-                                        @endforeach
-                                      
-                                    </body>
-                                  </table>
-      
-                                  <div>
-                                    <nav aria-label="Page navigation example">
-                                      <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                          </a>
-                                        </li>
-                                        <?php
-                                          for($a=1;$a<$hitung;$a++)
-                                          {
-                                            ?>
-                                            <li class="page-item"><a class="page-link" href="tampilsp2dsipdrigu?id=<?=$a;?>"><?=$a;?></a></li>
-                                          <?php 
-                                            }
-                                          ?>
-                                        <li class="page-item">
-                                          <a class="page-link" href="tampilsp2dsipdrigu?id=<?=$a;?>" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                          </a>
-                                        </li>
-                                      </ul>
-                                    </nav>
+                               
+                        <form>
+                                <div class="card">
+                                <div class="card-body flex flex-col p-6">
+                                    <div class="card-text h-full space-y-4">
+                                            <div class="input-area">
+                                                <label for="textarea" class="form-label">Token SIPD</label>
+                                                <textarea class="form-control" readonly>{{ $data1->token_sipd }}</textarea>
+                                            </div>
+                                    </div>
                                 </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                                </div>
+                        </form>
+
                     </div>
                   </div>
   
@@ -1666,9 +1565,102 @@
           </div>
       </div>
 
+
+      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="tambahtoken_modal" tabindex="-1" aria-labelledby="default_modal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog relative w-auto pointer-events-none">
+    <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+    rounded-md outline-none text-current">
+      <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-secondary-500">
+          <h3 class="text-xl font-medium text-white dark:text-white capitalize">
+            Update Token
+          </h3>
+          <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
+            <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
+                        11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+
+    @if ($token2->Empty())
+    
+    @else
+        <form method="post"a action="{{ route('simpantokengu', $data1->id) }}">
+              @method('get')
+              @csrf
+            <div class="card">
+              <div class="card-body flex flex-col p-6">
+
+                <div class="card-text h-full space-y-4">
+                  <div class="input-area">
+                      <label class="form-label">id</label>
+                      <input name="id" type="text" class="form-control" id="edit-id" readonly>
+                  </div>
+
+                <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">Token</label>
+                            <input name="token_sipd" type="text" class="form-control" id="edit-token_sipd">
+                        </div>
+                  </div>
+                  </div>
+
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+            <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Update</button>
+            </div>
+        </form>
+    @endif
+
+    @if ($token2->IsNotEmpty())
+          <form method="post"a action="{{ route('simpantokengu', $data1->id) }}">
+                @method('get')
+                @csrf
+              <div class="card">
+                <div class="card-body flex flex-col p-6">
+
+                  <div class="card-text h-full space-y-4">
+
+                    <div class="input-area">
+                        <label class="form-label">id</label>
+                        <input name="id" type="text" class="form-control" id="edit-id" readonly>
+                    </div>
+
+                    <div class="card-text h-full space-y-4">
+                        <div class="input-area">
+                            <label class="form-label">Token</label>
+                            <input name="token_sipd" type="text" class="form-control" id="edit-token_sipd">
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                  <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Update</button>
+              </div>
+          </form>
+    @else
+
+    @endif
+
+      </div>
+  </div>
+</div>
+
 </div>
 </div>
 </div>
+
 
 <!-- Batas tambah Modal -->
 <!-- END: Dashboard Tengah -->
@@ -1725,12 +1717,12 @@
   <!--END : scripts -->
 
   <script>
-    $(document).on('click', '#btn-edit-akunpajak', function(){
+    $(document).on('click', '#btn-edit-token_pajak', function(){
         let id = $(this).data('id');
-        let akun_pajak = $(this).data('akun_pajak');
+        let token_sipd = $(this).data('token_sipd');
   
         $('#edit-id').val(id);
-        $('#edit-akun_pajak').val(akun_pajak);
+        $('#edit-token_sipd').val(token_sipd);
   
     });
   </script>
