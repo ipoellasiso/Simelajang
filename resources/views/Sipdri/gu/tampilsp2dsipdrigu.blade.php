@@ -1598,17 +1598,20 @@
                                                                                 
                                                     <td class="table-td ">
                                                       <div class="flex space-x-3 rtl:space-x-reverse">
-                                                      <?php 
-                                                        $sp2did = $row1['id_tbp'];
-                                                        $data = mysqli_query($conn, "SELECT * FROM sp2d where idhalaman=$sp2did")or die(mysqli_error($conn));
-                                                        $sp2d = mysqli_num_rows($data);
-                                                          if ($sp2d != null){
+                                                      <?php                                                   
+                                                        $lpjid = $row1['id_tbp'];
+                                                        $data1 = mysqli_query($conn, "SELECT * FROM tb_lpj where id_tbp=$lpjid")or die(mysqli_error($conn));
+                                                        $lpj = mysqli_num_rows($data1);
+                                                          if ($lpj != null){
                                                       ?>
                                                           <!-- // Kosong -->
                                                       <?php        
                                                             }else{
                                                       ?>
-                                                          
+                                                          <a href="{{ route('simpanlpj') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan TBP" data-tippy-theme="dark" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
+                                                          </a>
+                                                          <a href="{{ route('simpansp2dsipdri') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan LPJ" data-tippy-theme="primary" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
+                                                          </a>
                                                       <?php  
                                                             }
                                                       ?>
