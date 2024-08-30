@@ -71,7 +71,7 @@
                       <a href="{{ route('tampilsp2dsipdri') }}?id=1">LS</a>
                     </li>
                     <li>
-                      <a href="{{ route('tampilsp2dsipdrigu') }}?id=1">GU</a>
+                      <a href="{{ route('tampilsp2dgusipdri') }}?id=1">GU</a>
                     </li>
                     <li>
                       <a href="signin-two.html">TU</a>

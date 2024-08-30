@@ -25,26 +25,26 @@ class Simpansp2dsipdriController extends Controller
                 $nilaitoken= $row2->token_sipd;
             }
 
-            // $tokenPark =  explode(".", $nilaitoken);
-            // $payload = $tokenPark['1'];
-            // $decode = base64_decode($payload);
-            // $json = json_decode($decode, true);
-            // $exp = $json['exp'];
-            // $waktuSekarang = time();
-            // if($exp <= $waktuSekarang){
-            //     $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
-            //     $form_params = [
-            //         'nip_user' => '197402271999031004',
-            //         'password' => 'p4lu8ud24'
-            //     ];
-            //     $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
-            //     $response = json_decode($response, true);
-            //     $token1 = $response['access_token'];
-            //     $dataToken1 = [
-            //         'token_sipd' => $token1
-            //     ];
-            //     $dataToken1 = save();
-            // }
+            $tokenPark =  explode(".", $nilaitoken);
+            $payload = $tokenPark['1'];
+            $decode = base64_decode($payload);
+            $json = json_decode($decode, true);
+            $exp = $json['exp'];
+            $waktuSekarang = time();
+            if($exp <= $waktuSekarang){
+                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
+                $form_params = [
+                    'nip_user' => '197402271999031004',
+                    'password' => 'p4lu8ud24'
+                ];
+                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                $response = json_decode($response, true);
+                $token1 = $response['access_token'];
+                $dataToken1 = [
+                    'token_sipd' => $token1
+                ];
+                $dataToken1 = save();
+            }
             // Batas Permintaan Token
             // return ($exp."--".$waktuSekarang);
             
@@ -76,6 +76,68 @@ class Simpansp2dsipdriController extends Controller
 
         return view('Sipdri.tampilsp2dsipdri', compact('dt'));
     }
+
+    public function sp2dgu()
+    {
+            // Permintaan Token Otomastis
+            $datatoken = DB::table('token')->SELECT ('token_sipd')->GET();
+            
+            foreach ($datatoken as $row2){
+                $nilaitoken= $row2->token_sipd;
+            }
+
+            $tokenPark =  explode(".", $nilaitoken);
+            $payload = $tokenPark['1'];
+            $decode = base64_decode($payload);
+            $json = json_decode($decode, true);
+            $exp = $json['exp'];
+            $waktuSekarang = time();
+            if($exp <= $waktuSekarang){
+                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=ditransfer&page=1&limit=20";
+                $form_params = [
+                    'nip_user' => '197402271999031004',
+                    'password' => 'p4lu8ud24'
+                ];
+                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                $response = json_decode($response, true);
+                $token1 = $response['access_token'];
+                $dataToken1 = [
+                    'token_sipd' => $token1
+                ];
+                $dataToken1 = save();
+            }
+            // Batas Permintaan Token
+            // return ($exp."--".$waktuSekarang);
+            
+             $page = $_GET['id'];
+            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=ditransfer&page=$page&limit=20";
+            $pagination = 10 ;
+
+            // $datasp2d = DB::table('sp2d')->select('status1')->get();
+
+            $hitung = $pagination;
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => $urlls,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            // CURLOPT_POSTFIELDS => $datasp2d,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer  $nilaitoken"
+            ),
+            ));
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $sp2dgu = json_decode($response, true);
+
+        return view('Sipdri.tampilsp2dgusipdri', compact('sp2dgu'));
+    }
+
 
     public function indexgu()
     {
@@ -119,9 +181,37 @@ class Simpansp2dsipdriController extends Controller
 
     public function store(Request $request)
     {
+            $datatoken = DB::table('token')->SELECT ('token_sipd')->GET();
+                
+            foreach ($datatoken as $row2){
+                $nilaitoken= $row2->token_sipd;
+            }
+
+            $tokenPark =  explode(".", $nilaitoken);
+            $payload = $tokenPark['1'];
+            $decode = base64_decode($payload);
+            $json = json_decode($decode, true);
+            $exp = $json['exp'];
+            $waktuSekarang = time();
+            if($exp <= $waktuSekarang){
+                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
+                $form_params = [
+                    'nip_user' => '197402271999031004',
+                    'password' => 'p4lu8ud24'
+                ];
+                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                $response = json_decode($response, true);
+                $token1 = $response['access_token'];
+                $dataToken1 = [
+                    'token_sipd' => $token1
+                ];
+                $dataToken1 = save();
+            }
+            
+
             $page = $_GET['id'];
             $nomordok = $_GET['id'];
-            $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjEzNDQ0Ni4zNDIiLCJleHAiOjE3MjQ5MzUwNTEsImlhdCI6MTcyNDcxOTA1MSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjEzNDQ0NiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjExLCJpZF9wZWdhd2FpIjoxMjYyNDgsInN1Yl9kb21haW5fZGFlcmFoIjoicGFsdSJ9.Me3AhPFItFsr_MHfwEkz2SehWynAjmBrAm81CAWgufY';
+            // $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTSVBEX0FVVEhfU0VSVklDRSIsInN1YiI6IjEzNDQ0Ni4zNDIiLCJleHAiOjE3MjQ5MzUwNTEsImlhdCI6MTcyNDcxOTA1MSwidGFodW4iOjIwMjQsImlkX3VzZXIiOjEzNDQ0NiwiaWRfZGFlcmFoIjozNDIsImtvZGVfcHJvdmluc2kiOiI3MiIsImlkX3NrcGQiOjAsImlkX3JvbGUiOjExLCJpZF9wZWdhd2FpIjoxMjYyNDgsInN1Yl9kb21haW5fZGFlcmFoIjoicGFsdSJ9.Me3AhPFItFsr_MHfwEkz2SehWynAjmBrAm81CAWgufY';
             // $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=LS&page=$page&limit=10";
             // $urlgu = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=LS&page=$page&limit=10";
             $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
@@ -141,7 +231,7 @@ class Simpansp2dsipdriController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Bearer $token"
+                "Authorization: Bearer $nilaitoken"
             ),
             ));
 
@@ -208,6 +298,105 @@ class Simpansp2dsipdriController extends Controller
                                 ];
                                 DB::table('potongan2')->insert($datapotongan2);
                             }
+                        }
+                    
+                DB::commit();
+                return redirect()->back()->with('status', 'Data Berhasil diSimpan');
+                // return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
+        
+    }
+
+    public function storesp2dgu(Request $request)
+    {
+            $datatoken = DB::table('token')->SELECT ('token_sipd')->GET();
+                
+            foreach ($datatoken as $row2){
+                $nilaitoken= $row2->token_sipd;
+            }
+
+            $tokenPark =  explode(".", $nilaitoken);
+            $payload = $tokenPark['1'];
+            $decode = base64_decode($payload);
+            $json = json_decode($decode, true);
+            $exp = $json['exp'];
+            $waktuSekarang = time();
+            if($exp <= $waktuSekarang){
+                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=ditransfer&page=1&limit=10";
+                $form_params = [
+                    'nip_user' => '197402271999031004',
+                    'password' => 'p4lu8ud24'
+                ];
+                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                $response = json_decode($response, true);
+                $token1 = $response['access_token'];
+                $dataToken1 = [
+                    'token_sipd' => $token1
+                ];
+                $dataToken1 = save();
+            }
+            
+
+            $page = $_GET['id'];
+            $nomordok = $_GET['id'];
+            $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/cetak/$nomordok";
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => $urldok,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer $nilaitoken"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $dt = json_decode($response, true);
+            $detail = $dt["gu"]["detail"];
+
+            
+                DB::beginTransaction();
+                    
+                        $datasp2d = new ModelSp2d;
+                        $datasp2d->idhalaman = $nomordok;
+                        $datasp2d->jenis = $dt["jenis"];
+                        $datasp2d->tahun = $dt["gu"]["tahun"];
+                        $datasp2d->nomor_rekening = $dt["gu"]["nomor_rekening"];
+                        $datasp2d->nama_bank = $dt["gu"]["nama_bank"];
+                        $datasp2d->nomor_sp2d = $dt["gu"]["nomor_sp_2_d"];
+                        $datasp2d->tanggal_sp2d = Carbon::Parse($dt["gu"]["tanggal_sp_2_d"])->format('Y-m-d');
+                        $datasp2d->nama_skpd = $dt["gu"]["nama_skpd"];
+                        // $datasp2d->nama_sub_skpd = $dt["ls"]["header"]["nama_sub_skpd"];
+                        // $datasp2d->nama_pihak_ketiga = $dt["ls"]["header"]["nama_pihak_ketiga"];
+                        // $datasp2d->no_rek_pihak_ketiga = $dt["ls"]["header"]["no_rek_pihak_ketiga"];
+                        // $datasp2d->nama_rek_pihak_ketiga = $dt["ls"]["header"]["nama_rek_pihak_ketiga"];
+                        // $datasp2d->bank_pihak_ketiga = $dt["ls"]["header"]["bank_pihak_ketiga"];
+                        // $datasp2d->npwp_pihak_ketiga = $dt["ls"]["header"]["npwp_pihak_ketiga"];
+                        $datasp2d->keterangan_sp2d = $dt["gu"]["keterangan_sp2d"];
+                        $datasp2d->nilai_sp2d = $dt["gu"]["nilai_sp2d"];
+                        $datasp2d->nomor_spm =  $dt["gu"]["nomor_spm"];
+                        $datasp2d->tanggal_spm = Carbon::Parse( $dt["gu"]["tanggal_spm"])->format('Y-m-d');
+                        $datasp2d->nama_ibu_kota = $dt["gu"]["nama_ibu_kota"];
+                        $datasp2d->nama_bud_kbud = $dt["gu"]["nama_bud_kbud"];
+                        $datasp2d->jabatan_bud_kbud = $dt["gu"]["jabatan_bud_kbud"];
+                        $datasp2d->nip_bud_kbud = $dt["gu"]["nip_bud_kbud"];
+                        $datasp2d->save();
+
+                        foreach($detail as $row){
+                            $databelanja1 = [
+                                'norekening' => $row["kode_rekening"],
+                                'uraian' => $row["uraian"],
+                                'nilai' => $row["nilai"],
+                                'id_sp2d' => $nomordok
+                            ];
+                            DB::table('belanja1')->insert($databelanja1);
                         }
                     
                 DB::commit();

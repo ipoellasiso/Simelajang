@@ -86,7 +86,8 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function(){
 
     route::get('/simpansp2dsipdri',[Simpansp2dsipdriController::class,'store'])->name('simpansp2dsipdri');
     route::get('/tampilsp2dsipdri',[Simpansp2dsipdriController::class,'index'])->name('tampilsp2dsipdri');
-    route::get('/tampilsp2dsipdrigu',[Simpansp2dsipdriController::class,'indexgu'])->name('tampilsp2dsipdrigu');
+    route::get('/tampilsp2dgusipdri',[Simpansp2dsipdriController::class,'sp2dgu'])->name('tampilsp2dgusipdri');
+    route::get('/simpansp2dgusipdri',[Simpansp2dsipdriController::class,'storesp2dgu'])->name('simpansp2dgusipdri');
 
     
 
@@ -109,7 +110,7 @@ Route::group(['middleware' => ['auth','CekLevel:admin,user,verifikasi']], functi
     route::get('/tampiltokengu',[TokensipdsController::class,'tokengu'])->name('tampiltokengu');
 
     route::get('/simpanlpj',[Simpansp2dsipdriController::class,'storelpj'])->name('simpanlpj');
-    route::get('/simpantbp',[Simpansp2dsipdriController::class,'storetbp'])->name('simpantbp');
+    // route::get('/simpantbp',[Simpansp2dsipdriController::class,'storetbp'])->name('simpantbp');
 });
 
 
