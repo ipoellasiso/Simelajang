@@ -229,7 +229,7 @@ class Simpansp2dsipdriController extends Controller
                 $nilaitoken = $row1->token_sipd;
             }
 
-            $page = $_GET['id'];
+            // $page = $_GET['id2'];
             $nomordok = $_GET['id'];
             $urldok = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/cetak/$nomordok";
 
@@ -260,6 +260,9 @@ class Simpansp2dsipdriController extends Controller
                     
                         $datalpj = new ModelLpj;
                         $datalpj->id_tbp = $nomordok;
+                        $datalpj->nomor_tbp = $dt["nomor_tbp"];
+                        $datalpj->nilai_tbp = $dt["nilai_tbp"];
+                        $datalpj->nama_skpd = $dt["nama_skpd"];
                         $datalpj->nama_tujuan = $dt["nama_tujuan"];
                         $datalpj->npwp = $dt["npwp"];
                         $datalpj->nomor_npd = $dt["nomor_npd"];
@@ -270,6 +273,7 @@ class Simpansp2dsipdriController extends Controller
                         $datalpj->nama_bp_bpp = $dt["nama_bp_bpp"];
                         $datalpj->nip_bp_bpp = $dt["nip_bp_bpp"];
                         $datalpj->jabatan_bp_bpp = $dt["jabatan_bp_bpp"];
+                        $datalpj->nomor_sp2d = $request->get('nomor_sp2d');
                         $datalpj->save();
 
                         foreach($detail as $row3){
@@ -304,6 +308,7 @@ class Simpansp2dsipdriController extends Controller
                     
                 DB::commit();
                 return redirect()->back()->with('status', 'Data Berhasil diSimpan');
+                // return redirect()->back()->with('status', 'Data Berhasil diSimpan');
                 // return redirect('tampilsp2dsipdri?id=1')->with('status','Data Berhasil disimpan');    
         
     }

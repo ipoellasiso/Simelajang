@@ -72,29 +72,34 @@
     });
 </script>
 
-{{-- <script>
-    $(".swal-confirm").click(function(){
-        var userid = $(this).attr('data-idopd');
-            Swal.fire({
-            title: "Yakin ?",
-            text: "Anda Ingin Menghapus Opd dengan id "+userid+" ",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Ya, Hapus!"
-            }).then((result) => {
-            if (result.isConfirmed) {
-                window.location = "/hapus-opd/"+userid+""
+<script>
+    $(function(){
+        $(document).on('click','#konfirmlpj', function(e){
+            e.preventDefault();
+            var lpjid = $(this).attr("data-lpj");
+            var lpjid2 = $(this).attr("data-lpj2");
                 Swal.fire({
-                title: "Dihapus!",
-                text: "Data Telah Dihapus.",
-                icon: "success"   
-                }); 
-            }
-            });
+                title: "Anda Yakin?",
+                text: "Menyimpan TBP dengan Nomor "+lpjid+" ini",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "{{ route('simpanlpj') }}?id="+lpjid2+""
+                    // Swal.fire({
+                    // text: "TBP Telah Disimpan.",
+                    // title: "Tersimpan!",
+                    // icon: "success"
+                    // });
+                }
+                });
+        });
     });
-</script> --}}
+    
+</script>
 
 <script>
     $(function(){

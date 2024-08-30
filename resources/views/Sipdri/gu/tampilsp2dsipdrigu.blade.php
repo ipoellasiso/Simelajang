@@ -1608,15 +1608,24 @@
                                                       <?php        
                                                             }else{
                                                       ?>
-                                                          <a href="{{ route('simpanlpj') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan TBP" data-tippy-theme="dark" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
+                                                          {{-- <a href="{{ route('simpanlpj') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan TBP" data-tippy-theme="dark" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon> --}}
                                                           </a>
+
+                                                          <a class="action-btn scale btn inline-flex justify-center btn-outline-dark mr-3" data-tippy-content="Tambah" data-tippy-theme="warning" data-lpj="{{ $row1['nomor_tbp'] }}" data-lpj2="{{ $row1['id_tbp'] }}" id="konfirmlpj">
+                                                            <button type="submit" class="action-btn">
+                                                              <iconify-icon icon="ic:round-file-download"></iconify-icon>
+                                                            </button>
+                                                          </a>
+
+                                                          {{-- <button type="button" class="action-btn scale btn inline-flex justify-center btn-outline-dark mr-3" data-tippy-content="Tambah" data-tippy-theme="warning" id="btn-edit-pajakkppterima"
+                                                          data-bs-toggle="modal" data-bs-target="#profil_modal"
+                                                          >
+                                                          <iconify-icon icon="ic:round-file-download"></iconify-icon>
+                                                          </button> --}}
                                                           
                                                       <?php  
                                                             }
                                                       ?>
-
-                                                          <a href="{{ route('simpantbp') }}?id=<?= $row1['id_tbp']; ?>" class="action-btn scale btn inline-flex justify-center btn-outline-primary mr-3" data-tippy-content="Simpan LPJ" data-tippy-theme="primary" type="button"><iconify-icon icon="ic:round-file-download"></iconify-icon>
-                                                          </a>
                                                           
 
                                                         </div>
@@ -1669,6 +1678,8 @@
 </div>
 </div>
 </div>
+
+@include('Sipdri.gu.modalgu.profil')
 
 <!-- Batas tambah Modal -->
 <!-- END: Dashboard Tengah -->
