@@ -1659,6 +1659,12 @@
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                     
                                                                   @if ($item->status1 == '1')
+
+                                                                  <a class="action-btn scale" data-tippy-content="Preview" data-tippy-theme="info" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                    <button type="submit" class="action-btn">
+                                                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                    </button>
+                                                                  </a>
                     
                                                                       <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
                                                                           data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
@@ -1810,6 +1816,12 @@
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                     
                                                                   @if ($item->status1 == '1')
+
+                                                                  <a class="action-btn scale" data-tippy-content="Preview" data-tippy-theme="info" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                    <button type="submit" class="action-btn">
+                                                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                    </button>
+                                                                  </a>
                     
                                                                       <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
                                                                           data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
@@ -1961,6 +1973,12 @@
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                     
                                                                   @if ($item->status1 == '1')
+
+                                                                  <a class="action-btn scale" data-tippy-content="Preview" data-tippy-theme="info" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                    <button type="submit" class="action-btn">
+                                                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                    </button>
+                                                                  </a>
                     
                                                                       <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
                                                                           data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
@@ -2115,6 +2133,12 @@
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                     
                                                                   @if ($item->status1 == '1')
+
+                                                                      <a class="action-btn scale" data-tippy-content="Preview" data-tippy-theme="info" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                        <button type="submit" class="action-btn">
+                                                                            <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                        </button>
+                                                                      </a>
                     
                                                                       <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
                                                                           data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
@@ -2126,7 +2150,7 @@
                                                                           data-rek_belanja5 = "{{ $item->rek_belanja }}"
                                                                           data-nama_npwp5 = "{{ $item->nama_npwp }}"
                                                                           data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
-                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
+                                                                          data-nilai_pajak = "{{ $item->nilai_pajak }}"
                                                                           >
                                                                           <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                                       </button>

@@ -146,6 +146,7 @@ class PajakkppController extends Controller
                         ->update([
                             // 'status1' => '1',
                             'jenis_pajak' => $request->get('jenis_pajak'),
+                            'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
                         ]);
         
         // Pajakkpp::where('id',$request->get('id'))
@@ -164,7 +165,7 @@ class PajakkppController extends Controller
                             'rek_belanja' => $request->get('rek_belanja'),
                             'nama_npwp' => $request->get('nama_npwp'),
                             'nomor_npwp' => $request->get('nomor_npwp'),
-                            // 'nilai_pajak' => $request->get('nilai_pajak'),
+                            'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
                         ]);
                         
 

@@ -2,6 +2,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <title>Simelajang</title>
+  {{-- <link rel="stylesheet" type="text/css" href="style.css"> --}}
   <link rel="icon" type="image/png" href="{{ asset('template/assets/images/logo/133.png') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">

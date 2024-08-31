@@ -1577,7 +1577,7 @@
       
                                     <body>
                                       <?php $i=1;
-                                            $pagination = 61 ; 
+                                            $pagination = 10 ; 
 
                                             function rupiahha($angka){
                                                 $hasil_rupiaha = "" . number_format($angka,0,',','.');
