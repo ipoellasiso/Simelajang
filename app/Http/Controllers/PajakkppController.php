@@ -149,10 +149,37 @@ class PajakkppController extends Controller
             'bukti_pemby.file' => 'Gambar Harus berupa File',
         ]);
 
-        $gambar_file = $request->file('bukti_pemby');
-        $gambar_ekstensi = $gambar_file->extension();
-        $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
-        $gambar_file->move(public_path('dokumen'), $nama_gambar);
+        // $find = pajakkpp::find($id);
+
+        // $dt['ebilling'] = $request->get('ebilling');
+        // $dt['ntpn'] = $request->get('ntpn');
+        // $dt['jenis_pajak'] = $request->get('jenis_pajak');
+        // $dt['akun_pajak'] = $request->get('akun_pajak');
+        // $dt['rek_belanja'] = $request->get('rek_belanja');
+        // $dt['nama_npwp'] = $request->get('nama_npwp');
+        // $dt['nomor_npwp'] = $request->get('nomor_npwp');
+        // $dt['nilai_pajak'] = str_replace('.','', $request->get('nilai_pajak'));
+        
+        // $bukti = $request->file('bukti_pemby');
+
+        // if($bukti){
+        //     $gambar_file = $request->file('bukti_pemby');
+        //     $gambar_ekstensi = $gambar_file->extension();
+        //     $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
+        //     $bukti->move(public_path('dokumen'), $nama_gambar);
+
+        //     if($find->pdf){
+        //         Storage::disk('public')->delete('dokumen/' . $find->pdf);
+        //     }
+
+            $gambar_file = $request->file('bukti_pemby');
+            $gambar_ekstensi = $gambar_file->extension();
+            $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
+            $gambar_file->move(public_path('dokumen'), $nama_gambar);
+
+        // }
+
+        // $find->update($dt);
 
         Pajakpot::where('ebilling',$request->get('ebilling'))
                         ->update([
@@ -181,7 +208,7 @@ class PajakkppController extends Controller
                             'bukti_pemby' => $nama_gambar,
                         ]);
 
-            return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
+        return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
     }
     
     public function destroy(string $id )
