@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function(){
     route::get('/update-pajaklstolak/{id}',[PajaklsController::class,'update'])->name('update-pajaklstolak');
     Route::get('/tampilpajaksipdri',[PajaklsController::class,'index'])->name('tampilpajaksipdri');
     route::get('/editpajakls/{id}',[PajaklsController::class,'update'])->name('editpajakls');
+    Route::get('/showpajakls/{id}',[PajakkppController::class,'show'])->name('showpajakls');
 
     route::get('/simpansp2dsipdri',[Simpansp2dsipdriController::class,'store'])->name('simpansp2dsipdri');
     route::get('/tampilsp2dsipdri',[Simpansp2dsipdriController::class,'index'])->name('tampilsp2dsipdri');

@@ -32,21 +32,24 @@ class Simpansp2dsipdriController extends Controller
             $exp = $json['exp'];
             $waktuSekarang = time();
             if($exp <= $waktuSekarang){
-                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=1&limit=10";
-                $form_params = [
-                    'nip_user' => '197402271999031004',
-                    'password' => 'p4lu8ud24'
-                ];
-                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
-                $response = json_decode($response, true);
-                $token1 = $response['access_token'];
-                $dataToken1 = [
-                    'token_sipd' => $token1
-                ];
-                $dataToken1 = save();
+                return redirect('tampiltoken')->with('edit','Token Kadaluarsa');
+                // $url = "https://service.sipd.kemendagri.go.id/auth/auth/login";
+                // $form_params = [
+                //     'username' => '197402271999031004',
+                //     'password' => 'p4lu8ud24'
+                // ];
+                // $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                // $tokenbaru = $response->refresh_token;
+                // // $response = json_decode($response, true);
+                // // $token1 = $response['bearer_token'];
+                // return ($tokenbaru);
+                // // $dataToken1 = [
+                // //     'token_sipd' => $token1
+                // // ];
+                // // $dataToken1 = save();
             }
-            // Batas Permintaan Token
-            // return ($exp."--".$waktuSekarang);
+            // // Batas Permintaan Token
+            // // return ($exp."--".$waktuSekarang);
             
              $page = $_GET['id'];
             $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=$page&limit=10";
@@ -93,18 +96,19 @@ class Simpansp2dsipdriController extends Controller
             $exp = $json['exp'];
             $waktuSekarang = time();
             if($exp <= $waktuSekarang){
-                $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=ditransfer&page=1&limit=20";
-                $form_params = [
-                    'nip_user' => '197402271999031004',
-                    'password' => 'p4lu8ud24'
-                ];
-                $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
-                $response = json_decode($response, true);
-                $token1 = $response['access_token'];
-                $dataToken1 = [
-                    'token_sipd' => $token1
-                ];
-                $dataToken1 = save();
+                return redirect('token_sipdgu')->with('edit','Token Kadaluarsa');
+                // $url = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=GU&status=ditransfer&page=1&limit=20";
+                // $form_params = [
+                //     'nip_user' => '197402271999031004',
+                //     'password' => 'p4lu8ud24'
+                // ];
+                // $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
+                // $response = json_decode($response, true);
+                // $token1 = $response['access_token'];
+                // $dataToken1 = [
+                //     'token_sipd' => $token1
+                // ];
+                // $dataToken1 = save();
             }
             // Batas Permintaan Token
             // return ($exp."--".$waktuSekarang);

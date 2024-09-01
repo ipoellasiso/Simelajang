@@ -8,6 +8,8 @@ use App\Models\Pajakkpp;
 use App\Models\Pajakpot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\File;
 
 class PajakkppController extends Controller
 {
@@ -35,7 +37,7 @@ class PajakkppController extends Controller
         ->get();
 
         $pajakkpp3 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
@@ -67,11 +69,8 @@ class PajakkppController extends Controller
         ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
         ->get();
 
-        
-
         return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'jenispajak1', 'pajakls'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -94,7 +93,7 @@ class PajakkppController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -142,18 +141,31 @@ class PajakkppController extends Controller
 
     public function updatepajakkpp3(Request $request, string $id)
     {
+
+        $request->validate([
+            'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+        ],[
+            'bukti_pemby.required' => 'Gambar Wajib Diupload',
+            'bukti_pemby.file' => 'Gambar Harus berupa File',
+        ]);
+
+        $gambar_file = $request->file('bukti_pemby');
+        $gambar_ekstensi = $gambar_file->extension();
+        $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
+        $gambar_file->move(public_path('dokumen'), $nama_gambar);
+
         Pajakpot::where('ebilling',$request->get('ebilling'))
                         ->update([
                             // 'status1' => '1',
                             'jenis_pajak' => $request->get('jenis_pajak'),
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
                         ]);
-        
-        // Pajakkpp::where('id',$request->get('id'))
-        //                 ->update([
-        //                     'status2' => '0',
-        //                     'ntpn' => '',
-        //                 ]);
+
+        // $dt = $request->file('bukti_pemby');
+        // $dt->move(public_path('dokumen'),$dt);
+        $post = Pajakkpp::find($id);
+        $old = $post->bukti_pemby;
+        Storage::delete($old);
 
         Pajakkpp::where('id',$request->get('id'))
                         ->update([
@@ -166,15 +178,12 @@ class PajakkppController extends Controller
                             'nama_npwp' => $request->get('nama_npwp'),
                             'nomor_npwp' => $request->get('nomor_npwp'),
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
+                            'bukti_pemby' => $nama_gambar,
                         ]);
-                        
 
             return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id )
     {
         

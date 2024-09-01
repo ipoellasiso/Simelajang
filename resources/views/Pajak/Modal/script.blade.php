@@ -25,24 +25,36 @@
     </script>
     
     {{-- <script>
-      $(document).on('click', '#btn-edit-pajakls', function(){
-          let id2 = $(this).data('id2');
-          let ebilling2 = $(this).data('ebilling2');
-          let akun_pajak = $(this).data('akun_pajak');
-          let ntpn = $(this).data('ntpn');
-          let jenis_pajak2 = $(this).data('jenis_pajak2');
-          let rek_belanja = $(this).data('rek_belanja');
-          let nama_npwp = $(this).data('nama_npwp');
-          let npwp_pihak_ketiga2 = $(this).data('npwp_pihak_ketiga2');
-    
-          $('#edit-id2').val(id2);
-          $('#edit-ebilling2').val(ebilling2);
-          $('#edit-akun_pajak').val(akun_pajak);
-          $('#edit-ntpn').val(ntpn);
-          $('#edit-jenis_pajak2').val(jenis_pajak2);
-          $('#edit-rek_belanja').val(rek_belanja);
-          $('#edit-nama_npwp').val(nama_npwp);
-          $('#edit-nomor_npwp').val(nomor_npwp);
+      $(document).on('click', '#btn-showls', function(){
+          let id6 = $(this).data('id6');
+          let tanggal_spm6 = $(this).data('tanggal_spm6');
+          let nomor_spm6 = $(this).data('nomor_spm6');
+          let nilai_sp2d6 = $(this).data('nilai_sp2d6');
+          let tanggal_sp2d6 = $(this).data('tanggal_sp2d6');
+          let nomor_sp2d6 = $(this).data('nomor_sp2d6');
+          let ebilling6 = $(this).data('ebilling6');
+          let akun_pajak6 = $(this).data('akun_pajak6');
+          let ntpn6 = $(this).data('ntpn6');
+          let jenis_pajak6 = $(this).data('jenis_pajak6');
+          let rek_belanja6 = $(this).data('rek_belanja6');
+          let nama_npwp6 = $(this).data('nama_npwp6');
+          let nomor_npwp6 = $(this).data('nama_npwp6');
+          let nilai_pajak = $(this).data('nilai_pajak');
+
+          $('#edit-id6').val(id6);
+          $('#edit-tanggal_spm6').val(tanggal_spm6);
+          $('#edit-nomor_spm6').val(nomor_spm6);
+          $('#edit-nilai_sp2d6').val(nilai_sp2d6);
+          $('#edit-tanggal_sp2d6').val(tanggal_sp2d6);
+          $('#edit-nomor_sp2d6').val(nomor_sp2d6);
+          $('#edit-ebilling6').val(ebilling6);
+          $('#edit-akun_pajak6').val(akun_pajak6);
+          $('#edit-ntpn6').val(ntpn6);
+          $('#edit-jenis_pajak6').val(jenis_pajak6);
+          $('#edit-rek_belanja6').val(rek_belanja6);
+          $('#edit-nama_npwp6').val(nama_npwp6);
+          $('#edit-nomor_npwp6').val(nomor_npwp6);
+          $('#edit-nilai_pajak').val(nilai_pajak);
     
       });
     </script> --}}

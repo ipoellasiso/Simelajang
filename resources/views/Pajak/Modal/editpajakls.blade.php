@@ -85,7 +85,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -156,7 +156,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -232,7 +232,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -303,7 +303,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -384,7 +384,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -400,7 +400,7 @@
 
   <!-- tw III -->
   @if ($pajakkpp3->IsNotEmpty())
-          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+          <form class="space-y-4" action="{{ route('editpajakkpp3', $item->id) }}" method="post" enctype="multipart/form-data">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -468,8 +468,18 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
               </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
+              </div>
+
+              {{-- <div class="fromGroup">
+                <label class="block capitalize form-label">bukti_pemby</label>
+                    <input class="input100" type="file" name="bukti_pemby" id="bukti_pemby" class="form-control">
+              </div>	 --}}
               
             </div>  
             
@@ -544,7 +554,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
@@ -615,7 +625,7 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
               </div>
               
             </div>  
