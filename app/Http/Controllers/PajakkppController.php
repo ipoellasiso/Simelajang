@@ -9,7 +9,7 @@ use App\Models\Pajakpot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\File;
+use Illuminate\Support\Facades\File;
 
 class PajakkppController extends Controller
 {
@@ -143,7 +143,7 @@ class PajakkppController extends Controller
     {
 
         $request->validate([
-            'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
         ],[
             'bukti_pemby.required' => 'Gambar Wajib Diupload',
             'bukti_pemby.file' => 'Gambar Harus berupa File',
@@ -172,14 +172,22 @@ class PajakkppController extends Controller
         //         Storage::disk('public')->delete('dokumen/' . $find->pdf);
         //     }
 
-            $gambar_file = $request->file('bukti_pemby');
-            $gambar_ekstensi = $gambar_file->extension();
-            $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
-            $gambar_file->move(public_path('dokumen'), $nama_gambar);
+            // $gambar_file = $request->file('bukti_pemby');
+            // $gambar_ekstensi = $gambar_file->extension();
+            // $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
+            // $gambar_file->move(public_path('dokumen'), $nama_gambar);
 
         // }
 
         // $find->update($dt);
+
+        $updatepajakls = Pajakkpp::find($id);
+        $image_path = public_path('dokumen/'.$updatepajakls->image);
+        // if(file_exists($image_path))
+        // {
+        //     unlink($image_path);
+        // }
+        // File::delete('dokumen', $updatepajakls->bukti_pemby);
 
         Pajakpot::where('ebilling',$request->get('ebilling'))
                         ->update([
@@ -188,11 +196,21 @@ class PajakkppController extends Controller
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
                         ]);
 
-        // $dt = $request->file('bukti_pemby');
-        // $dt->move(public_path('dokumen'),$dt);
-        $post = Pajakkpp::find($id);
-        $old = $post->bukti_pemby;
-        Storage::delete($old);
+        
+        // $updatepajakls->ebilling = $request->get('ebilling');
+        // $updatepajakls->ntpn = $request->get('ntpn');
+        // $updatepajakls->jenis_pajak = $request->get('jenis_pajak');
+        // $updatepajakls->akun_pajak = $request->get('akun_pajak');
+        // $updatepajakls->rek_belanja = $request->get('rek_belanja');
+        // $updatepajakls->nama_npwp = $request->get('nama_npwp');
+        // $updatepajakls->nomor_npwp = $request->get('nomor_npwp');
+        // $updatepajakls->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
+        
+        if ($request->file('bukti_pemby')) {
+            $file = $request->file('bukti_pemby');
+            $nama_file = time().str_replace(" ","",$file->getClientOriginalName());
+            $file->move('dokumen', $nama_file);
+        }
 
         Pajakkpp::where('id',$request->get('id'))
                         ->update([
@@ -205,7 +223,7 @@ class PajakkppController extends Controller
                             'nama_npwp' => $request->get('nama_npwp'),
                             'nomor_npwp' => $request->get('nomor_npwp'),
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
-                            'bukti_pemby' => $nama_gambar,
+                            'bukti_pemby' => $nama_file,
                         ]);
 
         return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');

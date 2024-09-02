@@ -27,7 +27,7 @@
   @if ($pajakkpp->Empty())
     
   @else
-        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+        <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -86,6 +86,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -98,7 +103,7 @@
   @endif
 
   @if ($pajakkpp->IsNotEmpty())
-          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+          <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -157,6 +162,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -174,7 +184,7 @@
   @if ($pajakkpp2->Empty())
     
   @else
-        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+        <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -233,6 +243,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -245,7 +260,7 @@
   @endif
 
   @if ($pajakkpp2->IsNotEmpty())
-          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+          <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -304,6 +319,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -321,7 +341,7 @@
   @if ($pajakkpp3->Empty())
     
   @else
-        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+        <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -385,6 +405,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -496,7 +521,7 @@
   @if ($pajakkpp4->Empty())
     
   @else
-        <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+        <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -555,6 +580,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  
@@ -567,7 +597,7 @@
   @endif
 
   @if ($pajakkpp4->IsNotEmpty())
-          <form class="space-y-4" method="post"a action="{{ route('editpajakkpp3', $item->id) }}">
+          <form class="space-y-4" method="post" enctype="multipart/form-data" action="{{ route('editpajakkpp3', $item->id) }}">
             @method('get')
                   @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -626,6 +656,11 @@
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
                 <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
               </div>
               
             </div>  

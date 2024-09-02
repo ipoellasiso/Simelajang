@@ -2218,7 +2218,7 @@
 @include('Pajak.Modal.tampilpajaksipdls')
 @include('Pajak.Modal.tambahpajakls')
 @include('Pajak.Modal.editpajakls')
-@include('Pajak.Modal.showls')
+
 
 
 

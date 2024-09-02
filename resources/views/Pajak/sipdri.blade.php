@@ -1698,9 +1698,20 @@
         {{-- // --}}
 
           <div class="card-text h-full ">
-          <form class="space-y-4" method="post"a action="{{ route('editpajakls', $item->id) }}">
+          <form class="space-y-4 validate-form" method="post" enctype="multipart/form-data" action="{{ route('editpajakls', $item->id) }}">
             @method('get')
                   @csrf
+
+                  @if ($errors->any())
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $item)
+                                  <li>{{ $item }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      @endif
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               <div class="input-area relative">
                 <label class="form-label">id</label>
@@ -1735,7 +1746,7 @@
 
               <div class="input-relative">
                 <label class="form-label">Akun Pajak</label>
-                <select name="akun_pajak" class="form-control">
+                <select name="akun_pajak" class="form-control" required>
                 <option value="">-pilih-</option>
                   @foreach($akunpajak1 as $row1)
                     <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
@@ -1747,12 +1758,17 @@
                 <label class="form-label">NOMOR NPWP</label>
                 <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp" required>
               </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Upload Dokumen</label>
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control" required>
+              </div>
               
             </div>  
             
             <!-- Modal footer -->
             <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+                <button class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
             </div>
           </form>
           </div>

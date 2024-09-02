@@ -76,8 +76,12 @@ class PajaklsController extends Controller
     {
         $request->validate([
             'ntpn' => 'required',
+            'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
+            // 'bukti_pemby' => 'required|image|file',
         ],[
             'ntpn.required' => 'NTPN Name Wajib Diisi',
+            'bukti_pemby.required' => 'Gambar Wajib Diupload',
+            'bukti_pemby.file' => 'Gambar Harus berupa File',
         ]);
 
         $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
@@ -86,6 +90,7 @@ class PajaklsController extends Controller
             return redirect()->back()->with('error', 'NTPN Sudah Ada');
         }else
         {
+
             Pajakpot::where('id',$request->get('id'))
                         ->update([
                             'status1' => '1',
@@ -93,13 +98,17 @@ class PajaklsController extends Controller
                             'jenis_pajak' => $request->get('jenis_pajak'),
                         ]);
             
-            
             // Pajakkpp::where('ebilling',$request->get('ebilling'))
             //             ->update([
             //                 'status2' => '1',
             //             ]);
-            
-            $dataPajakkpp= new Pajakkpp;
+
+            // $gambar_file = $request->file('bukti_pemby');
+            // $gambar_ekstensi = $gambar_file->extension();
+            // $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
+            // $gambar_file->move(public_path('dokumen'), $nama_gambar);
+           
+                $dataPajakkpp= new Pajakkpp;
                 $dataPajakkpp->akun_pajak = $request->get('akun_pajak');
                 $dataPajakkpp->ebilling = $request->get('ebilling');
                 $dataPajakkpp->ntpn = $request->get('ntpn');
@@ -107,8 +116,16 @@ class PajaklsController extends Controller
                 $dataPajakkpp->nomor_npwp = $request->get('nomor_npwp');
                 $dataPajakkpp->jenis_pajak = $request->get('jenis_pajak');
                 $dataPajakkpp->rek_belanja = $request->get('rek_belanja');
-                $dataPajakkpp->save();
 
+                if ($request->file('bukti_pemby')) {
+                    $file = $request->file('bukti_pemby');
+                    $nama_file = time().str_replace(" ","-",$file->getClientOriginalName());
+                    $file->move('dokumen', $nama_file);
+                    $dataPajakkpp->bukti_pemby = $nama_file;
+                }
+                
+                $dataPajakkpp->save();
+           
             return redirect('tampilpajakls')->with('edit','Data Berhasil Disimpan');
         }
     }
