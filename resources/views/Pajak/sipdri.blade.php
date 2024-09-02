@@ -1635,6 +1635,7 @@
                                                     data-ebilling = "{{ $item->ebilling }}"
                                                     data-jenis_pajak = "{{ $item->jenis_pajak }}"
                                                     data-npwp_pihak_ketiga = "{{ $item->npwp_pihak_ketiga }}"
+                                                    data-nilai_pajak = "{{ $item->nilai_pajak }}"
                                                     >
                                                     <iconify-icon icon="solar:download-broken"></iconify-icon>
                                                 </button>
@@ -1715,7 +1716,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               <div class="input-area relative">
                 <label class="form-label">id</label>
-                <input name="id" type="text" class="form-control" id="edit-id" readonly>
+                <input name="id_potonganls" type="text" class="form-control" id="edit-id" readonly>
               </div>
               <div class="input-area relative">
                 <label class="form-label">E-Billing</label>
@@ -1757,6 +1758,11 @@
               <div class="input-area relative">
                 <label class="form-label">NOMOR NPWP</label>
                 <input name="nomor_npwp" type="text" class="form-control" id="edit-nomor_npwp" required>
+              </div>
+
+              <div class="input-area relative">
+                <label class="form-label">Nilai Pajak</label>
+                <input name="nilai_pajak" type="text" class="form-control" id="edit-nilai_pajak" readonly>
               </div>
 
               <div class="input-area relative">
@@ -1847,6 +1853,7 @@
         let rek_belanja = $(this).data('rek_belanja');
         let nama_npwp = $(this).data('nama_npwp');
         let npwp_pihak_ketiga = $(this).data('npwp_pihak_ketiga');
+        let nilai_pajak = $(this).data('nilai_pajak');
   
         $('#edit-id').val(id);
         $('#edit-ebilling').val(ebilling);
@@ -1855,7 +1862,8 @@
         $('#edit-jenis_pajak').val(jenis_pajak);
         $('#edit-rek_belanja').val(rek_belanja);
         $('#edit-nama_npwp').val(nama_npwp);
-        $('#edit-nomor_npwp').val(nomor_npwp);
+        $('#edit-npwp_pihak_ketiga').val(npwp_pihak_ketiga);
+        $('#edit-nilai_pajak').val(nilai_pajak);
   
     });
   </script>

@@ -84,10 +84,16 @@ class PajaklsController extends Controller
             'bukti_pemby.file' => 'Gambar Harus berupa File',
         ]);
 
-        $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
-        if($cek > 0)
+        $cekntpn = Pajakkpp::where('ntpn', $request->ntpn)->count();
+        $cekebilling = Pajakkpp::where('ebilling', $request->ebilling)->count();
+        if($cekntpn > 0)
         {
             return redirect()->back()->with('error', 'NTPN Sudah Ada');
+        }else
+        
+        if($cekebilling > 0)
+        {
+            return redirect()->back()->with('error', 'Ebilling Sudah Ada');
         }else
         {
 
@@ -116,6 +122,7 @@ class PajaklsController extends Controller
                 $dataPajakkpp->nomor_npwp = $request->get('nomor_npwp');
                 $dataPajakkpp->jenis_pajak = $request->get('jenis_pajak');
                 $dataPajakkpp->rek_belanja = $request->get('rek_belanja');
+                $dataPajakkpp->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
 
                 if ($request->file('bukti_pemby')) {
                     $file = $request->file('bukti_pemby');
