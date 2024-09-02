@@ -89,9 +89,7 @@ class PajaklsController extends Controller
         if($cekntpn > 0)
         {
             return redirect()->back()->with('error', 'NTPN Sudah Ada');
-        }else
-        
-        if($cekebilling > 0)
+        }else if($cekebilling > 0)
         {
             return redirect()->back()->with('error', 'Ebilling Sudah Ada');
         }else
@@ -115,6 +113,7 @@ class PajaklsController extends Controller
             // $gambar_file->move(public_path('dokumen'), $nama_gambar);
            
                 $dataPajakkpp= new Pajakkpp;
+                $dataPajakkpp->id_potonganls = $request->get('id_potonganls');
                 $dataPajakkpp->akun_pajak = $request->get('akun_pajak');
                 $dataPajakkpp->ebilling = $request->get('ebilling');
                 $dataPajakkpp->ntpn = $request->get('ntpn');

@@ -190,7 +190,7 @@ class PajakkppController extends Controller
         Pajakkpp::where('id',$request->get('id'))
                         ->update([
                             // 'status2' => '0',
-                            'id_potonganls' => $request->get('id'),
+                            'id_potonganls' => $request->get('id_potonganls'),
                             'ebilling' => $request->get('ebilling'),
                             'ntpn' => $request->get('ntpn'),
                             'jenis_pajak' => $request->get('jenis_pajak'),
@@ -211,6 +211,9 @@ class PajakkppController extends Controller
         
         $data = Pajakkpp::where('id',$id);
         $data->delete();
+
+        $updatepajakls = Pajakkpp::find($id);
+        File::delete('dokumen/'.$updatepajakls->bukti_pemby);
 
         return redirect('tampilpajakls');
     }

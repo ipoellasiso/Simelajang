@@ -1632,6 +1632,7 @@
                                               <button type="button" class="btn inline-flex justify-center btn-light btn-sm scale " data-tippy-content="Simpan" data-tippy-theme="dark" id="btn-edit-pajakls"
                                                     data-bs-toggle="modal" data-bs-target="#edit_modal"
                                                     data-id = "{{ $item->id }}"
+                                                    data-id_potonganls = "{{ $item->id }}"
                                                     data-ebilling = "{{ $item->ebilling }}"
                                                     data-jenis_pajak = "{{ $item->jenis_pajak }}"
                                                     data-npwp_pihak_ketiga = "{{ $item->npwp_pihak_ketiga }}"
@@ -1716,8 +1717,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
               <div class="input-area relative">
                 <label class="form-label">id</label>
-                <input name="id_potonganls" type="text" class="form-control" id="edit-id" readonly>
+                <input name="id" type="text" class="form-control" id="edit-id" readonly>
               </div>
+
+              {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"> --}}
+                <div class="input-area relative">
+                  <label class="form-label">Id Potongan LS</label>
+                  <input name="id_potonganls" type="text" class="form-control" id="edit-id_potonganls" readonly>
+                </div>
+
               <div class="input-area relative">
                 <label class="form-label">E-Billing</label>
                 <input name="ebilling" type="text" class="form-control" id="edit-ebilling">
@@ -1846,6 +1854,7 @@
   <script>
     $(document).on('click', '#btn-edit-pajakls', function(){
         let id = $(this).data('id');
+        let id_potonganls = $(this).data('id_potonganls');
         let ebilling = $(this).data('ebilling');
         let akun_pajak = $(this).data('akun_pajak');
         let ntpn = $(this).data('ntpn');
@@ -1856,6 +1865,7 @@
         let nilai_pajak = $(this).data('nilai_pajak');
   
         $('#edit-id').val(id);
+        $('#edit-id_potonganls').val(id_potonganls);
         $('#edit-ebilling').val(ebilling);
         $('#edit-akun_pajak').val(akun_pajak);
         $('#edit-ntpn').val(ntpn);
