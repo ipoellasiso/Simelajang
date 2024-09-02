@@ -119,7 +119,7 @@ class PajaklsController extends Controller
 
                 if ($request->file('bukti_pemby')) {
                     $file = $request->file('bukti_pemby');
-                    $nama_file = time().str_replace(" ","-",$file->getClientOriginalName());
+                    $nama_file = " Simelajang " . " - " .$file->getClientOriginalName();
                     $file->move('dokumen', $nama_file);
                     $dataPajakkpp->bukti_pemby = $nama_file;
                 }

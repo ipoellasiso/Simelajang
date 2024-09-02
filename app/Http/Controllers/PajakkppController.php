@@ -37,7 +37,7 @@ class PajakkppController extends Controller
         ->get();
 
         $pajakkpp3 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
         ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
@@ -149,45 +149,12 @@ class PajakkppController extends Controller
             'bukti_pemby.file' => 'Gambar Harus berupa File',
         ]);
 
-        // $find = pajakkpp::find($id);
-
-        // $dt['ebilling'] = $request->get('ebilling');
-        // $dt['ntpn'] = $request->get('ntpn');
-        // $dt['jenis_pajak'] = $request->get('jenis_pajak');
-        // $dt['akun_pajak'] = $request->get('akun_pajak');
-        // $dt['rek_belanja'] = $request->get('rek_belanja');
-        // $dt['nama_npwp'] = $request->get('nama_npwp');
-        // $dt['nomor_npwp'] = $request->get('nomor_npwp');
-        // $dt['nilai_pajak'] = str_replace('.','', $request->get('nilai_pajak'));
-        
-        // $bukti = $request->file('bukti_pemby');
-
-        // if($bukti){
-        //     $gambar_file = $request->file('bukti_pemby');
-        //     $gambar_ekstensi = $gambar_file->extension();
-        //     $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
-        //     $bukti->move(public_path('dokumen'), $nama_gambar);
-
-        //     if($find->pdf){
-        //         Storage::disk('public')->delete('dokumen/' . $find->pdf);
-        //     }
-
-            // $gambar_file = $request->file('bukti_pemby');
-            // $gambar_ekstensi = $gambar_file->extension();
-            // $nama_gambar = date('ymdhis') . "." . $gambar_ekstensi;
-            // $gambar_file->move(public_path('dokumen'), $nama_gambar);
-
-        // }
-
-        // $find->update($dt);
-
-        $updatepajakls = Pajakkpp::find($id);
-        $image_path = public_path('dokumen/'.$updatepajakls->image);
-        // if(file_exists($image_path))
+        // $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
+        // if($cek > 0)
         // {
-        //     unlink($image_path);
-        // }
-        // File::delete('dokumen', $updatepajakls->bukti_pemby);
+        //     return redirect()->back()->with('error', 'NTPN Sudah Ada');
+        // }else
+        // {
 
         Pajakpot::where('ebilling',$request->get('ebilling'))
                         ->update([
@@ -196,37 +163,43 @@ class PajakkppController extends Controller
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
                         ]);
 
-        
-        // $updatepajakls->ebilling = $request->get('ebilling');
-        // $updatepajakls->ntpn = $request->get('ntpn');
-        // $updatepajakls->jenis_pajak = $request->get('jenis_pajak');
-        // $updatepajakls->akun_pajak = $request->get('akun_pajak');
-        // $updatepajakls->rek_belanja = $request->get('rek_belanja');
-        // $updatepajakls->nama_npwp = $request->get('nama_npwp');
-        // $updatepajakls->nomor_npwp = $request->get('nomor_npwp');
-        // $updatepajakls->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
+        $updatepajakls = Pajakkpp::find($id);
+        File::delete('dokumen/'.$updatepajakls->bukti_pemby);
+        // dd($image_path);
+        $updatepajakls->ebilling = $request->get('ebilling');
+        $updatepajakls->ntpn = $request->get('ntpn');
+        $updatepajakls->jenis_pajak = $request->get('jenis_pajak');
+        $updatepajakls->akun_pajak = $request->get('akun_pajak');
+        $updatepajakls->rek_belanja = $request->get('rek_belanja');
+        $updatepajakls->nama_npwp = $request->get('nama_npwp');
+        $updatepajakls->nomor_npwp = $request->get('nomor_npwp');
+        $updatepajakls->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
         
         if ($request->file('bukti_pemby')) {
             $file = $request->file('bukti_pemby');
-            $nama_file = time().str_replace(" ","",$file->getClientOriginalName());
+            $nama_file = " Simelajang " . " - " .$file->getClientOriginalName();
             $file->move('dokumen', $nama_file);
+            $updatepajakls->bukti_pemby = $nama_file;
         }
 
-        Pajakkpp::where('id',$request->get('id'))
-                        ->update([
-                            // 'status2' => '0',
-                            'ebilling' => $request->get('ebilling'),
-                            'ntpn' => $request->get('ntpn'),
-                            'jenis_pajak' => $request->get('jenis_pajak'),
-                            'akun_pajak' => $request->get('akun_pajak'),
-                            'rek_belanja' => $request->get('rek_belanja'),
-                            'nama_npwp' => $request->get('nama_npwp'),
-                            'nomor_npwp' => $request->get('nomor_npwp'),
-                            'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
-                            'bukti_pemby' => $nama_file,
-                        ]);
+        $updatepajakls->update();
 
+        // Pajakkpp::where('id',$request->get('id'))
+        //                 ->update([
+        //                     // 'status2' => '0',
+        //                     'ebilling' => $request->get('ebilling'),
+        //                     'ntpn' => $request->get('ntpn'),
+        //                     'jenis_pajak' => $request->get('jenis_pajak'),
+        //                     'akun_pajak' => $request->get('akun_pajak'),
+        //                     'rek_belanja' => $request->get('rek_belanja'),
+        //                     'nama_npwp' => $request->get('nama_npwp'),
+        //                     'nomor_npwp' => $request->get('nomor_npwp'),
+        //                     'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
+        //                     'bukti_pemby' => $nama_file,
+        //                 ]);
+        
         return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
+        // }
     }
     
     public function destroy(string $id )
