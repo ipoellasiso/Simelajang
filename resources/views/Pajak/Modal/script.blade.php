@@ -70,6 +70,7 @@
           let nama_npwp5 = $(this).data('nama_npwp5');
           let nomor_npwp5 = $(this).data('nomor_npwp5');
           let nilai_pajak = $(this).data('nilai_pajak');
+          let id_potonganls5 = $(this).data('id_potonganls5');
     
           $('#edit-id5').val(id5);
           $('#edit-ebilling5').val(ebilling5);
@@ -80,6 +81,7 @@
           $('#edit-nama_npwp5').val(nama_npwp5);
           $('#edit-nomor_npwp5').val(nomor_npwp5);
           $('#edit-nilai_pajak').val(nilai_pajak);
+          $('#edit-id_potonganls5').val(id_potonganls5);
     
       });
     </script>
@@ -107,18 +109,18 @@
   }
 </script>
 
-{{-- <script>
-  $(document).ready(function(){
-      $('.rupiah').mask("#.##0,00", {
-        reverse: true
-      });
-  });
-</script> --}}
+<script>
+  function previewImage(){
+    const image = document.querySelector('#bukti_pemby');
+    const imgPreview = document.querySelector('.img-preview');
 
-{{-- <script>
-  $(function () {
-      new AutoNumeric('#nilaipajak', { 
-        currencySymbol: '' 
-      });
-  });
-</script> --}}
+    imgPreview.style.display = 'block';
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(bukti_pemby.files[0]);
+
+    oFReader.onload = function(oFRevent){
+      imgPreview.src = oFRevent.target.result;
+    }
+  }
+</script>

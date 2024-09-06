@@ -1987,7 +1987,7 @@
                                                                           data-id5 = "{{ $item->id }}"
                                                                           data-ebilling5 = "{{ $item->ebilling }}"
                                                                           data-ntpn5 = "{{ $item->ntpn }}"
-                                                                          
+                                                                          data-id_potonganls5 = "{{ $item->id_potonganls }}"
                                                                           data-akun_pajak5 = "{{ $item->akun_pajak }}"
                                                                           data-rek_belanja5 = "{{ $item->rek_belanja }}"
                                                                           data-nama_npwp5 = "{{ $item->nama_npwp }}"

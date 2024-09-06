@@ -433,9 +433,15 @@
                 <label class="form-label">id</label>
                 <input name="id" type="text" class="form-control" id="edit-id5" readonly>
               </div>
+
+              <div class="input-area relative">
+                <label class="form-label">id Potongan</label>
+                <input name="id_potonganls" type="text" class="form-control" id="edit-id_potonganls5" readonly>
+              </div>
+
               <div class="input-area relative">
                 <label class="form-label">E-Billing</label>
-                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5">
+                <input name="ebilling" type="text" class="form-control" id="edit-ebilling5" required>
               </div>
 
               <div class="input-area relative">
@@ -450,7 +456,7 @@
 
               <div class="input-relative">
                 <label class="form-label">Jenis Pajak</label>
-                <select name="jenis_pajak" class="form-control">
+                <select name="jenis_pajak" class="form-control" required>
                   <option value="">-pilih-</option>
                   @foreach($jenispajak1 as $row1)
                     <option value="{{ $row1->jenis_pajak }}" {{ $item->jenis_pajak == $row1->jenis_pajak ? 'selected' : '' }}>{{ $row1->jenis_pajak }}</option>
@@ -472,7 +478,7 @@
 
               <div class="input-relative">
                 <label class="form-label">Akun Pajak</label>
-                <select name="akun_pajak" class="form-control">
+                <select name="akun_pajak" class="form-control" required>
                   <option value="">-pilih-</option>
                   @foreach($akunpajak1 as $row1)
                     <option value="{{ $row1->id }}" {{ $row1->id == $item->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
@@ -493,12 +499,18 @@
               <div class="input-area relative">
                 <label class="form-label">Nilai Pajak</label>
                 <input type="text" class="form-control" id="edit-nilai_pajak" placeholder="nilai pajak" readonly>
-                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru">
+                <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak" value="{{ old('nilai_pajak') }}" placeholder="isi nilai terbaru" required>
               </div>
 
               <div class="input-area relative">
                 <label class="form-label">Upload Dokumen</label>
-                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control">
+                <input type="hidden" name="oldImage" value="{{ $item->bukti_pemby }}">
+                @if ($item->bukti_pemby)
+                  <img class="img-preview img-fluid mb-3 col-sm-5">
+                @else
+                  <img class="img-preview img-fluid mb-3 col-sm-5">
+                @endif
+                <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control" onchange="previewImage()" required>
               </div>
 
               {{-- <div class="fromGroup">
@@ -510,7 +522,7 @@
             
             <!-- Modal footer -->
             <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
+                <button class="btn inline-flex justify-center text-white bg-black-500" type="submit">Tambahkan</button>
             </div>
         </form>
   @else
