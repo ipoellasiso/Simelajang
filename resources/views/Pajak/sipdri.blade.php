@@ -1758,7 +1758,7 @@
                 <select name="akun_pajak" class="form-control" required>
                 <option value="">-pilih-</option>
                   @foreach($akunpajak1 as $row1)
-                    <option value="{{ $row1->id }}" {{ old('id') == $row1->id ? 'selected' : null }}>{{ $row1->akun_pajak }}</option>
+                  <option value="{{ $row1->akun_pajak }}" {{ $item->id == $row1->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
                   @endforeach
                 </select>
               </div>

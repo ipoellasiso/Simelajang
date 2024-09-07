@@ -59,7 +59,7 @@
       });
     </script> --}}
     
-    <script>
+    {{-- <script>
       $(document).on('click', '#btn-edit-pajakkpp3', function(){
           let id5 = $(this).data('id5');
           let ebilling5 = $(this).data('ebilling5');
@@ -84,7 +84,7 @@
           $('#edit-id_potonganls5').val(id_potonganls5);
     
       });
-    </script>
+    </script> --}}
 
 <script type="text/javascript">
   var rupiah = document.getElementById('rupiah');
@@ -111,6 +111,7 @@
 
 <script>
   function previewImage(){
+    var pajakid3 = $(this).attr("data-pajakkppls3");
     const image = document.querySelector('#bukti_pemby');
     const imgPreview = document.querySelector('.img-preview');
 

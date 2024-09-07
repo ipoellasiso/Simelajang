@@ -2,7 +2,6 @@
 <!-- Template Name: DashCode - HTML, React, Vue, Tailwind Admin Dashboard Template Author: Codeshaper Website: https://codeshaper.net Contact: support@codeshaperbd.net Like: https://www.facebook.com/Codeshaperbd Purchase: https://themeforest.net/item/dashcode-admin-dashboard-template/42600453 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project. -->
 <html lang="zxx" dir="ltr" class="light">
 
-
 <head>
  @include('template.head')
 </head>
@@ -1504,13 +1503,13 @@
         <!-- END: Header -->
         <!-- END: Header -->
 
-
+        
         <!-- Dasboard Tengah -->
         <div class="content-wrapper transition-all duration-150 ltr:ml-[248px] rtl:mr-[248px]" id="content_wrapper">
             <div class="page-content">
               <div class="transition-all duration-150 container-fluid" id="page_layout">
                 <div id="content_layout">
-                  
+  
                   <!-- BEGIN: Breadcrumb -->
                   <div class="mb-5">
                     <ul class="m-0 p-0 list-none">
@@ -1521,214 +1520,163 @@
                         </a>
                       </li>
                       <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        Master data
+                        Pajak
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                       </li>
                       <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Akun Pajak</li>
+                        Pembuatan </li>
                     </ul>
                   </div>
-                  <!-- END: BreadCrumb -->
-  
-                  <!-- Tabel -->
-                  <div class=" space-y-5">
-                    <div class="card">
-                      <header class=" card-header noborder">
-                        <h4 class="card-title">Data Akun Pajak
-                        </h4>
-                        {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
-                          <a href="" data-bs-toggle="modal" data-bs-target="#tambah_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</a>
-                      </header>
-
-                      <div class="card-body px-6 pb-6">
-                        <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                          <span class=" col-span-8  hidden"></span>
-                          <span class="  col-span-4 hidden"></span>
-                          <div class="inline-block min-w-full align-middle">
-                            <div class="overflow-hidden ">
+                  
+                  
+                  <div class="card">
+                      <div class="card-body flex flex-col p-6">
+                            <header class=" card-header noborder">
+                              <h4 class="card-title">Perbaharui Data Pajak LS</h4>
+                              {{-- <button  data-bs-toggle="modal" data-bs-target="#large_modal" class="btn inline-flex justify-center btn-light btn-sm">Tambah Data</button > --}}
+                                <a href="{{ route('tampilpajakls') }}" class="btn inline-flex justify-center btn-light scale " data-tippy-content="Kembali" data-tippy-theme="secondary">
+                                  <span class="flex items-center">
+                                    <iconify-icon icon="icon-park:back"></iconify-icon>
+                                      <span></span>
+                                  </span>
+                                </a>
+                            </header>
+                          <div class="card-text h-full">
+                          {{-- isi --}}
+                          
+                          <div class="card xl:col-span-2">
+                            <div class="card-body flex flex-col p-6">
+                              <div class="card-text h-full ">
+                                  <form class="space-y-4" action="{{ route('editpajakkpp3', $dt->id) }}" method="post" enctype="multipart/form-data">
+                                    @method('get')
+                                          @csrf
+                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                        
+                                      <div class="input-area relative">
+                                        <label class="form-label">E-Billing</label>
+                                        <input name="ebilling" type="text" class="form-control" value="{{ $dt->ebilling }}" required>
+                                      </div>
+                        
+                                      <div class="input-area relative">
+                                        <label class="form-label">NAMA NPWP</label>
+                                        <input name="nama_npwp" type="text" class="form-control" value="{{ $dt->nama_npwp }}" required>
+                                      </div>
+                        
+                                      <!-- <div class="input-area relative">
+                                        <label class="form-label">Jenis Pajak</label>
+                                        <input name="jenis_pajak" type="text" class="form-control" id="edit-jenis_pajak5">
+                                      </div> -->
+                        
+                                      <div class="input-relative">
+                                        <label class="form-label">Jenis Pajak</label>
+                                        <select name="jenis_pajak" class="form-control" required>
+                                          <option value="">-pilih-</option>
+                                          @foreach($jenispajak1 as $row1)
+                                            <option value="{{ $row1->jenis_pajak }}" {{ $dt->jenis_pajak == $row1->jenis_pajak ? 'selected' : '' }}>{{ $row1->jenis_pajak }}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+                                      
+                                      <div class="input-relative">
+                                        <label class="form-label">NTPN</label>
+                                        <input name="ntpn" type="text" class="form-control @error('ntpn') is-invalid @enderror" value="{{ $dt->ntpn }}" required>
+                                        @error('ntpn')
+                                        <div class="invalid-feedback">{{ $message}}</div>
+                                        @enderror
+                                      </div>
+                                      <div class="input-area relative">
+                                        <label class="form-label">REKENING BELANJA</label>
+                                        <input name="rek_belanja" type="text" class="form-control" value="{{ $dt->rek_belanja }}" required>
+                                      </div>
+                        
+                                      <div class="input-relative">
+                                        <label class="form-label">Akun Pajak</label>
+                                        <select name="akun_pajak" class="form-control" required>
+                                          <option value="">-pilih-</option>
+                                          @foreach($akunpajak1 as $row1)
+                                            <option value="{{ $row1->akun_pajak }}" {{ $dt->akun_pajak == $row1->akun_pajak ? 'selected' : '' }}>{{ $row1->akun_pajak }}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+                                      
+                                      <div class="input-area relative">
+                                        <label class="form-label">NOMOR NPWP</label>
+                                        <input name="nomor_npwp" type="text" class="form-control" value="{{ $dt->nomor_npwp }}" required>
+                                      </div>
+                        
+                                      {{-- <div class="input-area relative">
+                                        <label class="form-label">NILAI PAJAK</label>
+                                        <input name="nilai_pajak" type="text" class="form-control" id="rupiah" required>
+                                      </div> --}}
+                        
+                                      <div class="input-area relative">
+                                        <?php function rupiahedit($angka){
                               
-                              <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table">
-                                <thead class="bg-slate-200 dark:bg-slate-700">
-                                  <tr>
-                                    <th scope="col" class=" table-th ">
-                                        NO
-                                      </th>
-                                      <th scope="col" class=" table-th ">
-                                        AKUN PAJAK
-                                      </th>
-                                      <th scope="col" class=" table-th ">
-                                        ACTION
-                                      </th>
-                                  </tr>
-                                </thead>
-                                {{-- @if ($dataakunpajak->IsNotEmpty()) --}}
-                                <?php $i=1; ?>
-                                @foreach ($dataakunpajak as $item)
-                                    <td class="table-td"> {{ $i++ }}</td>
-                                    <td class="table-td">{{ $item->akun_pajak }}</td>
+                                          $hasil_rupiah =number_format($angka,0,',','.');
+                                          return $hasil_rupiah;
+                                        } ?>
+                                        <label class="form-label">Nilai Pajak</label>
+                                        {{-- <input type="text" class="form-control" value="{{ rupiahedit($dt->nilai_pajak) }}" placeholder="nilai pajak" readonly> --}}
+                                        <input id="rupiah" name="nilai_pajak" type="text" class="form-control edit-nilai_pajak"  placeholder="isi nilai terbaru" value="{{ rupiahedit($dt->nilai_pajak) }}" required>
+                                      </div>
+                        
+                                      <div class="input-area relative">
+                                        <label class="form-label">Upload Dokumen</label>
+                                        <input name="oldbukti_pemby" type="hidden" value="{{ $dt->bukti_pemby }}">
+                                        <input name="bukti_pemby" type="file" id="bukti_pemby" class="form-control" onchange="previewImage()">
+                                        {{-- <input type="hidden" name="oldImage" value="{{ $item->bukti_pemby }}"> --}}
+                                        @if ($dt->bukti_pemby)
+                                          <img src="{{ asset('dokumen/'. $dt->bukti_pemby) }}" class="img-preview img-fluid mb-3 col-sm-5">
+                                        @else
+                                          <img class="img-preview img-fluid mb-3 col-sm-5">
+                                        @endif
+                                      </div>
 
-                                          <td class="table-td ">
-                                            <div class="flex space-x-3 rtl:space-x-reverse">
-                                                {{-- <a class="action-btn" type="button">
-                                                  <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                                </a> --}}
-
-                                                <a class="action-btn" data-akunpajak="{{ $item->id }}" id="deleteakunpajak">
-                                                    <button type="submit" class="action-btn">
-                                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                                    </button>
-                                                </a>
-                                              
-                                                <button type="button" class="action-btn" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $item->id }}">
-                                                   <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                                </button>
-                                                
-                                              </div>
-                                            </td>
-                                            {{-- @include('users.modal.edit') --}}
-                                  </tr>
-                                  
-                                @endforeach
-                                <body>
-
-                                </body>
-  
-                              </table>
+                                      <div class="input-area relative">
+                                        {{-- <label class="form-label">id</label> --}}
+                                        <input name="id" type="hidden" class="form-control" value="{{ $dt->id }}" readonly>
+                                      </div>
+                        
+                                      <div class="input-area relative">
+                                        {{-- <label class="form-label">id Potongan</label> --}}
+                                        <input name="id_potonganls" type="hidden" class="form-control" value="{{ $dt->id_potonganls }}" readonly>
+                                      </div>
+                        
+                                      {{-- <div class="fromGroup">
+                                        <label class="block capitalize form-label">bukti_pemby</label>
+                                            <input class="input100" type="file" name="bukti_pemby" id="bukti_pemby" class="form-control">
+                                      </div>	 --}}
+                                      
+                                    </div>  
+                                    
+                                    <!-- Modal footer -->
+                                    <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                        <button class="btn inline-flex justify-center text-white bg-black-500" type="submit">Perbaharui</button>
+                                    </div>
+                                </form>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                         
+
+                          {{-- batas isi --}}
+                          </div>
+                          </div>
                       </div>
-                    </div>
-                  </div>
-  
+                  <div>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
       </div>
-
-  {{-- #################################################################################################################### --}}
-  {{-- modal tambah --}}
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="tambah_modal" tabindex="-1" aria-labelledby="default_modal" aria-hidden="true">
-    <div class="modal-dialog relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-      rounded-md outline-none text-current">
-        <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
-          <!-- Modal header -->
-          <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-secondary-500">
-            <h3 class="text-xl font-medium text-white dark:text-white capitalize">
-              Tambah Data OPD
-            </h3>
-            <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                  dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
-              <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
-                          11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="sr-only">Close modal</span>
-            </button>
-          </div>
-
-                <form method="post"a action="{{ route('simpanakunpajak') }}">
-                @csrf
-
-                <div class="card">
-                  <div class="card-body flex flex-col p-6">
-
-                      <div class="card-text h-full space-y-4">
-
-                            <div class="input-area" required>
-                                <label class="form-label">Akun Pajak</label>
-                                <input id="akun_pajak" name="akun_pajak" type="text" class="form-control" placeholder="akun_pajak" required>
-                            </div>
-                      
-                      </div>
-
-                  </div>
-                </div>
-                
-            <!-- Modal footer -->
-            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                <button class="btn inline-flex justify-center text-white bg-black-500" type="submit">Simpan</button>
-            </div>
-          </form>
-
-        </div>
     </div>
-</div>
-
-<!-- Batas tambah Modal -->
-{{-- ################################################################################################################### --}}
-        </div>
-    </div>
-</div>
+   
+                    
 
 
-{{-- #################################################################################################################### --}}
-  {{-- modal tambah --}}
-  @foreach ($dataakunpajak as $item)
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="edit_modal{{ $item->id }}" tabindex="-1" aria-labelledby="default_modal" aria-hidden="true">
-    <div class="modal-dialog relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-      rounded-md outline-none text-current">
-        <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
-          <!-- Modal header -->
-          <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-secondary-500">
-            <h3 class="text-xl font-medium text-white dark:text-white capitalize">
-              Edit Data Akun Pajak
-            </h3>
-            <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                  dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
-              <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
-                          11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-              <span class="sr-only">Close modal</span>
-            </button>
-          </div>
-          <form method="post"a action="{{ route('editakunpajak', $item->id) }}">
-                  @method('post')
-                  @csrf
-                <div class="card">
-                  <div class="card-body flex flex-col p-6">
 
-                    <div class="card-text h-full space-y-4">
 
-                      <div class="input-area">
-                          <label class="form-label">id</label>
-                          <input name="id" type="text" class="form-control" value="{{ $item->id }}" readonly>
-                      </div>
-
-                      <div class="card-text h-full space-y-4">
-
-                            <div class="input-area">
-                                <label class="form-label">Akun Pajak</label>
-                                <input name="akun_pajak" type="text" class="form-control" value="{{ $item->akun_pajak }}">
-                            </div>
-                      </div>
-                      </div>
-
-                  </div>
-                </div>
-                
-            <!-- Modal footer -->
-            <div class="flex items-center justify-end p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                <button class="btn inline-flex justify-center text-white bg-black-500" type="submit">Simpan</button>
-            </div>
-          </form>
-        </div>
-    </div>
-
-</div>
-</div>
-</div>
-</div>
-@endforeach
-{{-- @endif --}}
-<!-- Batas tambah Modal -->
 <!-- END: Dashboard Tengah -->
-
-
       <!-- BEGIN: Footer For Desktop and tab -->
       @include('template.footer')
       <!-- END: Footer For Desktop and tab -->
@@ -1776,23 +1724,12 @@
   </main>
 
   <!-- scripts -->
-  @include('template.scripts')
+@include('template.scripts')
   <!--END : scripts -->
 
-  {{-- <script>
-    $(document).on('click', '#btn-edit-akunpajak', function(){
-        let id = $(this).data('id');
-        let akun_pajak = $(this).data('akun_pajak');
+@include('Pajak.Modal.script')
   
-        $('#edit-id').val(id);
-        $('#edit-akun_pajak').val(akun_pajak);
-  
-    });
-  </script> --}}
-
-
 </body>
-
 </html>
 
 

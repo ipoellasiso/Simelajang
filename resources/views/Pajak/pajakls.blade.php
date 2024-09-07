@@ -1940,36 +1940,36 @@
                                                                   $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
                                                                   return $hasil_rupiah;
                                                                 } ?>
-                                                            @foreach ($pajakkpp3 as $item)
+                                                            @foreach ($pajakkpp3 as $item1)
                                                               <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
                                                                   <td class="table-td"> {{ $i++ }}</td>
                           
                                                                   <td class="table-td">    
-                                                                      <b>Tanggal SPM : </b> {{ $item->tanggal_spm }} <br>                                        
-                                                                      <b>Nomor SPM : </b> {{ $item->nomor_spm }} <br>
-                                                                      <b>Nilai SPM : </b> {{ rupiahaa($item->nilai_sp2d) }} <br>
+                                                                      <b>Tanggal SPM : </b> {{ $item1->tanggal_spm }} <br>                                        
+                                                                      <b>Nomor SPM : </b> {{ $item1->nomor_spm }} <br>
+                                                                      <b>Nilai SPM : </b> {{ rupiahaa($item1->nilai_sp2d) }} <br>
                                                                   </td>
                           
                                                                   <td class="table-td">
-                                                                      <b>Tanggal SP2D : </b> {{ $item->tanggal_sp2d }} <br>                                        
-                                                                      <b>Nomor SP2D : </b> {{ $item->nomor_sp2d }} <br>
-                                                                      <b>Nilai SP2D : </b> {{ rupiahaa($item->nilai_sp2d) }} <br>
-                                                                      <b>Rek. Belanja : </b> {{ $item->rek_belanja }} <br>
+                                                                      <b>Tanggal SP2D : </b> {{ $item1->tanggal_sp2d }} <br>                                        
+                                                                      <b>Nomor SP2D : </b> {{ $item1->nomor_sp2d }} <br>
+                                                                      <b>Nilai SP2D : </b> {{ rupiahaa($item1->nilai_sp2d) }} <br>
+                                                                      <b>Rek. Belanja : </b> {{ $item1->rek_belanja }} <br>
                                                                   </td>
                           
                                                                   <td class="table-td">
-                                                                      <b>Akun Pajak : </b>{{ $item->akun_pajak }}<br> 
-                                                                      <b>Jenis Pajak : </b> {{ $item->jenis_pajak }} <br>
+                                                                      <b>Akun Pajak : </b>{{ $item1->akun_pajak }}<br> 
+                                                                      <b>Jenis Pajak : </b> {{ $item1->jenis_pajak }} <br>
                                                                   </td>
                           
                                                                   <td class="table-td">
-                                                                      <b>Nama NPWP : </b> {{ $item->nama_npwp }} <br>
-                                                                      <b>Nomor NPWP : </b> {{ $item->nomor_npwp }} <br> 
+                                                                      <b>Nama NPWP : </b> {{ $item1->nama_npwp }} <br>
+                                                                      <b>Nomor NPWP : </b> {{ $item1->nomor_npwp }} <br> 
                                                                   </td>
                                                                   
-                                                                  <td class="table-td">{{ rupiahaa($item->nilai_pajak) }}</td>
-                                                                  <td class="table-td">{{ $item->ebilling }}</td>
-                                                                  <td class="table-td">{{ $item->ntpn }}</td>
+                                                                  <td class="table-td">{{ rupiahaa($item1->nilai_pajak) }}</td>
+                                                                  <td class="table-td">{{ $item1->ebilling }}</td>
+                                                                  <td class="table-td">{{ $item1->ntpn }}</td>
                                                                   {{-- <td class="table-td">
                                                                     <a src="dokumen/{{ $item->bukti_pemby }}" width="100%">
                                                                   </td> --}}
@@ -1978,45 +1978,33 @@
                                                               <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                     
-                                                                  @if ($item->status1 == '1')
+                                                                  @if ($item1->status1 == '1')
                                                                   
-                                                                  <a href="dokumen/{{ $item->bukti_pemby }}"><button class="action-btn scale" data-tippy-content="Preview Bukti Pembayaran" data-tippy-theme="dark" type="button"><iconify-icon icon="icon-park-outline:preview-open"></iconify-icon></button></a>
+                                                                  <a href="dokumen/{{ $item1->bukti_pemby }}"><button class="action-btn scale" data-tippy-content="Preview Bukti Pembayaran" data-tippy-theme="dark" type="button"><iconify-icon icon="icon-park-outline:preview-open"></iconify-icon></button></a>
                     
-                                                                      <button type="button" class="action-btn scale" data-tippy-content="Ubah" data-tippy-theme="primary" id="btn-edit-pajakkpp3"
-                                                                          data-bs-toggle="modal" data-bs-target="#editpajakkpp3_modal"
-                                                                          data-id5 = "{{ $item->id }}"
-                                                                          data-ebilling5 = "{{ $item->ebilling }}"
-                                                                          data-ntpn5 = "{{ $item->ntpn }}"
-                                                                          data-id_potonganls5 = "{{ $item->id_potonganls }}"
-                                                                          data-akun_pajak5 = "{{ $item->akun_pajak }}"
-                                                                          data-rek_belanja5 = "{{ $item->rek_belanja }}"
-                                                                          data-nama_npwp5 = "{{ $item->nama_npwp }}"
-                                                                          data-nomor_npwp5 = "{{ $item->nomor_npwp }}"
-                                                                          data-nilai_pajak = "{{ rupiah($item->nilai_pajak) }}"
-                                                                          >
-                                                                          <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                                                      </button>
+                                                                  <button type="button" class="action-btn scale"      data-tippy-content="Ubah" data-tippy-theme="primary" data-bs-toggle="modal" data-bs-target="#editpajakkpp31_modal{{ $item1->id }}"><iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                                                  </button>
                     
                                                                       <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
                                                                           data-bs-toggle="modal" data-bs-target="#edittolak_modal"
-                                                                          data-id = "{{ $item->id }}"
-                                                                          data-ebilling = "{{ $item->ebilling }}"
-                                                                          data-ntpn = "{{ $item->ntpn }}"
+                                                                          data-id = "{{ $item1->id }}"
+                                                                          data-ebilling = "{{ $item1->ebilling }}"
+                                                                          data-ntpn = "{{ $item1->ntpn }}"
                                                                           >
                                                                           <iconify-icon icon="fxemoji:cancellationx"></iconify-icon>
                                                                       </button>
                     
                                                                   @else
-                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item->id }}" id="deletepajakkpp">
+                                                                      <a class="action-btn scale" data-tippy-content="hapus" data-tippy-theme="danger" data-pajakkpp="{{ $item1->id }}" id="deletepajakkpp">
                                                                           <button type="submit" class="action-btn">
                                                                               <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                           </button>
                                                                       </a>
                                                                       <button type="button" class="action-btn scale" data-tippy-content="terima" data-tippy-theme="success" id="btn-edit-pajakkppterima"
                                                                           data-bs-toggle="modal" data-bs-target="#editterima_modal"
-                                                                          data-id1 = "{{ $item->id }}"
-                                                                          data-ebilling1 = "{{ $item->ebilling }}"
-                                                                          data-ntpn1 = "{{ $item->ntpn }}"
+                                                                          data-id1 = "{{ $item1->id }}"
+                                                                          data-ebilling1 = "{{ $item1->ebilling }}"
+                                                                          data-ntpn1 = "{{ $item1->ntpn }}"
                                                                           >
                                                                           <iconify-icon icon="fluent-mdl2:accept-medium"></iconify-icon>
                                                                       </button>

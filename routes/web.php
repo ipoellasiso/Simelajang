@@ -79,11 +79,15 @@ Route::group(['middleware' => ['auth','CekLevel:admin']], function(){
     route::get('/hapus-pajakls/{id}',[PajakkppController::class,'destroy'])->name('hapus-pajakls');
     route::get('/update-pajakls/{id}',[PajakkppController::class,'update'])->name('update-pajakls');
     route::get('/updateterima-pajakls/{id}',[PajakkppController::class,'updateterima'])->name('updateterima-pajakls');
-    route::get('/editpajakkpp3/{id}',[PajakkppController::class,'updatepajakkpp3'])->name('editpajakkpp3');
+    // route::get('/editpajakkpp3/{id}',[PajakkppController::class,'updatepajakkpp3'])->name('editpajakkpp3');
     route::get('/update-pajaklstolak/{id}',[PajaklsController::class,'update'])->name('update-pajaklstolak');
     Route::get('/tampilpajaksipdri',[PajaklsController::class,'index'])->name('tampilpajaksipdri');
     route::get('/editpajakls/{id}',[PajaklsController::class,'update'])->name('editpajakls');
     Route::get('/showpajakls/{id}',[PajakkppController::class,'show'])->name('showpajakls');
+
+    Route::get('/showedit-pajakls3/{id}',[PajakkppController::class,'edit'])->name('showedit-pajakls3');
+    route::get('/editpajakkpp3/{id}',[PajakkppController::class,'updatepajakkpp3'])->name('editpajakkpp3');
+    
 
     route::get('/simpansp2dsipdri',[Simpansp2dsipdriController::class,'store'])->name('simpansp2dsipdri');
     route::get('/tampilsp2dsipdri',[Simpansp2dsipdriController::class,'index'])->name('tampilsp2dsipdri');

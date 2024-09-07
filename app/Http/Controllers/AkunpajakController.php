@@ -61,11 +61,13 @@ class AkunpajakController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        $dataopd = Akunpajak::where('id',$request->get('id'))
-                    ->update([
-                        'akun_pajak' => $request->get('akun_pajak'),
-                    ]);
+        $dt = Akunpajak::where('id', $id)->first();
+            $dt->akun_pajak = $request->akun_pajak;
+            $dt->save();
+        // $dataopd = Akunpajak::where('id',$request->get('id'))
+        //             ->update([
+        //                 'akun_pajak' => $request->get('akun_pajak'),
+        //             ]);
         return redirect('tampilakunpajak')->with('edit','Data Berhasil Diubah');
     }
 

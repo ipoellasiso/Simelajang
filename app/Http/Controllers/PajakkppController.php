@@ -19,42 +19,42 @@ class PajakkppController extends Controller
     public function index()
     {
         $pajakkpp = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
-        ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
+        // ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
-        ->whereBetween('pajakkpp.created_at', ['2024-01-01', '2024-03-31'])
+        ->whereBetween('sp2d.tanggal_sp2d', ['2024-01-01', '2024-03-31'])
         ->get();
 
         $pajakkpp2 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
-        ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
+        // ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
-        ->whereBetween('pajakkpp.created_at', ['2024-04-01', '2024-06-30'])
+        ->whereBetween('sp2d.tanggal_sp2d', ['2024-04-01', '2024-06-30'])
         ->get();
 
         $pajakkpp3 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'pajakkpp.id_potonganls', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
-        ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
+        ->select('pajakkpp.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.ntpn', 'pajakkpp.jenis_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id', 'pajakkpp.id_potonganls', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
+        // ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.id', 'pajakkpp.id_potonganls')
         
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
         // ->join('Pajakkpp', 'potongan2.id_potongan', 'pajakkpp.id_potonganls')
-        ->whereBetween('pajakkpp.created_at', ['2024-07-01', '2024-09-30'])
+        ->whereBetween('sp2d.tanggal_sp2d', ['2024-07-01', '2024-09-30'])
         
         ->get();
 
         $pajakkpp4 = DB::table('pajakkpp')
-        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'tb_akun_pajak.akun_pajak', 'pajakkpp.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at')
-        ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
+        ->select('potongan2.ebilling', 'sp2d.tanggal_sp2d', 'pajakkpp.nilai_pajak', 'sp2d.nomor_sp2d', 'sp2d.nilai_sp2d', 'sp2d.nomor_spm', 'sp2d.tanggal_spm', 'pajakkpp.nomor_npwp', 'pajakkpp.akun_pajak', 'pajakkpp.jenis_pajak', 'pajakkpp.ntpn', 'potongan2.nilai_pajak','pajakkpp.rek_belanja','pajakkpp.nama_npwp', 'pajakkpp.id_potonganls', 'pajakkpp.id', 'potongan2.status1', 'pajakkpp.created_at', 'pajakkpp.bukti_pemby')
+        // ->join('tb_akun_pajak', 'tb_akun_pajak.id', '=', 'pajakkpp.akun_pajak')
         // ->join('tb_jenis_pajak', 'tb_jenis_pajak.id', '=', 'pajakkpp.jenis_pajak')
         ->join('potongan2',  'potongan2.ebilling', 'pajakkpp.ebilling')
         ->join('sp2d', 'sp2d.idhalaman', 'potongan2.id_potongan')
-        ->whereBetween('pajakkpp.created_at', ['2024-10-01', '2024-12-31'])
+        ->whereBetween('sp2d.tanggal_sp2d', ['2024-10-01', '2024-12-31'])
         ->get();
 
         $pajakls = DB::table('potongan2')
@@ -72,7 +72,7 @@ class PajakkppController extends Controller
         ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
         ->get();
 
-        return view('Pajak.pajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'jenispajak1', 'pajakls'));
+        return view('Pajak.tampilpajakls', compact('pajakkpp', 'pajakkpp2', 'pajakkpp3', 'pajakkpp4', 'akunpajak1', 'jenispajak1', 'pajakls'));
     }
 
     /**
@@ -102,9 +102,26 @@ class PajakkppController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
-        //
+        $dt = Pajakkpp::where('id', $id)->first();
+
+        function rupiahedit($angka){
+                              
+            $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+            return $hasil_rupiah;
+          }
+
+        $akunpajak1 = DB::table('tb_akun_pajak')
+        ->select('tb_akun_pajak.akun_pajak', 'tb_akun_pajak.id')
+        ->get();
+
+        $jenispajak1 = DB::table('tb_jenis_pajak')
+        ->select('tb_jenis_pajak.jenis_pajak', 'tb_jenis_pajak.id')
+        ->get();
+
+        return view('Pajak.editshowpajakls3', compact('dt', 'akunpajak1', 'jenispajak1'));
+        // return 'abc';
     }
 
     /**
@@ -144,75 +161,51 @@ class PajakkppController extends Controller
 
     public function updatepajakkpp3(Request $request, string $id)
     {
+        // dd($id);
+        // $request->validate([
+        //     'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
+        // ],[
+        //     'bukti_pemby.required' => 'Gambar Wajib Diupload',
+        //     'bukti_pemby.file' => 'Gambar Harus berupa File',
+        // ]);
 
-        $request->validate([
-            'bukti_pemby' => 'required|mimes:jpeg,png,jpg,pdf|max:5120',
-        ],[
-            'bukti_pemby.required' => 'Gambar Wajib Diupload',
-            'bukti_pemby.file' => 'Gambar Harus berupa File',
-        ]);
-
-        // $cek = Pajakkpp::where('ntpn', $request->ntpn)->count();
-        // if($cek > 0)
-        // {
-        //     return redirect()->back()->with('error', 'NTPN Sudah Ada');
-        // }else
-        // {
-
-        Pajakpot::where('ebilling',$request->get('ebilling'))
+        Pajakpot::where('id',$request->get('id_potonganls'))
                         ->update([
                             // 'status1' => '1',
                             'jenis_pajak' => $request->get('jenis_pajak'),
                             'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
+                            'ebilling' => $request->get('ebilling'),
                         ]);
 
-        $updatepajakls = Pajakkpp::find($id);
-        // if ($updatepajakls->bukti_pemby){
-        //     File::delete('dokumen/'.$updatepajakls->bukti_pemby);
-        // }
-        return ($updatepajakls);
-            // File::delete('dokumen/'.$updatepajakls->bukti_pemby);
-        
-        
-        // dd($image_path);
-        // $updatepajakls->ebilling = $request->get('ebilling');
-        // $updatepajakls->ntpn = $request->get('ntpn');
-        // $updatepajakls->jenis_pajak = $request->get('jenis_pajak');
-        // $updatepajakls->akun_pajak = $request->get('akun_pajak');
-        // $updatepajakls->rek_belanja = $request->get('rek_belanja');
-        // $updatepajakls->nama_npwp = $request->get('nama_npwp');
-        // $updatepajakls->nomor_npwp = $request->get('nomor_npwp');
-        // $updatepajakls->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
-        
-        // if ($request->file('bukti_pemby')) {
+        $updatepajakls = Pajakkpp::where('id', $id)->first();
+            if ($updatepajakls->bukti_pemby){
+                File::delete('dokumen/'.$updatepajakls->bukti_pemby);
+            }
             
-            // $file = $request->file('bukti_pemby');
-            // $nama_file = " Simelajang " . " - " .$file->getClientOriginalName();
-            // $file->move('dokumen', $nama_file);
-            // $updatepajakls->bukti_pemby = $nama_file;
-        // }
-        // return($request);
+            $updatepajakls->id_potonganls = $request->get('id_potonganls');
+            $updatepajakls->akun_pajak = $request->get('akun_pajak');
+            $updatepajakls->ebilling = $request->get('ebilling');
+            $updatepajakls->ntpn = $request->get('ntpn');
+            $updatepajakls->nama_npwp = $request->get('nama_npwp');
+            $updatepajakls->nomor_npwp = $request->get('nomor_npwp');
+            $updatepajakls->jenis_pajak = $request->get('jenis_pajak');
+            $updatepajakls->rek_belanja = $request->get('rek_belanja');
+            $updatepajakls->nilai_pajak = str_replace('.','', $request->get('nilai_pajak'));
 
-        // $updatepajakls->update();
-
-        // Pajakkpp::where('id',$request->get('id'))
-        //                 ->update([
-        //                     // 'status2' => '0',
-        //                     'id_potonganls' => $request->get('id_potonganls'),
-        //                     'ebilling' => $request->get('ebilling'),
-        //                     'ntpn' => $request->get('ntpn'),
-        //                     'jenis_pajak' => $request->get('jenis_pajak'),
-        //                     'akun_pajak' => $request->get('akun_pajak'),
-        //                     'rek_belanja' => $request->get('rek_belanja'),
-        //                     'nama_npwp' => $request->get('nama_npwp'),
-        //                     'nomor_npwp' => $request->get('nomor_npwp'),
-        //                     'nilai_pajak' => str_replace('.','', $request->get('nilai_pajak')),
-        //                     'bukti_pemby' => $nama_file,
-        //                 ]);
-        // return ($updatepajakls);
+            if ($request->file('bukti_pemby')) {
+                if ($request->oldbukti_pemby) {
+                    Storage::delete($request->oldbukti_pemby);
+                }
+                $file = $request->file('bukti_pemby');
+                $nama_file = " Simelajang " . " - " .$file->getClientOriginalName();
+                $file->move('dokumen', $nama_file);
+                $updatepajakls->bukti_pemby = $nama_file;
+            }
+            
+            $updatepajakls->save();
         
         return redirect('tampilpajakls')->with('edit','Data Berhasil Diubah');
-        // }
+        
     }
     
     public function destroy(string $id )
@@ -222,5 +215,6 @@ class PajakkppController extends Controller
         $data->delete();
 
         return redirect('tampilpajakls');
+        // dd($id);
     }
 }

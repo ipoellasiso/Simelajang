@@ -24,5 +24,6 @@ class Pajakkpp extends Model
         'status2',
         'created_at',
         'updated_at',
+        'id',
     ];
 }
