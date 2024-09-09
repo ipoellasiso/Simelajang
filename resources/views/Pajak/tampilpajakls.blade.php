@@ -1667,8 +1667,8 @@
                                                                     <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                                     </button>
                                                                   </a>
-                    
-                                                                      <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
+
+                                                                  <button type="button" class="action-btn scale" data-tippy-content="tolak" data-tippy-theme="danger" id="btn-edit-pajakkpptolak"
                                                                           data-bs-toggle="modal" data-bs-target="#edittolak_modal"
                                                                           data-id = "{{ $item->id }}"
                                                                           data-ebilling = "{{ $item->ebilling }}"
@@ -2161,14 +2161,14 @@
     </div>
   </div>
 </div>
-
+                                                             
 
 <!-- tw I -->
 @include('Pajak.Modal.tolakpajakls')                      
 @include('Pajak.Modal.terimapajakls')
-{{-- @include('Pajak.Modal.tampilpajaksipdls') --}}
+<!-- {{-- @include('Pajak.Modal.tampilpajaksipdls') --}}
 {{-- @include('Pajak.Modal.tambahpajakls') --}}
-{{-- @include('Pajak.Modal.editpajakkppls3') --}}
+{{-- @include('Pajak.Modal.editpajakkppls3') --}} -->
 
 
 

@@ -3,8 +3,12 @@
         let id = $(this).data('id');
         let ebilling = $(this).data('ebilling');
         let ntpn = $(this).data('ntpn');
+        let sp2d = $(this).data('sp2d');
+        let id_potonganls = $(this).data('id_potonganls');
     
         $('#edit-id').val(id);
+        $('#edit-id_potonganls').val(id_potonganls);
+        $('#edit-sp2d').val(sp2d);
         $('#edit-ebilling').val(ebilling);
         $('#edit-ntpn').val(ntpn);
     

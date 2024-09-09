@@ -21,7 +21,7 @@
     @if ($pajakkpp->Empty())
     
     @else
-        <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+        <form method="post"a action="">
               @method('get')
               @csrf
             <div class="card">
@@ -59,7 +59,7 @@
     @endif
 
     @if ($pajakkpp->IsNotEmpty())
-          <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+          <form method="post"a action="">
                 @method('get')
                 @csrf
               <div class="card">
@@ -102,7 +102,7 @@
     @if ($pajakkpp2->Empty())
     
     @else
-        <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+        <form method="post"a action="">
               @method('get')
               @csrf
             <div class="card">
@@ -141,7 +141,7 @@
 
     {{-- tw II --}}
     @if ($pajakkpp2->IsNotEmpty())
-          <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+          <form method="post"a action="">
                 @method('get')
                 @csrf
               <div class="card">
@@ -185,7 +185,7 @@
     @if ($pajakkpp3->Empty())
     
     @else
-        <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+        <form method="post"a action="">
               @method('get')
               @csrf
             <div class="card">
@@ -223,7 +223,7 @@
     @endif
 
     @if ($pajakkpp3->IsNotEmpty())
-          <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+          <form method="post"a action="">
                 @method('get')
                 @csrf
               <div class="card">
@@ -267,7 +267,7 @@
     @if ($pajakkpp4->Empty())
     
     @else
-        <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+        <form method="post"a action="">
               @method('get')
               @csrf
             <div class="card">
@@ -305,7 +305,7 @@
     @endif
 
     @if ($pajakkpp4->IsNotEmpty())
-          <form method="post"a action="{{ route('updateterima-pajakls', $item->id) }}">
+          <form method="post"a action="">
                 @method('get')
                 @csrf
               <div class="card">

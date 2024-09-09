@@ -285,3 +285,32 @@
 
 </script> --}}
 
+<script>
+    $(function(){
+        $(document).on('click','#btn-pajakkpptolak', function(e){
+            e.preventDefault();
+            var sp2d = $(this).attr("data-sp2d");
+            var id = $(this).attr("data-pajakkppls1");
+                Swal.fire({
+                title: "Anda Yakin?",
+                text: "Tolak Pajak dengan Nomor SP2D "+id+" ini",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "update-pajakls/"+id+""
+                    // Swal.fire({
+                    // text: "TBP Telah Disimpan.",
+                    // title: "Tersimpan!",
+                    // icon: "success"
+                    // });
+                }
+                });
+        });
+    });
+    
+</script>
+
