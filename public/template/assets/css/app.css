@@ -1085,8 +1085,8 @@ textarea.form-control.is-invalid{
   border-color: rgb(37, 99, 235) !important;
 }
 .nav-tabs .nav-item.show .nav-link{
-  color: rgb(209, 54, 15);
-  border-color: rgb(209, 54, 15);
+  color: rgb(37, 99, 235);
+  border-color: rgb(37, 99, 235);
 }
 .nav-tabs .dropdown-menu{
   margin-top: -1px;
