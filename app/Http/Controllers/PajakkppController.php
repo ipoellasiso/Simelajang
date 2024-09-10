@@ -214,10 +214,15 @@ class PajakkppController extends Controller
     public function destroy(string $id )
     {
         
+        $updatepajakls = Pajakkpp::where('id', $id)->first();
+            File::delete('dokumen/'.$updatepajakls->bukti_pemby);
+        
+
         $data = Pajakkpp::where('id',$id);
         $data->delete();
+        
 
-        return redirect('tampilpajakls');
+        return redirect('tampilpajakls')->with('edit','Data Berhasil Dihapus');
         // dd($id);
     }
 }

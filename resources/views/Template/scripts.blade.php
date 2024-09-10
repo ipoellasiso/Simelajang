@@ -200,11 +200,11 @@
                 if (result.isConfirmed) {
                     window.location = "/hapus-pajakls/"+pajakid+""
                     // window.location = "/update-pajakls/"+pajakid+""
-                    Swal.fire({
-                    title: "Terhapus!",
-                    text: "Data Telah Dihapus.",
-                    icon: "success"
-                    });
+                    // Swal.fire({
+                    // title: "Terhapus!",
+                    // text: "Data Telah Dihapus.",
+                    // icon: "success"
+                    // });
                 }
                 });
         });
