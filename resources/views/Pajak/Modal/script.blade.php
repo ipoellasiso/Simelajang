@@ -129,3 +129,10 @@
     }
   }
 </script>
+
+<script>
+    function rupiah($angka){
+        $hasil_rupiaha = "" . number_format($angka,0,',','.');
+        return $hasil_rupiaha;
+    }
+</script>

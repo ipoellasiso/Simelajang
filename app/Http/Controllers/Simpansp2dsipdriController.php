@@ -33,26 +33,14 @@ class Simpansp2dsipdriController extends Controller
             $waktuSekarang = time();
             if($exp <= $waktuSekarang){
                 return redirect('tampiltoken')->with('edit','Token Kadaluarsa');
-                // $url = "https://service.sipd.kemendagri.go.id/auth/auth/login";
-                // $form_params = [
-                //     'username' => '197402271999031004',
-                //     'password' => 'p4lu8ud24'
-                // ];
-                // $response = request('post', $url,['http_errors'=>false, 'form_params'=>$form_params]);
-                // $tokenbaru = $response->refresh_token;
-                // // $response = json_decode($response, true);
-                // // $token1 = $response['bearer_token'];
-                // return ($tokenbaru);
-                // // $dataToken1 = [
-                // //     'token_sipd' => $token1
-                // // ];
-                // // $dataToken1 = save();
             }
-            // // Batas Permintaan Token
-            // // return ($exp."--".$waktuSekarang);
+            // return($decode);
+
             
              $page = $_GET['id'];
-            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?jenis=LS&status=ditransfer&page=$page&limit=10";
+            $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?status=diterima&page=$page&limit=10";
+
+            // https://service.sipd.kemendagri.go.id/pengeluaran/strict/sp2d/pembuatan/index?status=diterima&page=1&limit=10
             $pagination = 10 ;
 
             // $datasp2d = DB::table('sp2d')->select('status1')->get();
@@ -76,6 +64,7 @@ class Simpansp2dsipdriController extends Controller
             $response = curl_exec($curl);
             curl_close($curl);
             $dt = json_decode($response, true);
+            // return($response);
 
         return view('Sipdri.tampilsp2dsipdri', compact('dt'));
     }
@@ -150,11 +139,13 @@ class Simpansp2dsipdriController extends Controller
             ->select ('token_sipd')
             ->where('id_opd', auth()->user()->id_opd)
             ->get();
+            
 
             foreach ($datatoken as $row1){
                 $nilaitoken = $row1->token_sipd;
             }
-            
+            // return($nilaitoken);
+
             $page = $_GET['id'];
             $urlls = "https://service.sipd.kemendagri.go.id/pengeluaran/strict/tbp/index/0?is_panjar=0&jenis=UP&page=$page&limit=50&status=aktif";
 
@@ -176,11 +167,12 @@ class Simpansp2dsipdriController extends Controller
 
             $response = curl_exec($curl);
             curl_close($curl);
-            $dt1 = json_decode($response, true);
+            $dt15 = json_decode($response, true);
+            dd($dt15);
 
             $datalpj = DB::table('tb_lpj')->select('tb_lpj.id_tbp')->get();
 
-        return view('Sipdri.gu.tampilsp2dsipdrigu', compact('dt1', 'datalpj'));
+        return view('Sipdri.gu.tampilsp2dsipdrigu', compact('dt15', 'datalpj'));
     }
 
     public function store(Request $request)

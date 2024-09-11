@@ -1579,10 +1579,7 @@
                                       <?php $i=1;
                                             $pagination = 10 ; 
 
-                                            function rupiahh($angka){
-                                                $hasil_rupiaha = "" . number_format($angka,0,',','.');
-                                                return $hasil_rupiaha;
-                                            }
+                                            
 
                                             $hitung = $pagination;
                                       ?>
@@ -1732,6 +1729,13 @@
   
     });
   </script>
+
+<script>
+    function rupiahh($angka){
+        $hasil_rupiaha = "" . number_format($angka,0,',','.');
+        return $hasil_rupiaha;
+    }
+</script>
 
   
 </body>

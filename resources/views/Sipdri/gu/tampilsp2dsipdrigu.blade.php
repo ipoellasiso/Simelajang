@@ -1579,22 +1579,22 @@
                                       <?php $i=1;
                                             $pagination = 40 ; 
 
-                                            function rupiahh($angka){
-                                                $hasil_rupiaha = "" . number_format($angka,0,',','.');
-                                                return $hasil_rupiaha;
-                                            }
+                                            // function rupiahh($angka){
+                                            //     $hasil_rupiaha = "" . number_format($angka,0,',','.');
+                                            //     return $hasil_rupiaha;
+                                            // }
 
                                             $hitung = $pagination;
                                       ?>
 
-                                      @foreach ($dt1 as $row1) 
+                                      @foreach ($dt15 as $row1) 
                                         <tr class="hover:bg-slate-200 dark:hover:bg-slate-700">
                                           <td class="table-td"> {{ $i++ }}</td>
                                           <td class="table-td">{{ $row1['nama_sub_skpd'] }}</td>
                                           <td class="table-td">{{ $row1['nomor_tbp'] }}</td>
                                           <td class="table-td">{{ $row1['tanggal_tbp'] }}</td>
                                           <td class="table-td">{{ $row1['keterangan_tbp'] }}</td>
-                                          <td class="table-td">{{ rupiahh($row1['nilai_tbp']) }}</td>
+                                          <td class="table-td">{{ $row1['nilai_tbp'] }}</td>
                                                                                 
                                                     <td class="table-td ">
                                                       <div class="flex space-x-3 rtl:space-x-reverse">

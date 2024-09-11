@@ -8055,7 +8055,7 @@ blockquote{
 .badge.pill{
   border-radius: 999px;
 }
-
+/* 
 /* Tabs And Accordion */
 #tabs-tab .nav-link.active{
   --tw-border-opacity: 1;
