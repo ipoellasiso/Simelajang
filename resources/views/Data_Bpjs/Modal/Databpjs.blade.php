@@ -15,6 +15,7 @@
               <th>Tanggal SP2D</th>
               <th>Nomor SP2D</th>
               <th>Nilai SP2D</th>
+              <th>Jenis Potongan</th>
               <th>Nilai Potongan</th>
               <th>Aksi</th>
             </tr>

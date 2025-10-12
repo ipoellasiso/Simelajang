@@ -109,6 +109,7 @@ $(function () {
                     { data: 'tanggal_sp2d', name: 'tanggal_sp2d' },
                     { data: 'nomor_sp2d', name: 'nomor_sp2d' },
                     { data: 'nilai_sp2d', name: 'nilai_sp2d', className: 'text-end' },
+                    { data: 'jenis_pajak', name: 'jenis_pajak', className: 'text-end' },
                     { data: 'nilai_potongan', name: 'nilai_potongan', className: 'text-end' },
                     { data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center' }
                 ],

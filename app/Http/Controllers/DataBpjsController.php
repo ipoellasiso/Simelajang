@@ -78,6 +78,7 @@ class DataBpjsController extends Controller
         ->leftJoin('sp2d', 'potongan2.id_potongan', '=', 'sp2d.idhalaman')
         ->select(
             'potongan2.id as id_potongan',
+            'potongan2.jenis_pajak',
             'potongan2.nilai_pajak as nilai_potongan',
             'sp2d.idhalaman',
             'sp2d.nama_skpd',
@@ -88,6 +89,13 @@ class DataBpjsController extends Controller
         )
         ->whereNotNull('sp2d.nomor_sp2d')
         ->whereNull('potongan2.id_rincianbpjs') // hanya data induk belum dipakai
+        ->where(function ($q) {
+            $q->where('potongan2.jenis_pajak', 'like', '%Askes%')
+              ->orWhere('potongan2.jenis_pajak', 'like', '%Iuran Jaminan Kesehatan 4%')
+              ->orWhere('potongan2.jenis_pajak', 'like', '%Belanja Iuran Jaminan Kesehatan PPPK%')
+              ->orWhere('potongan2.jenis_pajak', 'like', '%Belanja Iuran Jaminan Kesehatan PNS%')
+              ->orWhere('potongan2.jenis_pajak', 'like', '%Iuran Wajib Pegawai 1%');
+        })
         ->orderBy('sp2d.tanggal_sp2d', 'desc')
         ->get();
 
