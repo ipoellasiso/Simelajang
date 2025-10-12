@@ -10,6 +10,7 @@ use App\Http\Controllers\LaporanguController;
 use App\Http\Controllers\LaporanguuserController;
 use App\Http\Controllers\LaporanlsController;
 use App\Http\Controllers\LaporanlsControllerUser;
+use App\Http\Controllers\LaporanSandinganPajakController;
 use App\Http\Controllers\LaporanSpmGuController;
 use App\Http\Controllers\LaprekappajakController;
 use App\Http\Controllers\LaprekappajaklsguController;
@@ -323,3 +324,10 @@ Route::get('/downloadlaporanrekappajakexcel', [LaprekappajaklsguController::clas
 Route::get('/sp2dtpp', [LapRekaptppController::class, 'index'])->middleware('auth:web','checkRole:Admin');
 Route::get('/sp2dtpp/edit/{id}', [LapRekaptppController::class, 'editsp2dtpp'])->middleware('auth:web','checkRole:Admin');
 Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');
+
+// ======= DATA SANDINGAN PAJAK =======
+// Halaman tampilan laporan
+Route::get('/laporan-sandingan-pajak', [LaporanSandinganPajakController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+
+// Endpoint data untuk DataTables AJAX
+Route::get('/laporan-sandingan-pajak/data', [LaporanSandinganPajakController::class, 'getData'])->name('laporan.pajak.data')->middleware('auth:web','checkRole:Admin');

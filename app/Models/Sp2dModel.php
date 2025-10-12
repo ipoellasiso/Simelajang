@@ -35,4 +35,10 @@ class Sp2dModel extends Model
             'jabatan_bud_kbud',
             'nip_bud_kbud'
     ];
+
+    public function potongan()
+    {
+        return $this->hasMany(PotonganModel::class, 'id_potongan', 'idhalaman');
+    }
+
 }

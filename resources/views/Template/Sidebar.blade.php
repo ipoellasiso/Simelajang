@@ -123,6 +123,15 @@
         </ul>
       </li>
       @endif
+      @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Verifikasi')
+      <li>
+        <a href="index.html"><i data-feather="user"></i>Sandingan Pajak<i class="fas fa-chevron-right dropdown-icon"></i></a>
+        <ul class="">
+          <li><a href="/laporan-sandingan-pajak"><i class="far fa-circle"></i>LS</a></li>
+          <li><a href=""><i class="far fa-circle"></i>GU</a></li>
+        </ul>
+      </li>
+      @endif
       <li class="sidebar-title">
         LAPORAN
       </li>
