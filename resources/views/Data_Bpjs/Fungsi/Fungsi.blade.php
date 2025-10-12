@@ -264,6 +264,17 @@ $(function () {
                                     timer: 1800
                                 });
 
+                                // ✅ Reset semua input form setelah sukses
+                                $('#ebilling').val('');
+                                $('#ntpn').val('');
+                                $('#akun_potongan').val('');
+                                $('#nama_npwp').val('');
+                                $('#nomor_npwp').val('');
+                                $('#rek_belanja').val('');
+                                $('#file_bukti').val('');
+                                $('#tabelPotongan tbody').empty(); // hapus semua baris potongan
+                                $('#totalPotongan').text('0'); // reset total nilai potongan
+
                                 // tutup modal dan reload tabel
                                 $('#modalTambahBpjs').modal('hide');
                                 setTimeout(() => {
@@ -290,7 +301,7 @@ $(function () {
             });
         });
 
-        // 🔹 Hapus Data BPJS
+        // 🔹 Hapus Data BPJS   
         $(document).on('click', '.hapusBpjs', function(e) {
             e.preventDefault();
             const id = $(this).data('id'); // ambil ID dari tombol
