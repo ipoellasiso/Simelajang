@@ -327,16 +327,10 @@ Route::get('/sp2dtpp/edit/{id}', [LapRekaptppController::class, 'editsp2dtpp'])-
 Route::post('/sp2dtpp/store', [LapRekaptppController::class, 'store'])->middleware('auth:web','checkRole:Admin');
 
 // ======= DATA SANDINGAN PAJAK =======
-// Halaman tampilan laporan
 Route::get('/laporan-sandingan-pajak', [LaporanSandinganPajakController::class, 'index'])->middleware('auth:web','checkRole:Admin');
-
-// Endpoint data untuk DataTables AJAX
 Route::get('/laporan-sandingan-pajak/data', [LaporanSandinganPajakController::class, 'getData'])->name('laporan.pajak.data')->middleware('auth:web','checkRole:Admin');
 
 // ======= DATA SANDINGAN PAJAK GU =======
-// Halaman tampilan laporan
 Route::get('/laporan-sandingan-pajakgu', [LaporanSandinganPajakguController::class, 'index'])->middleware('auth:web','checkRole:Admin');
-
-// Endpoint data untuk DataTables AJAX
 Route::get('/laporan-sandingan-pajakgu/data', [LaporanSandinganPajakguController::class, 'getData'])->name('laporan.pajakgu.data')->middleware('auth:web','checkRole:Admin');
 
