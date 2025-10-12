@@ -11,6 +11,7 @@ use App\Http\Controllers\LaporanguuserController;
 use App\Http\Controllers\LaporanlsController;
 use App\Http\Controllers\LaporanlsControllerUser;
 use App\Http\Controllers\LaporanSandinganPajakController;
+use App\Http\Controllers\LaporanSandinganPajakguController;
 use App\Http\Controllers\LaporanSpmGuController;
 use App\Http\Controllers\LaprekappajakController;
 use App\Http\Controllers\LaprekappajaklsguController;
@@ -331,3 +332,11 @@ Route::get('/laporan-sandingan-pajak', [LaporanSandinganPajakController::class, 
 
 // Endpoint data untuk DataTables AJAX
 Route::get('/laporan-sandingan-pajak/data', [LaporanSandinganPajakController::class, 'getData'])->name('laporan.pajak.data')->middleware('auth:web','checkRole:Admin');
+
+// ======= DATA SANDINGAN PAJAK GU =======
+// Halaman tampilan laporan
+Route::get('/laporan-sandingan-pajakgu', [LaporanSandinganPajakguController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+
+// Endpoint data untuk DataTables AJAX
+Route::get('/laporan-sandingan-pajakgu/data', [LaporanSandinganPajakguController::class, 'getData'])->name('laporan.pajakgu.data')->middleware('auth:web','checkRole:Admin');
+

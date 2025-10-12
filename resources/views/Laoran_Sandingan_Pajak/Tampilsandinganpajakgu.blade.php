@@ -8,7 +8,7 @@
         @include('Template.Navbar')
         @include('Template.Sidebar')
 
-        {{-- ######################### Isi Laporan Sandingan Pajak ########################## --}}
+        {{-- ######################### Isi Laporan Sandingan Pajak GU ########################## --}}
         <div class="page-content">
             <div class="main-wrapper">
 
@@ -85,7 +85,7 @@
                                 </div>
                                 <br>
 
-                                <table id="tabelSandinganPajak" class="tabelSandinganPajak display table table-striped table-bordered" style="width:100%">
+                                <table id="tabelSandinganPajakgu" class="tabelSandinganPajakgu display table table-striped table-bordered" style="width:100%">
                                     <thead class="text-center align-middle">
                                         <tr>
                                             <th>No</th>
@@ -117,7 +117,7 @@
                         <div class="row mt-4">
                             <div class="col-md-4 offset-md-8">
                                 <div class="card p-3 shadow-sm">
-                                    <h6 class="text-center fw-bold mb-2">Rekapitulasi Pajak</h6>
+                                    <h6 class="text-center fw-bold mb-2">Rekapitulasi Pajak GU</h6>
                                     <p>Pajak Pertambahan Nilai: <span id="rekapPPN" class="float-end">0</span></p>
                                     <p>PPH 21: <span id="rekapPPH21" class="float-end">0</span></p>
                                     <p>Pajak Penghasilan Ps 22: <span id="rekapPPH22" class="float-end">0</span></p>

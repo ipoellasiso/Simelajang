@@ -9,9 +9,9 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class LaporanSandinganPajakController extends Controller
+class LaporanSandinganPajakguController extends Controller
 {
-    public function __construct()
+   public function __construct()
     {
         $this->middleware('auth');
     }
@@ -27,24 +27,25 @@ class LaporanSandinganPajakController extends Controller
             ->first();
 
         $data = [
-            'title'            => 'Laporan Sandingan Pajak LS',
+            'title'            => 'Laporan Sandingan Pajak GU',
             'active_sidemdata' => 'active',
             'active_akunpajak' => 'active',
             'page_title'       => 'Laporan Pajak',
             'breadcumd1'       => 'Laporan',
-            'breadcumd2'       => 'Sandingan Pajak LS',
+            'breadcumd2'       => 'Sandingan Pajak GU',
             'userx'            => $user,
             'opd'              => $opd,
         ];
 
-        return view('Laoran_Sandingan_Pajak.Tampilsandinganpajak', $data);
+        return view('Laoran_Sandingan_Pajak.Tampilsandinganpajakgu', $data);
     }
 
     public function getData(Request $request)
     {
         $laporan = DB::table('sp2d')
-            ->leftJoin('potongan2', 'sp2d.idhalaman', '=', 'potongan2.id_potongan')
-            ->leftJoin('pajakkpp', 'potongan2.id', '=', 'pajakkpp.id_potonganls')
+            ->leftJoin('tb_tbp', 'sp2d.nomor_spm', '=', 'tb_tbp.no_spm')
+            ->leftJoin('tb_potongangu', 'tb_tbp.id_tbp', '=', 'tb_potongangu.id_tbp')
+            ->leftJoin('pajakkppgu', 'tb_potongangu.id', '=', 'pajakkppgu.id_potonganls')
             ->select(
                 'sp2d.nomor_spm',
                 'sp2d.tanggal_sp2d',
@@ -52,12 +53,12 @@ class LaporanSandinganPajakController extends Controller
                 'sp2d.nilai_sp2d',
                 'sp2d.keterangan_sp2d',
                 'sp2d.nama_skpd as nama_opd',
-                'potongan2.jenis_pajak',
-                DB::raw('COALESCE(potongan2.nilai_pajak, 0) AS nilai_pajak_register'),
-                DB::raw('COALESCE(pajakkpp.nilai_pajak, 0) AS nilai_pajak_inputan'),
-                DB::raw('(COALESCE(potongan2.nilai_pajak, 0) - COALESCE(pajakkpp.nilai_pajak, 0)) AS selisih')
+                'tb_potongangu.nama_pajak_potongan',
+                DB::raw('COALESCE(tb_potongangu.nilai_tbp_pajak_potongan, 0) AS nilai_pajak_register'),
+                DB::raw('COALESCE(pajakkppgu.nilai_pajak, 0) AS nilai_pajak_inputan'),
+                DB::raw('(COALESCE(tb_potongangu.nilai_tbp_pajak_potongan, 0) - COALESCE(pajakkppgu.nilai_pajak, 0)) AS selisih')
             )
-            ->whereIn(DB::raw('LOWER(potongan2.jenis_pajak)'), [
+            ->whereIn(DB::raw('LOWER(tb_potongangu.nama_pajak_potongan)'), [
                 'pajak pertambahan nilai',
                 'ppn',
                 'pajak penghasilan ps 21',
@@ -74,5 +75,4 @@ class LaporanSandinganPajakController extends Controller
 
         return response()->json(['data' => $laporan]);
     }
-
 }
