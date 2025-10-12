@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BpjsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboarduserController;
+use App\Http\Controllers\DataBpjsController;
 use App\Http\Controllers\JenispajakController;
 use App\Http\Controllers\LaporanguController;
 use App\Http\Controllers\LaporanguuserController;
@@ -334,3 +335,10 @@ Route::get('/laporan-sandingan-pajak/data', [LaporanSandinganPajakController::cl
 Route::get('/laporan-sandingan-pajakgu', [LaporanSandinganPajakguController::class, 'index'])->middleware('auth:web','checkRole:Admin');
 Route::get('/laporan-sandingan-pajakgu/data', [LaporanSandinganPajakguController::class, 'getData'])->name('laporan.pajakgu.data')->middleware('auth:web','checkRole:Admin');
 
+// DATA BPJS
+Route::get('/data-bpjs', [DataBpjsController::class, 'index'])->name('data-bpjs.index')->middleware('auth:web','checkRole:Admin');
+Route::get('/data-bpjs/data', [DataBpjsController::class, 'getBpjsData'])->name('data-bpjs.data')->middleware('auth:web','checkRole:Admin');
+Route::get('/data-bpjs/sp2d/data', [DataBpjsController::class, 'getSp2dAjax'])->name('data-bpjs.sp2d.data')->middleware('auth:web','checkRole:Admin');
+Route::post('/data-bpjs/simpan', [DataBpjsController::class, 'simpan'])->name('data-bpjs.simpan')->middleware('auth:web','checkRole:Admin');
+Route::get('/data-bpjs/detail/{id}', [DataBpjsController::class, 'detail'])->name('data-bpjs.detail')->middleware('auth:web','checkRole:Admin');
+Route::delete('/data-bpjs/hapus/{id}', [DataBpjsController::class, 'hapus'])->name('data-bpjs.hapus')->middleware('auth:web','checkRole:Admin');
