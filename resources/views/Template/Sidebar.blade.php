@@ -118,8 +118,17 @@
       <li>
         <a href="index.html"><i data-feather="user"></i>Data Potongan<i class="fas fa-chevron-right dropdown-icon"></i></a>
         <ul class="">
-          <li><a href="/tampilbpjs"><i class="far fa-circle"></i>BPJS</a></li>
+          <li><a href="/data-bpjs"><i class="far fa-circle"></i>BPJS</a></li>
           <li><a href="/tampiltaspen"><i class="far fa-circle"></i>TASPEN</a></li>
+        </ul>
+      </li>
+      @endif
+      @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Verifikasi')
+      <li>
+        <a href="index.html"><i data-feather="user"></i>Sandingan Pajak<i class="fas fa-chevron-right dropdown-icon"></i></a>
+        <ul class="">
+          <li><a href="/laporan-sandingan-pajak"><i class="far fa-circle"></i>LS</a></li>
+          <li><a href="/laporan-sandingan-pajakgu"><i class="far fa-circle"></i>GU</a></li>
         </ul>
       </li>
       @endif

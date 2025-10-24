@@ -21,4 +21,15 @@ class PotonganModel extends Model
         'updated_at',
         'qty'
     ];
+
+    public function sp2d()
+    {
+        return $this->belongsTo(Sp2dModel::class, 'id_potongan', 'idhalaman');
+    }
+
+    public function pajakkpp()
+    {
+        return $this->hasOne(PajaklsModel::class, 'id_potonganls', 'id');
+    }
+
 }

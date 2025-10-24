@@ -37,4 +37,9 @@ class PajaklsModel extends Model
         ->get()->getResultArray();
    }
 
+   public function potongan()
+    {
+        return $this->belongsTo(PotonganModel::class, 'id_potonganls', 'id');
+    }
+
 }
