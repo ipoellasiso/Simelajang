@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\Registersp2dController;
 use App\Http\Controllers\TarikdataController;
 use App\Http\Controllers\TaspenController;
+use App\Http\Controllers\UbahDataRekonController;
 use App\Http\Controllers\UseradminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifikasitbpController;
@@ -342,3 +343,22 @@ Route::get('/data-bpjs/sp2d/data', [DataBpjsController::class, 'getSp2dAjax'])->
 Route::post('/data-bpjs/simpan', [DataBpjsController::class, 'simpan'])->name('data-bpjs.simpan')->middleware('auth:web','checkRole:Admin');
 Route::get('/data-bpjs/detail/{id}', [DataBpjsController::class, 'detail'])->name('data-bpjs.detail')->middleware('auth:web','checkRole:Admin');
 Route::delete('/data-bpjs/hapus/{id}', [DataBpjsController::class, 'hapus'])->name('data-bpjs.hapus')->middleware('auth:web','checkRole:Admin');
+
+
+// UBAH STATUS REKON PAJAK
+
+// Route::get('/register-sp2d', [UbahDataRekonController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+// Route::get('/tampilregsp2d', [UbahDataRekonController::class, 'index'])->middleware('auth:web','checkRole:Admin');
+
+// Route::post('/potongan/ubah-status',[UbahDataRekonController::class, 'ubahStatus'])->name('potongan.ubahStatus')->middleware('auth:web','checkRole:Admin');
+
+Route::get('/register-sp2d', [UbahDataRekonController::class, 'index'])
+    ->middleware('auth:web','checkRole:Admin');
+
+Route::get('/tampilregsp2d', [UbahDataRekonController::class, 'index'])
+    ->middleware('auth:web','checkRole:Admin');
+
+Route::post('/potongan/ubah-status',
+    [UbahDataRekonController::class, 'ubahStatus']
+)->name('potongan.ubahStatus')
+ ->middleware('auth:web','checkRole:Admin');

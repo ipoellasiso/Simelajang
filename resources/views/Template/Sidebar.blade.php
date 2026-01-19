@@ -131,6 +131,13 @@
           <li><a href="/laporan-sandingan-pajakgu"><i class="far fa-circle"></i>GU</a></li>
         </ul>
       </li>
+      <li>
+        <a href="index.html"><i data-feather="user"></i>Rekon Pajak<i class="fas fa-chevron-right dropdown-icon"></i></a>
+        <ul class="">
+          <!-- <li><a href="/laporan-sandingan-pajak"><i class="far fa-circle"></i>LS</a></li> -->
+          <li><a href="/register-sp2d"><i class="far fa-circle"></i>GU</a></li>
+        </ul>
+      </li>
       @endif
       <li class="sidebar-title">
         LAPORAN
